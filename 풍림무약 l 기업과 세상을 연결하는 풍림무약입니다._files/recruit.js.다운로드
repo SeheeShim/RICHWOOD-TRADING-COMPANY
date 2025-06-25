@@ -1,0 +1,157 @@
+
+/*
+ * File       : js/recruit.js
+ * Author     : STUDIO-JT (Sumi)
+ * Guideline  : JTstyle.1.0
+ *
+ * SUMMARY:
+ * 1) Global Variable
+ */
+
+jQuery( function ( $ ) {
+
+    /* **************************************** *
+     * INIT
+     * **************************************** */
+    JT.ui.add( recruit_scroll_motion , true );
+    JT.ui.add( highflier_icon_motion , true );
+    JT.ui.add( recruit_alert , true );
+
+
+
+
+    /* **************************************** *
+     * Functions
+     * **************************************** */
+
+    function recruit_scroll_motion(){
+
+        var $target_section = $('.highflier__wrap');
+        var $pin_item = $('.highflier__title-wrap');
+
+        if( !$pin_item.length ){ return; }
+
+        function highflier_title() {
+            if(!JT.is_screen(1023)) {
+                if( ScrollTrigger.getById('st-highflier-title') == undefined ) {
+                    gsap.to($pin_item,{
+                        scrollTrigger: {
+                            id: 'st-highflier-title',
+                            trigger: $target_section,
+                            // markers: true,
+                            start: "top top",
+                            end: "bottom bottom",
+                            pin: $pin_item
+                        }
+                    });
+                }
+            } else {
+                if( ScrollTrigger.getById('st-highflier-title') != undefined ) {
+                    ScrollTrigger.getById('st-highflier-title').kill();
+                }
+            }
+        };
+
+        $(window).resize(highflier_title);
+        highflier_title();
+
+
+        //highflier images
+        $('.highflier__item').each(function(){
+            var $this = $(this);
+
+            gsap.fromTo($this,{
+                //autoAlpha: 0.1,
+            },{
+                //autoAlpha:1,
+                scrollTrigger: {
+                    trigger: $this,
+                    start: "top 60%",
+                    end: "center 0%",
+                    scrub : true,
+                    toggleActions: "play resume resume restart",
+                    onEnter: function onEnter() {
+                        $this.addClass('highflier__item--active').siblings().removeClass('highflier__item--active');
+                        //$this.parents('.history-year__section').siblings().find('.highflier__item').removeClass('highflier__item--active');
+                    },
+                    onLeave: function onLeave() {
+                        $this.removeClass('highflier__item--active');
+                    },
+                    onEnterBack: function onEnterBack() {
+                        $this.addClass('highflier__item--active').siblings().removeClass('highflier__item--active');
+                        //$this.parents('.history-year__section').siblings().find('.highflier__item').removeClass('highflier__item--active');
+                    },
+                    onLeaveBack: function onLeaveBack() {
+                        $this.parent('.highflier__item').removeClass('highflier__item--active');
+                    }
+                }
+            });
+
+        });
+
+    }
+
+
+
+    function highflier_icon_motion(){
+
+        if( !$('.highflier__icon').length ){ return; }
+
+        tl = new TimelineMax({repeat:-1});
+        timeLine = new TimelineMax({repeat:0});
+
+        $('.highflier__icon-snowflake').each(function(){
+            var $this = $(this);
+            new TweenMax.to($this, 20, {rotation: 360, repeat:-1, repeatDelay:0, ease: Power0.easeNone});
+        });
+
+        gsap.set('.highflier__icon-item',{autoAlpha:0});
+        gsap.fromTo('.highflier__icon',{autoAlpha:0},{autoAlpha:1});
+
+        tl.to(".highflier__icon-bulb", {duration: .2, autoAlpha:1,
+            onStart:function(){
+                timeLine.fromTo('.bulb-01', 1, {drawSVG:"0%"}, {drawSVG:"100%"})
+                .fromTo('.bulb-02', 0.3, {drawSVG:"0%"}, {drawSVG:"100%"})
+                .fromTo('.bulb-03', 0.3, {drawSVG:"0%"}, {drawSVG:"100%"})
+                .fromTo('.bulb-04', 0.3, {drawSVG:"0%"}, {drawSVG:"100%"})
+                .fromTo('.bulb-05', 0.3, {drawSVG:"0%"}, {drawSVG:"100%"})
+                .fromTo('.bulb-06', 0.3, {drawSVG:"0%"}, {drawSVG:"100%"});
+            }
+        })
+        .to(".highflier__icon-bulb", {autoAlpha:0}, "+=3")
+        .to(".highflier__icon-snowflake", {duration: 0.6, autoAlpha:1})
+        .to(".highflier__icon-snowflake", {autoAlpha:0}, "+=3")
+        .to(".highflier__icon-diamond", {duration: .2, autoAlpha:1,
+            onStart:function(){
+                timeLine.fromTo('.diamond-01', 1.2, {drawSVG:"0%"}, {drawSVG:"100%"})
+                .fromTo('.diamond-02', 0.6, {drawSVG:"0%"}, {drawSVG:"100%"})
+                .fromTo('.diamond-03', 0.6, {drawSVG:"0%"}, {drawSVG:"100%"})
+                .fromTo('.diamond-04', 0.3, {drawSVG:"0%"}, {drawSVG:"100%"})
+            }
+        })
+        .to(".highflier__icon-diamond", {autoAlpha:0}, "+=4")
+
+    }
+
+
+    function recruit_alert(){
+
+        $('.recruit-system__item a').on('click',function(e){
+            if($(this).find(':first-child').hasClass('recruit-system__status--close')){
+                JT.alert({
+                    title  : '마감된 공고입니다.',
+                    ok       : '확인',
+                    style    : 'basic',
+                    button_icon : false,
+                    is_confirm : false,
+                    primary_button: false,
+                });
+                return false
+            }
+        });
+
+    }
+
+
+
+}); // End jQuery

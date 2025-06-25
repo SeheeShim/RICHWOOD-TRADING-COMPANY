@@ -1,0 +1,86 @@
+/*
+ * File       : modules/profile/script.js
+ * Author     : STUDIO-JT (SUMI)
+ * Guideline  : JTstyle.1.0
+ *
+ * Dependency : js/jt.js
+ *              js/jt-strap.js
+ *
+ * SUMMARY:
+ * 1) INIT
+ * 2) Functions
+ * 3) Second Functions
+ */
+
+
+
+jQuery(function($) {
+    /* **************************************** *
+     * INIT
+     * **************************************** */
+    JT.ui.add( profile_clipboard , true );
+    JT.ui.add( profile_lang , true );
+
+
+    function profile_lang(){
+
+        $(".jt-profile-single__item").hide();
+        $(".jt-profile-single__item:first").show();
+
+        $(".profile-lang__tab li").click(function(e) {
+
+            e.preventDefault();
+
+            setTimeout(function(){
+                JT.ui.call( 'lazyload_init' );
+            },0);
+
+ 
+            $(".jt-profile-single__item").hide();
+            var activeTab = $(this).find('a').attr("href");
+            $(activeTab).show();
+            $(".profile-lang__tab li").addClass("profile-lang__item-active");
+            $(this).siblings('li').removeClass("profile-lang__item-active");
+        });
+
+    }
+
+
+
+    function profile_clipboard(){
+
+        $('.jt-profile-single__link--url a').each(function(){
+
+            if(typeof Clipboard != "undefined"){
+
+                var $this = $(this);
+                var clipboard = new Clipboard($this[0]);
+                var $clipboard_tooltip = $this.closest('.jt-profile-single__link').next();
+
+                //$clipboard_tooltip.appendTo('.jt-profile-single');
+
+                $this.on('click', function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+
+                clipboard.on('success', function(e) {
+
+                    e.clearSelection();
+                    TweenMax.fromTo($clipboard_tooltip, 0.2, {autoAlpha: 0}, {autoAlpha: 1});
+
+                    setTimeout(function(){
+                        TweenMax.fromTo($clipboard_tooltip, 0.2, {autoAlpha: 1}, {autoAlpha: 0});
+                    }, 1500);
+
+                });
+
+            }else{
+                // not support
+            }
+
+        }); // end each
+
+    }
+
+}); // End jQuery

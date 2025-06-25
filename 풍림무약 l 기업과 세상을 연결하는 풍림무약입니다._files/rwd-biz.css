@@ -1,0 +1,603 @@
+@charset "utf-8";
+
+/*
+ * File       : rwd-biz.css
+ * Author     : STUDIO-JT (Sumi)
+ * Guideline  : JTstyle.1.1
+ * Dependency : css/reset.css
+ *              css/jt-strap.css
+ *
+ * SUMMARY:
+ * 01)
+ */
+
+/* **************************************** *
+ * 1800px
+ * **************************************** */
+@media (max-width: 1800px){
+
+    /* BIZ ABOUT */
+    .biz-about__text {padding-left:80rem; padding-right:80rem;}
+    .biz-about__text .biz-about__title br {display:none;}
+
+    /* PROCESS */
+    .biz-process__contents {text-align:center;}
+    .biz-process__contents ul {width:auto; margin-left:0;}
+    .biz-process__contents span {width: 190rem; height: 190rem;}
+
+    .biz-process__natural .biz-process__contents ul {width:auto;}
+    .biz-process__natural .biz-process__contents li + li {margin-left:90rem;}
+    .biz-process__natural .biz-process__contents li:before {width:90rem; right:-90rem;}
+    .biz-process__natural .biz-process__contents li span:before {right:-58rem;}
+    .biz-process__natural .biz-process__contents li span:after {right:-51rem;}
+
+    /* PARTNER */
+    .biz-partner__desc br {display:none;}
+
+}/* 1800px */
+
+
+
+/* **************************************** *
+ * 1580px
+ * **************************************** */
+@media (max-width: 1580px){
+
+    /* BIZ ABOUT */
+    .biz-about__text {padding:80rem 60rem;}
+
+    /* PROCESS */
+    .biz-process__contents ul, html.desktop.safari .biz-process__contents ul {padding:12rem;}
+    .biz-process__contents li + li {margin-left: -36rem;}
+    .biz-process__contents .biz-process__last {padding-left: 35rem;}
+    .biz-process__contents .biz-process__last:before {width:35rem;}
+    .biz-process__contents span {width: 178rem; height: 178rem;}
+
+    .biz-process__natural .biz-process__contents li + li {margin-left:80rem;}
+    .biz-process__natural .biz-process__contents li:before {width:80rem; right:-80rem;}
+    .biz-process__natural .biz-process__contents li span:before {right:-53rem;}
+    .biz-process__natural .biz-process__contents li span:after {right:-45rem;}
+    html.ios .biz-process__natural .biz-process__contents li span:after {right:-45.5rem; margin-top:-6rem;}
+
+}/* 1580px */
+
+
+
+/* **************************************** *
+ * 1480px
+ * **************************************** */
+@media (max-width: 1480px){
+
+     /* INTRO */
+    .article-biz-about-intro .article-header {padding-bottom:120rem;}
+    .biz-about-intro__item figure {padding-top:99.8%;}
+
+    /* MAIN ITEMS */
+    .article-pharm-function .biz-main-items .biz-main-items__list-wrap {padding-left:80rem;}
+    .sub-content__section.biz-main-items__section {margin-top:160rem;}
+    .biz-main-items__item figure > img {width:80rem;}
+    .page-template-trading-bnc .biz-main-items__item:last-child figure > img {margin-top:2rem;}
+
+    /* NATURAL MATERIAL */
+    .natural-material__item h3 {font-size:24rem; margin-top:25rem;}
+    
+    /* PRODUCT LIST TABLE */
+    .jt-basic-table__list li {padding-left:15rem;}
+    .biz-prd-table__type-02 th, .biz-prd-table__type-02 td { padding-left:60rem; padding-right:60rem;}
+
+    /* BIZ ABOUT */
+    .article-pharm-function .biz-about__logo figure { max-width:130rem;}
+    .article-pharm-function .biz-about__logo figure img { width:100%;}
+    
+    /* BIZ PARTNER */
+    .biz-partner__logo img {max-width:100%;}
+    .jt-accordion__content p {word-break: inherit;}
+
+    /* BIZ AREA */
+    .biz-area__section .sub-content__desc {max-width:100%;}
+
+    /* MAIN ITEMS */
+    .biz-main-items__thumb-title span:before {margin-top:-5rem;}
+
+    /* PHARMACEUTICAL RND */
+    .rnd-network__section .sub-content__desc{ max-width:100%;}
+    .rnd-vision__circle {margin-top:50rem;}
+
+    /* PROCESS */
+    .biz-process__contents span {width: 170rem; height: 170rem;}
+    
+
+}/* 1480px */
+
+
+
+/* **************************************** *
+ * 1023px
+ * **************************************** */
+@media (max-width: 1023px){
+
+    /* GLOBAL */
+
+    /* BIZ ABOUT */
+    .biz-about__text {padding:60rem 60rem;}
+    .biz-about__text .biz-about__title {font-size:26rem;}
+
+    /* INTRO */
+    .biz-about-intro__item h3 {position:static; color:#000; margin-top:15rem;}
+
+    /* BIZ AREA */
+    .page-template-pharmaceutical-complete .biz-area__section .wrap,
+    .biz-area__section.sub-content__section--col-2 .wrap {padding-bottom:140rem;}
+    .biz-area__section.sub-content__section--col-2 .sub-content__desc {margin-top:25rem; font-size:18rem;}
+    .biz-area__section.sub-content__section--col-2 .sub-content__desc--secondary {margin-top:20rem; font-size:16rem;}
+
+    /* MAIN ITEMS */
+    .sub-content__section.biz-main-items__section {margin-top:160rem;}
+    .biz-main-items .sub-content__title {width:100%;}
+    .biz-main-items .biz-main-items__list-wrap {width:100%; margin-top:120rem;}
+    .article-pharm-function .biz-main-items .biz-main-items__list-wrap {padding-left:0;}
+    .biz-function-items__section .biz-main-items {padding-top:160rem;}
+
+    .biz-main-items__thumb-title {width:100%; padding-right:0;}
+    .biz-main-items__thumb-title span {font-size:26rem;}
+    .biz-main-items__thumb-title span:before {margin-top:-5rem;}
+    .biz-main-items__thumb-list-wrap {width:100%;margin-top:40rem;}
+    .biz-main-items__thumb-list {margin-top:-30rem; margin-bottom:-30rem;}
+    .biz-main-items__thumb-item {margin-top:30rem; margin-bottom:30rem;}
+    .biz-main-items__thumb-item h4 {font-size:24rem;}
+
+    /* PARTNER */
+    .biz-partner__section:not(.sub-content__section--last-02) {padding:140rem 0;}
+    .sub-content__section--col-2 .sub-content__title {width:100%; padding-right:0;}
+    .sub-content__section--col-2 .sub-content__list {width:100%;}
+    .sub-content__section--col-2 .jt-accordion {margin-top:40rem;}
+
+    /* MAJOR CUSTOM */
+    .biz-major-customers__list { margin: -10rem;}
+    .biz-major-customers__item { width: -webkit-calc(25% - 20rem); width: calc(25% - 20rem); margin: 10rem;}
+
+    /* CATALOG */
+    .biz-catalog__section .sub-content__title {width:100%; display:block;}
+    .biz-catalog__list {width:auto; margin:20rem -10rem -30rem;display:block;}
+    .biz-catalog__item {width: -webkit-calc(33.33% - 20rem);width: calc(33.33% - 20rem); margin: 30rem 10rem;}
+    .biz-catalog__item h3 {font-size:20rem;}
+
+    /* PROCESS */
+    .process-tabs {margin-top:120rem;}
+    .process-tab {display:block;}
+    .process-tabs__panels {margin-top:30rem;}
+    .biz-process__oem {margin-top:0;}
+    .biz-process__item-wrap {display:none;}
+    .biz-process__item-wrap + .biz-process__item-wrap {margin-top:0;}
+    .biz-process__title h3 {display:none;}
+    .biz-process__title ul {margin:14rem 0 60rem;}
+    .biz-process__contents {margin-top:0;}
+    .biz-process__contents ul {border:none; padding:0; margin:-15rem; display:inline;}
+    html.desktop.safari .biz-process__contents ul {padding: 0;}
+    .biz-process__contents li { margin:15rem; }
+    .biz-process__contents li + li {margin-left:15rem;}
+    .biz-process__contents li > span > b {display:block; }
+    .biz-process__contents li > p {display:none;}
+    .biz-process__contents .biz-process__last {padding-left:0; margin:15rem; margin-right:30rem; padding-left:15rem;}
+    .biz-process__contents .biz-process__last span > b {display:block;}
+    .biz-process__contents .biz-process__last:before {display:none;}
+    .biz-process__odm .biz-process__contents {padding-bottom:0;}
+    .biz-process__odm .biz-process__list {display:block;}
+    .biz-process__odm .biz-process__list li br {display:none;}
+    .biz-process__odm .biz-process__list li b {display:block;}
+    .biz-process__odm .biz-process__contents li:before {display:none;}
+
+    .biz-process__natural .biz-process__contents li:before {display:none;}
+    .biz-process__natural .biz-process__contents li span:before, .biz-process__natural .biz-process__contents li span:after {display:none;}
+
+    /* PRODUCT LIST TABEL */
+
+    /* PRODUCT FACILITY */
+    .biz-prd-facility__text h3 {font-size:22rem; margin-top:25rem;}
+
+    /* NATURAL MATERIAL */
+    .natural-material__section {margin-bottom:160rem;}
+    .biz-process__natural {margin-top:60rem;}
+    .natural-material__item h3 {font-size:22rem; margin-top:20rem;}
+    .biz-process__natural .biz-process__contents span { width: 170rem; height: 170rem;}
+    .biz-process__natural .biz-process__contents li {margin:15rem;}
+    .biz-process__natural .biz-process__contents li + li {margin-left:0;}
+
+    /* PHARMACEUTICAL RND */
+    .rnd-performance-table td:nth-child(2) {padding-left:30rem;}
+    .rnd-performance-table th, .rnd-performance-table .jt-basic-table td {padding:26rem;}
+
+    /* PRODUCT FORMULATION */
+    .biz-formulation__item figure.biz-formulation__icon { display:none;}
+    .biz-formulation__item figure.biz-formulation__img { opacity: 1; visibility: visible; position: static;}
+
+    /* PHARMACEUTICAL SEARCH */
+    .biz-prd-items__section {padding: 130rem 0 170rem;}
+
+    /* MAP */
+    .biz-main-items__section + .biz-map__section .wrap {padding-top:140rem;}
+
+}/* 1023px */
+
+
+
+/* **************************************** *
+ * 860px
+ * **************************************** */
+@media (max-width: 860px){
+
+    /* GLOBAL */
+
+    /* INTRO */
+    .article-biz-about-intro .article-header {padding-bottom:80rem;}
+    .biz-about-intro__item h3 {font-size:18rem;}
+
+    /* BIZ ABOUT */
+    .biz-about__text { padding:40rem 40rem;}
+    .biz-about__text .biz-about__title {font-size:20rem;}
+    .biz-about__logo {margin-bottom:16rem;}
+    .article-pharm-function .biz-about__text .biz-about__title {font-size:18rem;}
+    .article-pharm-function .biz-about__logo figure {max-width:90rem; }
+    .article-pharm-function .biz-about__logo figure img {max-width:100%;}
+
+    /* BIZ AREA */
+    .page-template-pharmaceutical-complete .biz-area__section .wrap,
+    .biz-area__section.sub-content__section--col-2 .wrap {padding-bottom:120rem;}
+    .biz-area__section.sub-content__section--col-2 .sub-content__desc {font-size:17rem; margin-top:15rem;}
+    .biz-area__section.sub-content__section--col-2 .sub-content__desc--secondary {font-size:15rem;}
+
+    /* MAIN ITEMS */
+    .sub-content__section.biz-main-items__section {margin-top:120rem;}
+    .biz-main-items .biz-main-items__list { margin-left: -20rem; margin-right:-20rem;}
+    .biz-main-items__item {width: -webkit-calc(33.33% - 40rem);width: calc(33.33% - 40rem); margin-left:20rem; margin-right:20rem;}
+    .biz-main-items__item h3 {font-size:18rem;}
+    .biz-main-items__item h3 br.mob-br {display:block;}
+    .page-template-pharmaceutical-complete .biz-main-items__item h3 br.mob-br {display:none;}
+    .biz-main-items__item figure {height:120rem;}
+    .biz-main-items__item figure > img {width:70rem;}
+    .biz-main-items .biz-main-items__list-wrap { margin-top:80rem;}
+    .article-pharm-function .sub-content__section.biz-main-items__section {margin-top:120rem;}
+    .biz-function-items__section .biz-main-items {padding-top:120rem;}
+
+    .biz-main-items__thumb-content + .biz-main-items__thumb-content {margin-top:80rem;}
+    .biz-main-items__thumb-title span {font-size:22rem;}
+    .biz-main-items__thumb-title span:before {margin-top:-4rem;}
+    .biz-main-items__thumb-list-wrap {margin-top:30rem;}
+    .biz-main-items__thumb-list {margin:-20rem -10rem}
+    .biz-main-items__thumb-item {width: -webkit-calc(33.33% - 20rem); width: calc(33.33% - 20rem); margin: 20rem 10rem;}
+    .biz-main-items__thumb-item h4 {font-size:20rem;}
+    .biz-main-items__thumb-item p {font-size:15rem;line-height:1.5}
+    html.ios .biz-main-items__thumb-title span[lang=en]:before {margin-top:-3rem;}
+
+    /* PARTNER */
+    .biz-partner__section:not(.sub-content__section--last-02) {padding:120rem 0;}
+    .biz-partner__logo {width:100%; max-width:40%; padding-right:0;}
+    .biz-partner__desc {width:100%;margin-top:30rem;}
+    .sub-content__section--col-2 .jt-accordion {margin-top:30rem;}
+
+    /* MAJOR CUSTOM */
+    .biz-major-customers__item { width: -webkit-calc(33.33% - 20rem); width: calc(33.33% - 20rem);}
+
+    /* CATALOG */
+    .biz-catalog__item h3 {font-size:18rem;}
+    .biz-catalog__item .biz-catalog__mob-download {font-size:14rem;}
+
+    /* PROCESS */
+    .sub-content__section .sub-content__desc br { display:none;}
+    .process-tabs {margin-top:100rem;}
+    .process-tabs__panels {margin-top:14rem;}
+    .biz-process__title ul {margin-bottom:33rem; margin-top:0;}
+    .biz-process__title li {font-size:15rem; padding-left:11rem;}
+    .biz-process__title li:before {width:5px; height:5px;}
+    .biz-process__contents { max-width: 630rem; margin-left:auto; margin-right:auto; text-align: left; overflow:hidden;}
+    .biz-process__contents ul {margin:0;}
+    .biz-process__contents li:after {display:block;content:'';width: 50%;height:2rem;position:absolute;top:50%;right: -50%;margin-top:-1rem;}
+    .biz-process__contents li:nth-child(4) { float:right;  margin-right:45rem;}
+    .biz-process__contents li:nth-child(5) {}
+    .biz-process__contents li:nth-child(6) { float:left; }
+    .biz-process__oem .biz-process__contents li:nth-child(1):after {background:#eee;}
+    .biz-process__oem .biz-process__contents li:nth-child(2):after {background:#e8e8e8;}
+    .biz-process__oem .biz-process__contents li:nth-child(3):after {background:#ddd;width: 2rem;height: 50%;left: 50%;right: auto;bottom: -50%;top: auto;}
+    .biz-process__oem .biz-process__contents li:nth-child(4):after {background:#d3d3d3;right: auto;left: -50%;}
+    .biz-process__oem .biz-process__contents li:nth-child(5):after {background:#2156ff;right: auto;left: -50%;}
+    .biz-process__oem .biz-process__contents li:nth-child(6):after {background:#114aff;width: 2rem;height: 50%;left: 50%;right: auto;bottom: -50%;top: auto;}
+    .biz-process__oem .biz-process__contents li:nth-child(7):after {background:#003dff;}
+    .biz-process__odm .biz-process__list {margin-top:40rem;}
+    .biz-process__odm .biz-process__contents li:nth-child(1):after { background:#7899ff;}
+    .biz-process__odm .biz-process__contents li:nth-child(2):after { background:#6287ff;}
+    .biz-process__odm .biz-process__contents li:nth-child(3):after { background:#4f79ff;width: 2rem;height: 50%;left: 50%;right: auto;bottom: -50%;top: auto;}
+    .biz-process__odm .biz-process__contents li:nth-child(4):after { background:#3c6aff;right: auto;left: -50%;}
+    .biz-process__odm .biz-process__contents li:nth-child(5):after { background:#2156ff;right: auto;left: -50%;}
+    .biz-process__odm .biz-process__contents li:nth-child(6):after { background:#114aff;width: 2rem;height: 50%;left: 50%;right: auto;bottom: -50%;top: auto;}
+    .biz-process__odm .biz-process__contents li:nth-child(7):after { background:#003dff;}
+
+    /* PRODUCT LIST TABEL */
+    .biz-prd-table:not(.biz-prd-table__type-02):not(.biz-prd-table__type-03) .jt-basic-table { border-top:none;}
+    .biz-prd-table {margin-top:40rem;}
+    .sub-content__section .sub-content__desc + .biz-prd-table {margin-top:45rem;}
+    .biz-prd-table .jt-basic-table,
+    .biz-prd-table .jt-basic-table thead,
+    .biz-prd-table .jt-basic-table tbody,
+    .biz-prd-table .jt-basic-table tr, .biz-prd-table .jt-basic-table th, .biz-prd-table .jt-basic-table td{width:100%; display:block;}
+    .jt-basic-table th { font-size:18rem; line-height:1.4; padding:20rem 14rem;  font-weight:700; }
+    .jt-basic-table td {font-size:16rem; padding:20rem 14rem; }
+    .biz-prd-table td > b {margin-top:30rem;}
+    .biz-prd-table:not(.biz-prd-table__type-02):not(.biz-prd-table__type-03) .jt-basic-table thead th {display:none;}
+    .biz-prd-table:not(.biz-prd-table__type-02):not(.biz-prd-table__type-03) .jt-basic-table td {display:block; border:none; padding:0 0 30rem; border-top:2rem solid #000;}
+    .biz-prd-table:not(.biz-prd-table__type-02):not(.biz-prd-table__type-03) .jt-basic-table td + td {margin-top:30rem;}
+    .biz-prd-table:not(.biz-prd-table__type-02):not(.biz-prd-table__type-03) .jt-basic-table td + td:last-child {border-bottom:1rem solid #ddd;}
+    .biz-prd-table:not(.biz-prd-table__type-02):not(.biz-prd-table__type-03) .jt-basic-table td:before { margin-bottom:30rem; content:attr(data-th); display:block; font-size:18rem; line-height:1.4; padding:14rem; text-align:center; font-weight:700; border-bottom:1rem solid #ddd;}
+    .biz-prd-table .jt-basic-table .jt-basic-table__list li {font-size:16rem;}
+    .jt-basic-table__list.jt-basic-table__list-col-2 li:nth-child(2) {margin-top:12rem;}
+    .jt-basic-table__list li {padding-left:11rem;}
+    html.ios .jt-basic-table__list li:before {top:8rem;}
+    html.ios .jt-basic-table__list li[lang=en]:before {top:10rem;}
+
+    .biz-prd-table__type-03 {margin-top:40rem;}
+    .biz-prd-table__type-03 table {border-top:none;}
+    .biz-prd-table__type-03 tbody th, .biz-prd-table__type-03 td {border:none; text-align:left; padding:0 0 0 16rem;}
+    .biz-prd-table__type-03 tbody th {position:relative;}
+    .biz-prd-table__type-03 tbody th:before, .biz-prd-table__type-03 tbody tr:first-child th:first-child:before {width:5px; height:5px; background:#ddd; border-radius:50%; content:''; display:block; position:absolute; left:0; top:50%; -webkit-transform:translateY(-50%); -ms-transform:translateY(-50%); transform:translateY(-50%)}
+    .biz-prd-table__type-03 tbody tr + tr {margin-top:20rem;}
+    .biz-prd-table__type-03 tbody td {margin-top:8rem;}
+    html.ios .biz-prd-table__type-03 tbody th:before, html.ios .biz-prd-table__type-03 tbody tr:first-child th:first-child:before { top:-webkit-calc(50% - 2rem); top:calc(50% - 2rem);}
+    html.ios .biz-prd-table__type-03 tbody th[lang=en]:before, html.ios .biz-prd-table__type-03 tbody tr:first-child th[lang=en]:first-child:before {top:50%}
+
+    /* PRODUCT FORMULATION */
+    .biz-formulation__list {margin-top:30rem; margin-bottom:-10rem;}
+    .biz-formulation__item {width: -webkit-calc(50% - 32rem);width: calc(50% - 32rem); margin-top:10rem; margin-bottom:10rem;}
+    .biz-formulation__item figure {height:auto;}
+    .biz-formulation__item p {font-size:18rem;}
+
+    /* PRODUCT FACILITY */
+    .biz-prd-facility__list { margin: -30rem -12rem; padding-top:40rem;}
+    .biz-prd-facility__item {width: -webkit-calc(50% - 24rem);width: calc(50% - 24rem);margin: 30rem 12rem;}
+    .biz-prd-facility__text h3 {margin-top:20rem;}
+    .biz-prd-facility__text h3 {font-size:20rem; margin-top:20rem;}
+    .biz-prd-facility__text p {font-size:16rem; line-height:1.5; margin-top:10rem;}
+
+    /* NATURAL MATERIAL */
+    .natural-material__section {margin-bottom:140rem;}
+    .natural-material__list {margin:10rem -12rem -30rem}
+    .natural-material__item { width: -webkit-calc(50% - 24rem); width: calc(50% - 24rem); margin: 30rem 12rem;}
+    .natural-material__item h3 {font-size:18rem; margin-top:20rem;}
+    .biz-process__contents .biz-process__last {vertical-align:top; margin-right:15rem; padding-left:0;}
+    .biz-process__natural .biz-process__contents { max-width: 616rem;}
+    .biz-process__natural .biz-process__contents li + li {margin-left:15rem;}
+    .biz-process__natural .biz-process__contents li:nth-child(5) {float:right;}
+    .biz-process__natural .biz-process__contents li:after {display:block;}
+    .biz-process__natural .biz-process__contents li:nth-child(1):after { background:#7899ff;}
+    .biz-process__natural .biz-process__contents li:nth-child(2):after { background:#6287ff;}
+    .biz-process__natural .biz-process__contents li:nth-child(3):after { background:#4f79ff;width: 2rem;height: 50%;left: 50%;right: auto;bottom: -50%;top: auto;}
+    .biz-process__natural .biz-process__contents li:nth-child(4) {margin-right:15rem;}
+    .biz-process__natural .biz-process__contents li:nth-child(4):after { background:#3c6aff;right: auto;left: -50%;}
+    .biz-process__natural .biz-process__contents li:nth-child(5):after { display:none;}
+
+    /* PHARMACEUTICAL RND */
+    .rnd-performance-table {margin-top:40rem;}
+    .rnd-performance-table thead th {font-size:18rem;}
+    .rnd-performance-table .jt-basic-table td {font-size:16rem; line-height:1.4; padding:20rem; vertical-align:middle;}
+    .rnd-performance-table colgroup col:first-child {width:20%;}
+    .rnd-performance-table colgroup col:last-child, .rnd-performance-table th:last-child, .rnd-performance-table td:last-child {display:none;}
+    .rnd-performance-table td:after {content:attr(data-status); display:block; font-size:16rem; margin-top:5rem;}
+    .rnd-performance-table tbody td:nth-child(2) {text-align:center;}
+    .rnd-performance-table td.pharm-rnd-ing:after {color:#2d5fff;}
+    .rnd-network__section figure {}
+    .rnd-network__section figure + .biz-prd-table {margin-top:40rem;}
+
+    .rnd-vision__circle {margin-top:32rem; width:500rem; height:500rem;}
+    .rnd-vision__circle-text p {font-size: 18rem; line-height: 1.4;}
+
+    /* PHARMACEUTICAL SEARCH */
+    .biz-prd-items__section {padding: 100rem 0 140rem;}
+
+    .biz-prd-items .jt-accordion__title {padding-top: 30rem;padding-bottom: 30rem;}
+    .biz-prd-items .jt-accordion__content h4 {font-size: 17rem;}
+    .biz-prd-items .jt-accordion__content p {font-size: 15rem;}
+    .biz-prd-items .jt-accordion__content ul > li {font-size: 15rem;}
+
+    /* PHARMACEUTICAL RND */
+    .rnd-vision__wrap h3 {font-size:26rem; font-weight:600;}
+    .rnd-vision__circle img {width:100%;}
+    .rnd-vision__list:before {max-width:482rem;}
+    .rnd-vision__list li {font-size:16rem; width:200rem; padding:20rem 0;}
+    .rnd-vision__list li + li {margin-left:40rem;}
+    html.ios .rnd-vision__list li {padding-top:17rem;  padding-bottom:15rem;}
+
+    /* MAP */
+    .biz-map__section {padding-bottom:140rem;}
+    .biz-main-items__section + .biz-map__section .wrap {padding-top:120rem;}
+    html.ios .biz-map__pin-name span {padding-top:18rem; padding-bottom:16rem;}
+
+    /**/
+    .page-template-trading-iie-mv .jt-product-list__wrap, .page-template-trading-iie-security .jt-product-list__wrap { margin-bottom:140rem;}
+
+
+}/* 860px */
+
+
+
+/* **************************************** *
+ * 540px
+ * **************************************** */
+@media (max-width: 540px){
+
+    /* GLOBAL */
+    .article-biz-about-intro .article-header {padding-bottom:60rem;}
+
+    /* INTRO */
+    .biz-about-intro__list {margin:0;}
+    .biz-about-intro__item {width:100%; margin:0;}
+    .biz-about-intro__item + .biz-about-intro__item {margin-top:30rem;}
+    .biz-about-intro__item h3 {font-size:18rem; margin-top:10rem; text-align:center;}
+
+    /* BIZ ABOUT */
+    .biz-about {display:block;}
+    .biz-about__text { height: 221rem; width:100%; display:table-cell; vertical-align: bottom;padding:30rem 24rem 30rem;}
+    .biz-about__img {width:100%; display:block;}
+    .biz-about__text .biz-about__title {font-size:18rem; line-height:1.6;}
+    .biz-about__text .biz-about__title br {display:none;}
+    .biz-about__text .biz-about__title br.mob-br {display:block;}
+
+    /* BIZ AREA */
+    .page-template-pharmaceutical-complete .biz-area__section .wrap,
+    .biz-area__section.sub-content__section--col-2 .wrap {padding-bottom:80rem;}
+    .biz-area__section.sub-content__section--col-2 .sub-content__desc {font-size:16rem; margin-top:15rem;}
+    .biz-area__section.sub-content__section--col-2 .sub-content__desc--secondary {font-size:14rem;}
+    .biz-area__img {margin-top:30rem;}
+
+    /* MAIN ITEMS */
+    .sub-content__section.biz-main-items__section {margin-top:80rem;}
+    .biz-main-items .biz-main-items__list { margin-left: -7rem; margin-right:-7rem;}
+    .biz-main-items .biz-main-items__list {margin-top:-53rem;}
+    .biz-main-items .biz-main-items__list-wrap {margin-top:85rem;}
+    .article-pharm-function .sub-content__section.biz-main-items__section {margin-top:80rem;}
+    .biz-function-items__section .biz-main-items {padding-top:80rem;}
+    .biz-main-items__item {width: -webkit-calc(50% - 14rem);width: calc(50% - 14rem); margin:25rem 7rem;}
+    .biz-main-items__item h3 {font-size:16rem; margin-top:13rem;}
+    .biz-main-items__item figure {height:87rem;}
+    .page-template-pharmaceutical-complete .biz-main-items__item h3 br.mob-br {display:block;}
+
+    .biz-main-items__thumb {margin-top:40rem;}
+    .biz-main-items__thumb-content + .biz-main-items__thumb-content {margin-top:60rem;}
+    .biz-main-items__thumb-list {margin:-20rem -7rem}
+    .biz-main-items__thumb-item {width:-webkit-calc(50% - 14rem);width:calc(50% - 14rem); margin:20rem 7rem;}
+    .biz-main-items__thumb-item h4 {font-size:18rem; margin-top:15rem;}
+    .biz-main-items__thumb-item p {font-size:14rem; line-height:1.6;}
+    .biz-main-items__thumb-item figure {padding-top:111%;}
+    .biz-main-items__thumb-title {padding-left:13rem;}
+    .biz-main-items__thumb-title span:before { width:5px; height:5px; margin-top:-4rem;}
+    .biz-main-items__thumb-title span[lang="en"]:before {margin-top:-4rem;}
+    html.ios .biz-main-items__thumb-title span:before {margin-top:-6rem;}
+    html.ios .biz-main-items__thumb-title span[lang="en"]:before {margin-top:-3rem;}
+    html.android .biz-main-items__thumb-title span:before {margin-top:-3rem;}
+
+    /* PARTNER */
+    .biz-partner__section:not(.sub-content__section--last-02) {padding:80rem 0;}
+    .biz-partner__desc {margin-top:20rem;}
+    .biz-partner__logo img {max-width:180rem;}
+
+    /* MAP */
+    .biz-main-items__section + .biz-map__section .wrap {padding-top:80rem;}
+    .biz-map__section {padding-bottom:50rem;}
+    .biz-map__content-inner { -webkit-transform: scale(0.8); -ms-transform: scale(0.8); transform: scale(0.8);}
+    .biz-map__content {margin:-30rem auto -40rem;}
+
+    /* MAJOR CUSTOM */
+    .biz-major-customers__list { margin: -7rem;padding-top:40rem;}
+    .biz-major-customers__item { width: -webkit-calc(50% - 14rem); width: calc(50% - 14rem); margin: 7rem;}
+
+    /* CATALOG */
+    .biz-catalog__list {width:auto; margin:16rem -7rem -20rem;display:block;}
+    .biz-catalog__item {width: -webkit-calc(50% - 14rem);width: calc(50% - 14rem); margin: 20rem 7rem;}
+    .biz-catalog__item h3 {font-size:16rem; margin-top:15rem;}
+    .biz-catalog__item .biz-catalog__mob-download {font-size:13rem;}
+    .biz-catalog__item .biz-catalog__mob-download span:after {top:50%; font-size:12rem;}
+
+    /* PROCESS */
+    .process-tabs {margin-top:80rem;}
+    .biz-process__contents span {width:95rem; height:95rem; font-size:13rem;}
+    .biz-process__contents li {margin:7rem;}
+    .biz-process__contents li + li {margin-left:6.5rem;}
+    .biz-process__contents li > span > b {font-size:11rem;}
+    .biz-process__contents .biz-process__last {margin:7rem;}
+    .biz-process__contents .biz-process__last span > b {font-size:11rem;}
+    .biz-process__odm .biz-process__list {margin-top:33rem}
+    .biz-process__odm .biz-process__list li {width:100%; margin:0;}
+    .biz-process__odm .biz-process__list li + li { margin-top:24rem;}
+    .biz-process__odm .biz-process__list li b {font-size:15rem;}
+    .biz-process__odm .biz-process__list li p {font-size:15rem;}
+    html.ios .biz-process__contents li > span > b {margin-bottom:7rem;}
+
+    /* PRODUCT LIST TABEL */
+    .biz-prd-table__section + .biz-prd-table__section {margin-top:90rem;}
+    .biz-prd-table__section .sub-content__title br.mob-br { display:block;}
+    .biz-prd-table {margin-top:30rem;}
+    .jt-basic-table__list li {padding-left:11rem;}
+    .jt-basic-table__list li:before { top:9rem;}
+    .biz-prd-table .jt-basic-table td:before { font-size:16rem;}
+    .biz-prd-table .jt-basic-table .jt-basic-table__list li {font-size:15rem;}
+    .biz-prd-table .jt-basic-table .jt-basic-table__list li:before {}
+
+    .jt-basic-table__list.jt-basic-table__list-col-2 {margin-left:0; margin-right:0;}
+    .jt-basic-table__list.jt-basic-table__list-col-2 li {width:100%; margin-left:0; margin-right:0;}
+    
+
+    .biz-prd-table__type-03 tbody th, .biz-prd-table__type-03 td {padding-left:13rem;}
+    .biz-prd-table__type-03 tbody th {font-size:16rem;}
+    .biz-prd-table__type-03 tbody td {font-size:15rem;}
+    .biz-prd-table__type-03 tbody th:before, .biz-prd-table__type-03 tbody tr:first-child th:first-child:before { top:-webkit-calc(50% - 2rem); top:calc(50% - 2rem);}
+    .biz-prd-table:not(.biz-prd-table__type-02):not(.biz-prd-table__type-03) .jt-basic-table td:before {font-size:16rem;}
+    html.android .biz-prd-table__type-03 tbody th:before, html.android .biz-prd-table__type-03 tbody tr:first-child th:first-child:before { top:50%;}
+
+    html.ios .jt-basic-table__list li:before { top:8rem;}
+    html.ios .jt-basic-table__list li[lang="en"]:before { top:9rem;}
+
+    /* PRODUCT FORMULATION */
+    .biz-formulation__list { margin-top:10rem;}
+    .biz-formulation__item p {font-size:15rem;}
+
+    /* PRODUCT FACILITY */
+    .biz-prd-facility__list {margin:0; padding-top:30rem;}
+    .biz-prd-facility__item {width:100%; margin:0;}
+    .biz-prd-facility__item + .biz-prd-facility__item {margin-top:40rem;}
+    .biz-prd-facility__text h3 {margin-top:20rem; font-weight:700;}
+    .biz-prd-facility__text h3 {font-size:18rem;}
+    .biz-prd-facility__text p {font-size:15rem; }
+
+    /* NATURAL MATERIAL */
+    .natural-material__section {margin-bottom:100rem;}
+    .natural-material__section .sub-content__title br.mob-br {display:block;}
+    .natural-material__list {margin:0rem -7rem -20rem}
+    .natural-material__item { width: -webkit-calc(50% - 14rem); width: calc(50% - 14rem); margin: 20rem 7rem;}
+    .natural-material__item figure {padding-top: 60.5%;}
+    .natural-material__item h3 {margin-top:10rem; font-size:16rem; }
+    .biz-process__natural .biz-process__contents ul,
+    html.desktop.safari .biz-process__natural .biz-process__contents ul {padding:0;}
+    .biz-process__natural .biz-process__contents span {width: 97rem; height: 97rem;}
+    .biz-process__natural .biz-process__contents li {margin:6rem;}
+    .biz-process__natural .biz-process__contents li + li { margin-left: 5.5rem;}
+    .biz-process__natural .biz-process__contents li:nth-child(4) {margin-right:6rem;}
+    html.android .biz-process__natural .biz-process__contents li:nth-child(2) span { line-height:1.2;}
+
+    /* PHARMACEUTICAL RND */
+    .rnd-performance-table {margin-top:30rem;}
+    .rnd-performance-table thead th {font-size:14rem;}
+    .rnd-performance-table th, .rnd-performance-table .jt-basic-table td {font-size:13rem; padding:10rem 5rem; word-break: break-all;}
+    .rnd-performance-table colgroup col:first-child {width:33%;}
+    .rnd-performance-table colgroup col:nth-child(3) {width:33%;}
+    .rnd-performance-table th:nth-child(1), .rnd-performance-table td:nth-child(1) {width:28%}
+    .rnd-performance-table th:nth-child(3), .rnd-performance-table td:nth-child(3) {width:24%}
+    .rnd-performance-table td:after {font-size:13rem; margin-top:0;}
+    .rnd-network__section figure {margin-top:40rem;}
+
+    /* PHARMACEUTICAL SEARCH */
+    .biz-prd-items__section {padding: 80rem 0 100rem;}
+
+    .biz-prd-items__section.sub-content__section--col-2 .jt-accordion {margin-top: 20rem;}
+    .biz-prd-items .jt-accordion__content {padding: 30rem 0;}
+    .biz-prd-items .jt-accordion__content h4 {margin-top: 26rem;font-size: 16rem;}
+    .biz-prd-items .jt-accordion__content p {margin-top: 10rem;font-size: 14rem;}
+    .biz-prd-items .jt-accordion__content ul {margin: 9rem 0 -7rem;}
+    .biz-prd-items .jt-accordion__content ul > li {/*width: -webkit-calc(50% - 20rem);width: calc(50% - 20rem);*/ width:100%; margin: 5rem 0;}
+    html.android .biz-prd-items .jt-accordion__content h4 {font-weight:700;}
+
+    /* PHARMACEUTICAL RND */
+    .rnd-vision__wrap {margin-top:40rem;}
+    .rnd-vision__wrap h3 {font-size:20rem;}
+    .rnd-vision__circle {width:86%; height:100%; margin-top:20rem;}
+    .rnd-vision__circle img {width:auto;}
+    .rnd-vision__circle-text p {font-size:14rem;}
+    .rnd-vision__list {padding-top:60rem;}
+    .rnd-vision__list:before {display:none;}
+    .rnd-vision__list li {display:block; font-size:14rem; width:200rem; padding:15rem 0; margin:0 auto;}
+    .rnd-vision__list li:before {display:none;}
+    .rnd-vision__list li + li {margin-left:auto; margin-top:10rem;}
+    html.android .rnd-vision__wrap h3 span {font-weight:700;}
+
+    /* PROCESS */ 
+    .biz-process__contents li:nth-child(4) {margin-right:6.5rem;}
+    .biz-process__odm .biz-process__list li b:before { top:-webkit-calc(50% - 1rem); top:calc(50% - 1rem)}
+    html.android .biz-process__title li:before {top:5rem;}
+
+}/* 540px */

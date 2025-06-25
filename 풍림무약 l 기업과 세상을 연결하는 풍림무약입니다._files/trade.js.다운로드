@@ -1,0 +1,150 @@
+/*
+ * File       : modules/bnc/script.js
+ * Author     : STUDIO-JT (SUMI)
+ * Guideline  : JTstyle.1.0
+ *
+ * Dependency : js/jt.js
+ *              js/jt-strap.js
+ *
+ * SUMMARY:
+ * 1) INIT
+ * 2) Functions
+ * 3) Second Functions
+ */
+jQuery(function($) {
+    /* **************************************** *
+     * INIT
+     * **************************************** */
+    JT.ui.add( business_action_init , true );
+
+    /* **************************************** *
+     * Functions
+     * **************************************** */
+    function business_action_init() {
+
+        business_ajax_setting();
+
+    }
+
+    function business_ajax_setting() {
+
+        // category ( large screen ), pagination
+        $( '.content-tabs__primary-item a , .content-tabs__secondary-item a , .pagination-trading a' ).off().on( 'click', function () {
+
+            const $this   = $( this );
+            const $form   = $this.closest( '.article-body' );
+            const url     = $this.attr( 'href' );
+
+            ajaxCall( $form, url );
+
+
+            return false;
+
+        } );
+
+
+        // category ( small screen )
+        $( '.content-tabs__select select' ).off().on( 'change', function () {
+
+            const $this   = $( this );
+            const $form   = $this.closest( '.article-body' );
+            const url     = $this.val();
+
+            ajaxCall( $form, url );
+
+            return false;
+
+        } );
+
+        // search
+        $( '.jt-search' ).on( 'submit', function () {
+
+            const $this   = $( this );
+            const $form   = $this.closest( '.article-body' );
+            const data    = $('.jt-search').serialize()
+            const url     = $('.jt-search').attr('action');
+            
+            ajaxCall( $form, url, data );
+
+            return false;
+
+        } );
+
+    }
+
+
+
+    /* **************************************** *
+     * Second Functions
+     * **************************************** */
+    function ajaxCall( $form, url, data ) {
+
+        const ajaxData = $.get( url, data, function ( res ) {
+
+            $form.html( $( res ).find( '.article-body' ).children() );
+
+            window.history.pushState( '', '', url );
+
+            // 기존 구조는 .content-tabs 없을때 에러가 떨어지기 때문에 분기처리함
+            var standard_top = '.content-tabs';
+            var $standard_scroll = '';
+
+            if ( $('.content-tabs').length < 1 ) standard_top = '';
+
+            if ( standard_top == '' ) {
+                if($('.pagination-trading' ).length) {
+                    $standard_scroll = ( $('.pagination-trading' ).parents( 'div:first' ).offset().top ) - 170;
+                } else {
+                    $standard_scroll = ( $('.main-container' ).offset().top ) - 170;
+                }
+
+            } else {
+
+                
+                if ( data ) {
+                    //search 
+                    $standard_scroll = $('.jt-search__label' ).offset().top - 170
+
+                } else {
+
+                    $standard_scroll = $('.pagination-trading' ).parents( 'div:first' ).siblings( standard_top ).offset().top - 170
+
+                }
+            }
+
+            if ( $('.pagination-trading' ).length > 0 ) {
+                $( 'html, body' ).stop().animate({
+                    scrollTop: $standard_scroll
+                });
+
+            }
+            /* 기존
+            if ( $('.pagination-trading' ).length > 0 ) {
+                $( 'html, body' ).stop().animate({
+                    scrollTop: ( $('.pagination-trading' ).parents( 'div:first' ).siblings( '.content-tabs' ).offset().top - 170 )
+                });
+
+            }
+            */
+
+        } );
+
+        ajaxData.done( function() {
+
+            JT.ui.call( 'business_action_init' );
+            /*JT.ui.call( 'lazyload_init' );
+            JT.ui.call( 'content_tabs' ); // "content-tabs__primary" swiper init*/
+            JT.ui.call( 'search_input' );
+            JT.ui.call( 'prd_list_download' );
+
+            setTimeout(function(){
+                JT.ui.call( 'lazyload_init' );
+                JT.ui.call( 'content_tabs' );
+            },400);
+
+        } );
+        ajaxData.fail( function () { console.log( '$.get error' ); } );
+        ajaxData.always( function () { /*console.log( 'always load...' );*/ } );
+    }
+
+}); // End jQuery

@@ -1,0 +1,413 @@
+@charset "utf-8";
+
+/*
+ * File       : sub-biz.css
+ * Author     : STUDIO-JT (Sumi)
+ * Guideline  : JTstyle.1.1
+ *
+ * Dependency : css/reset.css
+ *              css/jt-strap.css
+ *
+ * SUMMARY:
+ * 1)
+ * 2)
+ * 3)
+ * 4)
+ */
+
+
+ /* **************************************** *
+ * GLOBAL
+ * **************************************** */
+ /* INTRO */
+.article-biz-about-intro .article-header {padding-bottom:160rem;}
+.biz-about-intro__list {margin:-16rem; font-size:0; }
+.biz-about-intro__item {width:-webkit-calc(50% - 32rem);width:calc(50% - 32rem);margin:16rem;display:inline-block;position: relative;}
+.biz-about-intro__item figure {padding-top:100%;}
+.biz-about-intro__item h3 {font-size:22rem;line-height:34rem;font-weight:700;color:#fff;letter-spacing:-0.03em;position: absolute;left: 50rem;bottom: 60rem;}
+
+.biz-about-intro__text {opacity:0; visibility:hidden; display: table;position:absolute;top: 0;left: 0;width: 100%;height: 100%;text-align:center;z-index: 10;-webkit-transition:opacity .3s, visibility .3s; transition:opacity .3s, visibility .3s;}
+.biz-about-intro__text-inner { display: table-cell; vertical-align: middle;}
+.biz-about-intro__title { opacity:0; font-size:42rem; line-height:1.29; font-weight:700; color:#fff; letter-spacing:-0.03em; -webkit-transform:translateY(30rem); -ms-transform:translateY(30rem); transform:translateY(30rem); -webkit-transition: all .6s ease .1s;	transition: all .6s ease .1s;}
+.biz-about-intro__desc {opacity:0; font-size:22rem;line-height:1.55;font-weight:500;color:#fff;letter-spacing:-0.03em;max-width: 520rem;margin: 30rem auto 0;-webkit-transform:translateY(30rem);-ms-transform:translateY(30rem);transform:translateY(30rem); -webkit-transition: all .6s ease .2s; transition: all .6s ease .2s;}
+.biz-about-intro__btn {opacity:0; position:relative;-webkit-transform:translateY(30rem);-ms-transform:translateY(30rem);transform:translateY(30rem); -webkit-transition: all .6s ease .3s; transition: all .6s ease .3s;}
+.biz-about-intro__btn:before {margin-top: 46rem;font-family: 'jt-font';font-size: 32rem;font-weight:normal;color:#fff;content: '\e95e';display:block;}
+.biz-about-intro__trading .biz-about-intro__text {background:#d60000;}
+.biz-about-intro__pharm .biz-about-intro__text {background:#2d5fff;}
+.biz-about-intro__link {display:none;}
+html.desktop .biz-about-intro__item:hover .biz-about-intro__text {opacity:1; visibility:visible;}
+html.desktop .biz-about-intro__item:hover .biz-about-intro__title,
+html.desktop .biz-about-intro__item:hover .biz-about-intro__desc,
+html.desktop .biz-about-intro__item:hover .biz-about-intro__btn {-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0); opacity:1;}
+html.desktop.safari .biz-about-intro__text {display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-box-align: center;-webkit-align-items: center;-ms-flex-align: center;align-items: center;}
+html.desktop.safari .biz-about-intro__text-inner {display: block;width: 100%; height:100%;}
+
+.biz-about-intro__trading .biz-about-intro__item:nth-child(1) .jt-lazyload__color-preview {background:#fb0d24;}
+.biz-about-intro__trading .biz-about-intro__item:nth-child(2) .jt-lazyload__color-preview { background:#ff3a32;}
+.biz-about-intro__trading .biz-about-intro__item:nth-child(3) .jt-lazyload__color-preview { background:#ff2500;}
+.biz-about-intro__trading .biz-about-intro__item:nth-child(4) .jt-lazyload__color-preview { background:#dcc7c4;}
+.biz-about-intro__trading .biz-about-intro__item:nth-child(5) .jt-lazyload__color-preview  { background:#090909;}
+.biz-about-intro__trading .biz-about-intro__item:nth-child(6) .jt-lazyload__color-preview  { background:#392723;}
+
+.biz-about-intro__pharm .biz-about-intro__item:nth-child(1) .jt-lazyload__color-preview {background:#0024da;}
+.biz-about-intro__pharm .biz-about-intro__item:nth-child(2) .jt-lazyload__color-preview { background:#114874;}
+.biz-about-intro__pharm .biz-about-intro__item:nth-child(3) .jt-lazyload__color-preview { background:#0194fe;}
+.biz-about-intro__pharm .biz-about-intro__item:nth-child(4) .jt-lazyload__color-preview { background:#2e6fc3;}
+.biz-about-intro__pharm .biz-about-intro__item:nth-child(5) .jt-lazyload__color-preview  { background:#c2bdb7;}
+
+/* BIZ ABOUT */
+.biz-about {width:100%; display:table;}
+.biz-about__trading .biz-about__text {background-color:#d60000;}
+.biz-about__pharmaceutical .biz-about__text {background-color:#144cff;}
+.biz-about__text {width:50%;padding: 100rem 100rem;display:table-cell;vertical-align: bottom;color:#fff;}
+.biz-about__text .biz-about__title {font-size:32rem;line-height: 1.4;font-weight:400;letter-spacing: -0.03em;}
+.biz-about__text .biz-about__title br.mob-br {display:none;}
+.biz-about__logo {font-size:0; margin-bottom:30rem;}
+.biz-about__logo li { display:inline-block;}
+.biz-about__logo li + li {margin-left:5rem;}
+.biz-about__img {width:50%; display:table-cell; vertical-align:middle;}
+.biz-about__img figure {padding-top: 67.5%;}
+.biz-about__img img {display:block;}
+
+.page-template-trading-am .biz-about__img .jt-lazyload__color-preview { background:#fb0d24;}
+.page-template-trading-bnc .biz-about__img .jt-lazyload__color-preview { background:#ff3a32;}
+.page-template-trading-hnp .biz-about__img .jt-lazyload__color-preview { background:#ff2500;}
+.page-template-trading-hnf .biz-about__img .jt-lazyload__color-preview { background:#dcc7c4;}
+.page-template-trading-iie .biz-about__img .jt-lazyload__color-preview { background:#090909;}
+.page-template-trading-fna .biz-about__img .jt-lazyload__color-preview { background:#392723;}
+
+.page-template-pharmaceutical-cdmo .biz-about__img .jt-lazyload__color-preview { background:#0024da;}
+.page-template-pharmaceutical-natural .biz-about__img .jt-lazyload__color-preview { background:#114874;}
+.page-template-pharmaceutical-complete .biz-about__img .jt-lazyload__color-preview { background:#0194fe;}
+.page-template-pharmaceutical-function .biz-about__img .jt-lazyload__color-preview { background:#2e6fc3;}
+.page-template-pharmaceutical-rnd .biz-about__img .jt-lazyload__color-preview { background:#c2bdb7;}
+
+/* BIZ AREA */
+.biz-area__section .sub-content__desc {max-width:1000rem;}
+.biz-area__section.sub-content__section--col-2 .sub-content__list {padding-top:5rem;}
+.biz-area__section.sub-content__section--col-2 .sub-content__desc {max-width:1000rem; margin-top:0; font-size:20rem; line-height:1.5;}
+.biz-area__section.sub-content__section--col-2 .sub-content__desc--secondary {margin-top:20rem; font-size: 18rem;}
+.biz-area__img {max-width:754rem; margin-top:40rem;}
+.biz-area__img figure {padding-top:55.8%;}
+
+.article-iie .biz-area__section {}
+.page-template-pharmaceutical-complete .biz-area__section .wrap,
+.biz-area__section.sub-content__section--col-2 .wrap { padding-bottom:160rem;border-bottom:1rem solid #ddd;}
+
+
+/* MAIN ITEMS */
+.article-pharm-function .sub-content__section.biz-main-items__section {margin-top: 160rem;}
+.sub-content__section.biz-main-items__section {margin-top: 180rem;}
+.biz-main-items {font-size:0; }
+.biz-main-items .sub-content__title {display:inline-block;vertical-align:top;width: 25%; padding-right:20rem;}
+.biz-main-items .biz-main-items__list-wrap {display:inline-block;vertical-align:top;width: 75%;}
+.biz-main-items .biz-main-items__list {margin: -57rem -38rem -28rem;}
+.biz-main-items__item {width: -webkit-calc(25% - 76rem);width: calc(25% - 76rem);margin: 28rem 38rem;text-align:center;display:inline-block;vertical-align:top;}
+.biz-main-items__item a {display:block;}
+.biz-main-items__item h3 {font-size:20rem; line-height:1.6; font-weight:700; letter-spacing:-0.04em; color:#999; text-align:center;}
+.biz-main-items__item h3 > span {margin-top:4rem;font-size:16rem; line-height:1.6; font-weight:500; display:block;}
+.biz-main-items__item p {margin-top:12rem; font-size:16rem; line-height:1.8; letter-spacing:-0.03em; color:#666; text-align:center;}
+.biz-main-items__item figure {height: 135rem;position:relative;}
+.biz-main-items__item figure > img {max-width:90rem; position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
+
+.biz-main-items__thumb {font-size:0; margin-top:55rem;}
+.biz-main-items__thumb-content + .biz-main-items__thumb-content {margin-top:107rem;}
+.biz-main-items__thumb-title {padding-left:16rem; position:relative;display: inline-block; vertical-align: top; width: 25.5%; padding-right:80rem;}
+.biz-main-items__thumb-title span:before {width:6px; height:6px; border-radius:50%; background:#000; content:''; display:block; position:absolute; left:0; top:50%; margin-top:-3rem;}
+.biz-main-items__thumb-title span {font-size:28rem; line-height:1.45; font-weight:700; letter-spacing:-0.03em;}
+.biz-main-items__thumb-list-wrap { display: inline-block; vertical-align: top; width: 74.5%;}
+.biz-main-items__thumb-list {margin:-40rem -16rem;}
+.biz-main-items__thumb-item {display:inline-block; vertical-align:top;  width:-webkit-calc(33.33% - 32rem);  width:calc(33.33% - 32rem); margin:40rem 16rem;}
+.biz-main-items__thumb-item figure {padding-top:112.5%; border:1rem solid #ddd;}
+.biz-main-items__thumb-item h4 { margin-top:20rem; font-size:26rem; line-height:1.47; letter-spacing:-0.03em;}
+.biz-main-items__thumb-item p {margin-top:4rem; font-size:16rem; line-height:1.8; color:#999;}
+.sub-content__section.biz-main-items__section + .biz-function-items__section {margin-top:160rem;}
+.biz-function-items__section .biz-main-items {border-top:1rem solid #ddd; padding-top:225rem;}
+.ie11 .biz-main-items__thumb-title span:before {margin-top: -3rem;}
+
+
+/* **************************************** *
+* TRADING
+* **************************************** */
+/* partner */
+.biz-partner__section { background:#f9f9f9;}
+.biz-partner__section:not(.sub-content__section--last-02) {padding:160rem 0;}
+.biz-partner {font-size:0; }
+.biz-partner__logo {display:inline-block;vertical-align: top;width: 25%; padding-right:60rem;}
+.biz-partner__logo img {max-width:231rem;}
+.biz-partner__logo a {display:block;}
+.biz-partner__desc {display:inline-block;vertical-align: top;width: 75%;}
+
+/* catalog */
+.biz-catalog__section {background:#f9f9f9;font-size:0;}
+.biz-catalog__section .sub-content__title {width:393rem; display:inline-block; vertical-align:top;}
+.biz-catalog__list { width: -webkit-calc(100% - 361rem); width: calc(100% - 361rem); margin: -32rem -16rem -40rem; display:inline-block; vertical-align:top;}
+.biz-catalog__item { display:inline-block; vertical-align:top; width:-webkit-calc(33.33% - 32rem); width:calc(33.33% - 32rem); margin:40rem 16rem;}
+.biz-catalog__item h3 {margin-top:20rem; font-size:22rem; line-height:1.55; font-weight:500; letter-spacing:-0.03em;}
+.biz-catalog__item .biz-catalog__mob-download { margin-top:20rem; color:#bbb; font-size:15rem; font-weight:700; display:block; display:none;}
+.biz-catalog__item .biz-catalog__mob-download span {padding-right:20rem; position:relative;}
+.biz-catalog__item .biz-catalog__mob-download span:after {font-family: 'jt-font'; content:'\e911'; font-size:13rem; font-weight:normal; color:#bbb; display:block; position: absolute;top:-webkit-calc(50% + 1rem); top: calc(50% + 1rem);right: 0; -webkit-transform:translateY(-50%); -ms-transform:translateY(-50%); transform:translateY(-50%); -webkit-transition:color .3s; transition:color .3s}
+.biz-catalog__img {position:relative;}
+.biz-catalog__img img {width:100%; }
+.biz-catalog__overlay {width: 100%;height: 100%;display: table;text-align:center;opacity:0;visibility:hidden;background:#000;background:rgba(0, 0, 0, .6);position:absolute;top: 0;left:0; bottom:0; -webkit-transition:opacity .3s, visibility .3s;transition:opacity .3s, visibility .3s;}
+.biz-catalog__overlay-inner {display:table-cell; vertical-align:middle;}
+.biz-catalog__overlay p {font-size:28px;line-height:40px;color:#fff;font-weight: 500;letter-spacing:-0.03em;}
+.biz-catalog__overlay a {max-width:170rem;margin-top:30rem;}
+html.desktop .biz-catalog__img:hover .biz-catalog__overlay {opacity:1; visibility:visible; }
+html.mobile .biz-catalog__item .biz-catalog__mob-download {display:block;}
+html.desktop.safari .biz-catalog__overlay {display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-box-align: center;-webkit-align-items: center;-ms-flex-align: center;align-items: center;}
+html.desktop.safari .biz-catalog__overlay-inner {display: block;width: 100%;}
+html.ie .biz-catalog__section .sub-content__title {width:390rem;}
+
+/* major customers */
+.biz-major-customers__list {margin:-16rem; padding-top:60rem; font-size:0;}
+.biz-major-customers__item {border:1rem solid #ddd; display:inline-block; vertical-align:top; width:-webkit-calc(25% - 32rem); width:calc(25% - 32rem); margin:16rem; -webkit-transition:border .3s; transition:border .3s;}
+.biz-major-customers__item figure {padding-top:54.6%}
+html.desktop .biz-major-customers__item:hover {border-color:#000;}
+
+/* map */
+.biz-main-items__section + .biz-map__section .wrap {padding-top:160rem; border-top:1rem solid #ddd;}
+.biz-map__section { padding-bottom:200rem;}
+.biz-map__content {position: relative;width: 100%;margin: 100rem auto 0;overflow: auto; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -webkit-flex: 1 1 100%; -ms-flex: 1 1 100%; flex: 1 1 100%; pointer-events: none; -ms-overflow-style: none;  scrollbar-width: none;  }
+.biz-map__content::-webkit-scrollbar { display: none;}
+.biz-map__content-inner {pointer-events: none; width: 100%; position: relative;}
+.biz-map__content figure {text-align:center;margin: 0 auto;width: auto; height:100%;}
+
+.biz-map__pin-list {position:absolute;top: 0;left: 0;right: 0;bottom: 0;/* width: 100%; *//* height: 622px; */}
+.biz-map__pin-item {position: absolute;}
+.biz-map__dot {width: 38px;height: 38px;position:relative;}
+.biz-map__dot i {display: block;position:absolute;left: 50%;top: 50%;-webkit-transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);}
+.biz-map__dot i:nth-child(2) {width: 10px;height: 10px;background:#000;border-radius:50%;}
+.biz-map__dot i:nth-child(3) {width: 38px;height: 38px;background:#000000;background:rgba(0, 0, 0, .15);border-radius:50%;}
+.biz-map__dot i:nth-child(4) {opacity:0;width: 76px;height: 76px;background:#000000;background:rgba(0, 0, 0, .1);border-radius:50%;}
+.biz-map__pin-name-wrap {opacity:0; position: absolute;bottom:53px;right: 50%;-webkit-transform: translateX(50%);-ms-transform: translateX(50%);transform: translateX(50%); text-align:center; }
+.biz-map__dot > span {width:1px; height:0; background:#000; content:''; display:block; position:absolute; bottom:24px; left:50%;}
+.biz-map__pin-name-list {overflow: hidden; width:100%;}
+.biz-map__pin-name {overflow:hidden;}
+.biz-map__pin-name span {width:auto; display:inline-block;padding:16rem 44rem;background:#000;border-radius:30px;color:#fff;font-size:18rem;line-height:1;font-weight:700;letter-spacing:-0.03em;white-space: nowrap;}
+.biz-map__pin-name--secondary {margin-top:10rem;}
+.biz-map__pin-name--secondary:before {display:none;}
+/*.biz-map__pin-cnc {left: 334px;top: 313px;}
+.biz-map__pin-new-japan {right: 587px;bottom: 176px;}
+.biz-map__pin-ngk-nissan {right: 444px;bottom: 231px;}*/
+.biz-map__pin-cnc {left: 214px;top: 193px;}
+.biz-map__pin-new-japan {right: 467px;bottom: 166px;}
+.biz-map__pin-ngk-nissan {right: 324px;bottom: 231px;}
+
+.biz-map__am figure {width: 1300px;margin:0 auto;}
+.biz-map__am .biz-map__pin-list {width: 1300px;margin:0 auto;}
+
+/*.biz-map__pin-china {left: 459rem;top: 357rem;}
+.biz-map__pin-vietnam {left: 569rem;top: 411rem;}
+.biz-map__pin-malaysia { left: 525rem; top: 478rem;}
+.biz-map__pin-indonesia { left: 558rem; top: 522rem;}
+.biz-map__pin-madagascar { top: 577rem; left: 338rem;}
+.biz-map__pin-brazil { right: 295px; top: 554rem;}
+.biz-map__pin-canada-usa { right: 328rem; top: 346rem;}*/
+.biz-map__fna figure {width:1300px; margin:0 auto;}
+.biz-map__fna .biz-map__pin-list {width:1300px; margin:0 auto;}
+.biz-map__pin-china {left: 339px;top: 236px;}
+.biz-map__pin-vietnam {left: 427px;top: 314px;}
+.biz-map__pin-malaysia {left: 405px;top: 358px;}
+.biz-map__pin-indonesia {left: 438px;top: 402px;}
+.biz-map__pin-madagascar {top: 457px;left: 218px;}
+.biz-map__pin-brazil {right: 175px;top: 435px;}
+.biz-map__pin-canada-usa {right: 208px;top: 226px;}
+
+.page-template-trading-iie-mv .jt-product-list__wrap,
+.page-template-trading-iie-security .jt-product-list__wrap { margin-bottom:200rem; }
+
+
+ /* **************************************** *
+ * PHARMACEUTICAL - CDMO
+ * **************************************** */
+/* product process */
+.process-tab {display:none; font-size:0;}
+.process-tab li {display: inline-block; vertical-align: middle;}
+.process-tab li + li {margin-left:16rem;}
+.process-tab a {font-size: 26rem; line-height: 1.38; font-weight: 700;  color:#ccc;}
+.process-tab li.jt-tabs--active a {color:#000;}
+
+.biz-process__title {font-size: 0;}
+.biz-process__title h3 {font-size:28rem;line-height:1.38;font-weight:700;display: inline-block;vertical-align: middle;}
+.biz-process__title ul {font-size:0;display: inline-block;vertical-align: middle;margin-left: 31rem;}
+.biz-process__title li {display:inline-block;font-size:16rem;line-height:1;font-weight:500;letter-spacing:-0.03em;position:relative;padding-left: 15rem;}
+.biz-process__title li:before {width:9rem;height:9rem;background:#aaa;border-radius:50%;content:'';display:block;position:absolute;left:0;top: 4rem;}
+.biz-process__title li.biz-process__type-01 {color:#999;}
+.biz-process__title li.biz-process__type-02 {color:#2d5fff;}
+.biz-process__title li.biz-process__type-02:before {background:#2d5fff;}
+.biz-process__title li + li {margin-left: 22rem;}
+
+.biz-process__item-wrap + .biz-process__item-wrap {margin-top: 95rem;/* font-size: 0; */}
+.biz-process__contents {margin-top: 80rem;font-size:0;}
+.biz-process__contents ul {display:inline-block;vertical-align:middle;border:2rem solid #ddd;border-radius:200rem;padding: 18rem 18rem;width: -webkit-calc(100% - 340rem);width: calc(100% - 340rem);margin-left: 50rem;}
+.biz-process__contents li {display:inline-block; position:relative;}
+.biz-process__contents li > span > b {display:none;font-size:15rem; line-height:1; font-weight:500; margin-bottom:8rem;}
+.biz-process__contents li > p {position: absolute;left: 50%;bottom: -152rem;font-size:16rem;line-height: 26rem;letter-spacing: -0.03em;color: #666;max-width: 130rem;text-align: center;-webkit-transform: translateX(-50%);-ms-transform: translateX(-50%);transform: translateX(-50%);width: 100%;}
+.biz-process__contents li + li {margin-left: -40rem;}
+.biz-process__contents span {width:200rem;height:200rem;border-radius:50%;background:#f8f8f8;display: table-cell;text-align:center;vertical-align: middle; font-size:18rem; font-weight:400;}
+.biz-process__contents .biz-process__last {padding-left:40rem; display:inline-block; vertical-align:middle; position:relative;}
+.biz-process__contents .biz-process__last:before {width:40rem;height:2rem;background:#ddd;content:'';display:block;position: absolute;left: 0;top: 50%;margin-top: -2rem;}
+.biz-process__contents .biz-process__last span {border:2rem solid #2d5fff; border-radius:50%; color:#2d5fff; background:#fff;}
+.biz-process__contents .biz-process__last span > b {display:none;font-size:15rem; line-height:1; font-weight:500; margin-bottom:8rem;}
+html.desktop.safari .biz-process__contents ul {padding-left: 17rem;padding-right: 17rem;}
+
+.biz-process__oem {margin-top: 119rem;}
+.biz-process__oem .biz-process__contents li:nth-child(1) span {background:#eee; color:#888;}
+.biz-process__oem .biz-process__contents li:nth-child(2) span {background:#e8e8e8; color:#888;}
+.biz-process__oem .biz-process__contents li:nth-child(3) span {background:#ddd; color:#888;}
+.biz-process__oem .biz-process__contents li:nth-child(4) span {background:#d3d3d3; color:#888;}
+.biz-process__oem .biz-process__contents li:nth-child(5) span {background:#2156ff; color:#fff;}
+.biz-process__oem .biz-process__contents li:nth-child(6) span {background:#114aff; color:#fff;}
+.biz-process__oem .biz-process__contents li:nth-child(7) span {background:#003dff; color:#fff;}
+
+.biz-process__odm .biz-process__contents {padding-bottom: 132rem;}
+.biz-process__odm .biz-process__contents li:nth-child(1) span {background:#7899ff; color:#fff;}
+.biz-process__odm .biz-process__contents li:nth-child(2) span {background:#6287ff; color:#fff;}
+.biz-process__odm .biz-process__contents li:nth-child(3) span {background:#4f79ff; color:#fff;}
+.biz-process__odm .biz-process__contents li:nth-child(4) span {background:#3c6aff; color:#fff;}
+.biz-process__odm .biz-process__contents li:nth-child(5) span {background:#2156ff; color:#fff;}
+.biz-process__odm .biz-process__contents li:nth-child(6) span {background:#114aff; color:#fff;}
+.biz-process__odm .biz-process__contents li:nth-child(7) span {background:#003dff; color:#fff;}
+.biz-process__odm .biz-process__contents li:before {width:2rem;height:90rem;border-left: 2rem dotted #ddd;content:'';display:block;position:absolute;bottom: -90rem;left:50%;}
+.biz-process__odm .biz-process__contents li:nth-child(1):before { border-color:#7899ff;}
+.biz-process__odm .biz-process__contents li:nth-child(2):before { border-color:#6287ff;}
+.biz-process__odm .biz-process__contents li:nth-child(3):before { border-color:#4f79ff;}
+.biz-process__odm .biz-process__contents li:nth-child(4):before { border-color:#3c6aff;}
+.biz-process__odm .biz-process__contents li:nth-child(5):before { border-color:#2156ff;}
+.biz-process__odm .biz-process__contents li:nth-child(6):before { border-color:#114aff;}
+.biz-process__odm .biz-process__contents li:nth-child(7):before { border-color:#003dff;}
+.biz-process__odm .biz-process__list {display:none;margin-top: 80rem;background:#f9f9f9;border-radius:30rem;padding: 50rem 40rem;}
+.biz-process__odm .biz-process__list ul {font-size:0;margin: -12rem;}
+.biz-process__odm .biz-process__list li {display:inline-block;vertical-align:top;width: -webkit-calc(50% - 24rem);width: calc(50% - 24rem);margin: 12rem;}
+.biz-process__odm .biz-process__list li + li {}
+.biz-process__odm .biz-process__list li b {position:relative;padding-left: 14rem;font-size: 16rem;line-height: 1;}
+.biz-process__odm .biz-process__list li b:before {width:5px; height:5px; background:#bbb; border-radius:50%; content:''; display:block; position:absolute; left:0; top:50%; -webkit-transform:translateY(-50%); -ms-transform:translateY(-50%); transform:translateY(-50%)}
+.biz-process__odm .biz-process__list li p {padding-left: 14rem;font-size: 16rem;line-height: 1.6;margin-top: 8rem;}
+html.ios .biz-process__odm .biz-process__list li b:before {top:-webkit-calc(50% - 1rem); top:calc(50% - 1rem)}
+
+.biz-process__natural .biz-process__contents ul {margin-left:0; width:100%; padding:18rem 16rem;}
+.biz-process__natural .biz-process__contents li + li {margin-left:126rem;}
+.biz-process__natural .biz-process__contents li:nth-child(1) span {background:#6287ff; color:#fff;}
+.biz-process__natural .biz-process__contents li:nth-child(2) span {background:#3c6aff; color:#fff;}
+.biz-process__natural .biz-process__contents li:nth-child(3) span {background:#2156ff; color:#fff;}
+.biz-process__natural .biz-process__contents li:nth-child(4) span {background:#114aff; color:#fff;}
+.biz-process__natural .biz-process__contents li:nth-child(5) span {background:#003dff; color:#fff;}
+.biz-process__natural .biz-process__contents li:before {width: 126rem;height: 2rem;border-top: 2rem dotted #6287ff;content:'';display:block;position:absolute;top: 50%;right: -126rem;margin-top: -1rem;}
+.biz-process__natural .biz-process__contents li span:before {width:26rem;height:26rem;border-radius:50%;position:absolute;right: -76rem;top:50%;margin-top: -13rem;content:'';display:block;}
+.biz-process__natural .biz-process__contents li span:after {font-family: 'jt-font';font-size: 10rem;font-weight:normal;color:#fff;content: '\e90c';display:block;position: absolute;right: -69rem;top: 50%;margin-top: -5rem;}
+.biz-process__natural .biz-process__contents li:nth-child(1) span:before { background-color:#6287ff;}
+.biz-process__natural .biz-process__contents li:nth-child(2) span:before { background-color:#3c6aff;}
+.biz-process__natural .biz-process__contents li:nth-child(3) span:before { background-color:#2156ff;}
+.biz-process__natural .biz-process__contents li:nth-child(4) span:before { background-color:#114aff;}
+.biz-process__natural .biz-process__contents li:nth-child(5) span:before { background-color:#003dff;}
+.biz-process__natural .biz-process__contents li:last-child:before, .biz-process__natural .biz-process__contents li:last-child span:before, .biz-process__natural .biz-process__contents li:last-child span:after { display:none;}
+html.desktop.safari .biz-process__natural .biz-process__contents ul {padding-left: 15rem;padding-right: 15rem;}
+
+/* product list table */
+.biz-prd-table {margin-top: 59rem;}
+.biz-prd-table__type-02 th, .biz-prd-table__type-02 td { text-align:left; padding:31rem 80rem;}
+.biz-prd-table__type-03 th { padding:30rem 80rem; font-size:18rem;}
+.biz-prd-table__type-03 td { text-align:left; padding:30rem 80rem;}
+.biz-prd-table td > b {display:block; margin-top:40rem;}
+.biz-prd-table td > b:first-child {margin-top:0;}
+.biz-prd-table td > b + ul {margin-top:10rem;}
+.jt-basic-table th[lang=en] {font-weight:700;}
+.jt-basic-table__list {font-size:0;}
+.jt-basic-table__list li {vertical-align:top; font-size:18rem; position:relative;padding-left:13rem; word-break: break-word; letter-spacing:-0.03em;}
+.jt-basic-table__list li:before {width:5px; height:5px; background:#ccc;  border-radius:50%; content:''; display:block; position:absolute; left:0; top:11rem;}
+.jt-basic-table__list li + li {margin-top:12rem;}
+.jt-basic-table__list li[lang=en] {letter-spacing:0; font-weight:500;}
+.jt-basic-table__list.jt-basic-table__list-col-2 {margin-left:-5rem; margin-right:-5rem;}
+.jt-basic-table__list.jt-basic-table__list-col-2 li {display:inline-block; width: -webkit-calc(50% - 10rem); width: calc(50% - 10rem); margin-left: 5rem; margin-right: 5rem;}
+.jt-basic-table__list.jt-basic-table__list-col-2 li:nth-child(2) { margin-top:0}
+html.ios .jt-basic-table__list li:before {top:10rem;}
+html.ios .jt-basic-table__list li[lang=en]:before {top:9rem;}
+.ie11 .jt-basic-table__list li:before {top: 12rem;}
+
+/* product formulation */
+.biz-formulation__list {font-size:0;margin: 40rem -16rem 0;}
+.biz-formulation__item {display:inline-block; vertical-align:top;margin:0 16rem;width:-webkit-calc(25% - 32rem);width:calc(25% - 32rem);text-align:center;position: relative;}
+.biz-formulation__item p {font-size:20rem;font-weight:500;line-height:1;letter-spacing:-0.03em;margin-top: 20rem;}
+.biz-formulation__item figure {width:361rem;height:361rem;vertical-align: middle;display: table-cell;}
+.biz-formulation__item figure img {max-width:100%;}
+.biz-formulation__icon { -webkit-transition: opacity .3s, visibility .3s; transition: opacity .3s, visibility .3s;}
+.biz-formulation__item .biz-formulation__icon img {max-width:255rem;}
+.biz-formulation__img {border-radius:50%; overflow:hidden; opacity:0;visibility:hidden;position: absolute;top: 0; -webkit-transition: opacity .3s, visibility .3s; transition: opacity .3s, visibility .3s;}
+html.desktop .biz-formulation__item:hover .biz-formulation__img  {opacity:1; visibility:visible;}
+html.desktop .biz-formulation__item:hover .biz-formulation__icon  {opacity:0; visibility:hidden;}
+html.mobile .biz-formulation__item .biz-formulation__img {opacity:1; visibility:visible; position:static;}
+html.mobile .biz-formulation__item .biz-formulation__icon {display:none;}
+
+.biz-prd-table__section .sub-content__title .split-child > div:nth-child(2),
+.biz-prd-table__section .sub-content__title .split-child > div:last-child {text-transform: lowercase;}
+
+/* product facility */
+.biz-prd-facility__section { background:#f9f9f9;}
+.biz-prd-facility__section .sub-content__title {line-height:1}
+.biz-prd-facility__list {font-size:0;margin: -40rem -16rem;padding-top:60rem;}
+.biz-prd-facility__item {display:inline-block; vertical-align:top; margin:40rem 16rem; width:-webkit-calc(33.33% - 32rem); width:calc(33.33% - 32rem);}
+.biz-prd-facility__item figure {padding-top: 61.2%;}
+.biz-prd-facility__text h3 {margin-top:30rem;font-size:24rem; line-height:1; font-weight:500; letter-spacing:-0.03em}
+.biz-prd-facility__text p {margin-top: 17rem;font-size:18rem;line-height: 1.7;font-weight:400;letter-spacing:-0.03em;}
+
+/* natural material */
+.natural-material__section {margin-bottom:200rem;}
+.natural-material__list {margin: 20rem -16rem -40rem;font-size:0;}
+.natural-material__item {display:inline-block; vertical-align:top; width:-webkit-calc(33.33% - 32rem); width:calc(33.33% - 32rem); margin:40rem 16rem;}
+.natural-material__item figure {padding-top: 60.9%;border:1rem solid #ddd;}
+.natural-material__item img {max-width:100%; display:block;}
+.natural-material__item h3 {font-size:26rem;font-weight:500;line-height: 1.2;letter-spacing:-0.03em;margin-top:30rem;word-break: break-word;}
+
+
+
+/* **************************************** *
+* PHARMACEUTICAL RND
+* **************************************** */
+.rnd-performance-table {margin-top: 59rem;}
+.rnd-performance-table td > b:first-child{display:block; margin-top:40rem;}
+.rnd-performance-table td > b:first-child {margin-top:0;}
+.rnd-performance-table td > b + ul {margin-top:10rem;}
+.rnd-performance-table th, .rnd-performance-table td {padding: 31rem 30rem;font-size:18rem;}
+.rnd-performance-table th:nth-child(1), .rnd-performance-table td:nth-child(1) {width: 17%;}
+.rnd-performance-table th:nth-child(2), .rnd-performance-table td:nth-child(2) {width: 51%;}
+.rnd-performance-table th:nth-child(3), .rnd-performance-table td:nth-child(3) {width: 17%;}
+.rnd-performance-table th:nth-child(4), .rnd-performance-table td:nth-child(4) {width: 15%;}
+.rnd-performance-table td:nth-child(2) {padding-left:80rem;}
+.rnd-network__section .sub-content__desc {max-width:1000rem;margin-top: 37rem;}
+.rnd-network__section figure {margin-top:60rem;padding-top: 41.4%;border:1rem solid #ddd;}
+.rnd-network__section figure + .biz-prd-table {margin-top:80rem;}
+.rnd-performance-table thead th {font-size:20rem;}
+.rnd-performance-table tbody td {text-align:center;}
+.rnd-performance-table tbody td:nth-child(2) {text-align:left;}
+span.pharm-rnd-ing {color:#2d5fff;}
+html.ie .rnd-performance-table .jt-basic-table {table-layout:auto;}
+
+.rnd-vision__wrap  {margin-top:80rem;text-align:center;}
+.rnd-vision__wrap h3 {font-size:32rem; line-height:1.4; letter-spacing:-0.03em; font-weight:500;}
+.rnd-vision__circle { position:relative; width:671rem; height:671rem;margin:40rem auto 0;}
+.rnd-vision__circle img {display:block; margin:0 auto; max-width:100%;}
+.rnd-vision__circle-text {width:100%; height:100%; position:absolute; top: 0; left: 50%; -webkit-transform: translateX(-50%); -ms-transform: translateX(-50%); transform: translateX(-50%);}
+.rnd-vision__circle-text p {font-size:20rem; line-height:1.6; color:#fff; font-weight:500; position:absolute;}
+.rnd-vision__circle-text p:nth-child(1) {top: 11%;left: 50%;-webkit-transform: translateX(-50%);-ms-transform: translateX(-50%);transform: translateX(-50%);}
+.rnd-vision__circle-text p:nth-child(2) {left: 13%;top: 63%;}
+.rnd-vision__circle-text p:nth-child(3) {right: 13%;top: 63%;}
+.rnd-vision__list {padding-top: 120rem;position: relative;max-width: 900rem;margin: 0 auto;font-size:0;}
+.rnd-vision__list:before {max-width: 642rem;width: 100%;height:2rem;background:#ddd;content:'';display:block;position: absolute;top: 59rem;left: 50%;-webkit-transform: translateX(-50%);-ms-transform: translateX(-50%);transform: translateX(-50%);}
+.rnd-vision__list:after  {width:2rem; height:60rem; background:#ddd; content:''; display:block; position:absolute; top:0rem; left:50%; margin-left:-1rem;}
+.rnd-vision__list li {display:inline-block; vertical-align:top; width:260rem; font-size:20rem; line-height:1.5; letter-spacing:-0.03em; font-weight:400; color:#888;background:#ddd; padding:24rem 0; border-radius:50rem; position:relative;}
+.rnd-vision__list li:before {width:2rem; height:60rem; background:#ddd; content:''; display:block; position:absolute; top:-60rem; left:50%; margin-left:-1rem;}
+.rnd-vision__list li + li {margin-left: 60rem;}
+
+
+
+
+ /* **************************************** *
+ * PHARMACEUTICAL SEARCH
+ * **************************************** */
+.biz-prd-items__section {background:#f9f9f9; padding:160rem 0 200rem;}
+.biz-prd-items .jt-accordion__content > *:first-child {margin-top:0;}
+.biz-prd-items .jt-accordion__content h4 {font-size:18rem;line-height: 1.5;font-weight:500;letter-spacing:-0.03em;margin-top: 31rem;}
+.biz-prd-items .jt-accordion__content p {margin-top: 15rem;font-size:16rem;letter-spacing:-0.03em;color:#666;}
+.biz-prd-items .jt-accordion__content ul {margin: 11rem -16rem -3rem;font-size:0;}
+.biz-prd-items .jt-accordion__content ul > li {display:inline-block; vertical-align: top; width:-webkit-calc(50% - 32rem); width:calc(50% - 32rem); margin:3rem 16rem; font-size:16rem; line-height:1.6; letter-spacing:-0.03em; color:#666;}

@@ -1,0 +1,660 @@
+/*
+ * File       : js/inquiry.js
+ * Author     : STUDIO-JT (mason,Sumi)
+ * Guideline  : JTstyle.1.0
+ *
+ * SUMMARY:
+ * 1) Global Variable
+ */
+
+jQuery( function ( $ ) {
+
+    /* **************************************** *
+     * INIT
+     * **************************************** */
+    JT.ui.add( inquiry_mail_select , true );
+    JT.ui.add( inquiry_privacy_popup , true );
+    //JT.ui.add( inquiry_submit_popup , true );
+
+    var is_submit   = false;
+    var is_loadmore   = false;
+    var is_tab_change = false;
+    search_form_submit();
+    search_form_actions();
+    inquiry_form_radio();
+
+
+
+    /* **************************************** *
+     * Functions
+     * **************************************** */
+
+    
+
+    function search_form_actions() {
+
+        $( '.search_result_tab' ).on( 'click', 'a', function () {
+
+            var $this   = $( this );
+            var $form   = $this.closest( 'form' );
+            var $wrap   = $this.closest( '.search_result_tab' );
+    
+            $( 'li.active', $wrap ).removeClass( 'active' );
+            
+            $this.closest( 'li' ).addClass( 'active' );
+    
+            if ( $( '[name="product_search[tab_type]"]', $form ).length > 0 ) {
+    
+                $( '[name="product_search[tab_type]"]', $form ).val( $this.data( 'type' ) );
+    
+            } 
+    
+            if ( $( '[name="product_search[paged]"]', $form ).length > 0 ) {
+    
+                $( '[name*="product_search[paged]"]', $form ).val( '1' );
+    
+            }
+    
+            is_tab_change = true;
+    
+            $form.submit();
+    
+            return false;
+    
+        } );
+
+        // 페이지 노출 포스트 수, 정렬 순서 변경 시 Submit 처리
+        $( '[name="product_search[posts_per_page]"]' ).on( 'change', function () {
+
+            var $this   = $( this );
+            var $form   = $this.closest( 'form' );
+
+            $( '[name="product_search[paged]"]', $form ).val( '1' );
+
+            $form.submit();
+
+        } );
+
+
+        // 페이지네이션 처리
+        $( '.search_result_wrap .jt-pagination' ).on( 'click', 'a', function () {
+            var $this   = $( this );
+            var $form   = $this.closest( 'form' );
+
+            $( '[name="product_search[paged]"]', $form ).val( $this.data( 'page' ) );
+
+            if ( $this.closest( '.jt-pagination' ).length > 0 ) {
+                $( 'html, body' ).stop().animate({
+                    scrollTop: ( $this.closest( '.jt-pagination' ).parents( 'div:first' ).offset().top - 170 )
+                } );
+
+            }
+
+            is_loadmore     = $this.closest( '.jt-pagination' ).length == 0;
+            is_tab_change   = false;
+
+            $form.submit();
+
+            return false;
+
+        } );
+
+    }
+
+
+    function search_form_submit() {
+
+        $( '.frm_search' ).on( 'submit', function () {
+
+            var $form       = $( this );
+            var data        = $form.serializeObject();
+            var url         = $form.data( 'ajax' );
+            var not_empty   = ! ( $( '[name=s]', $form ).val().length == 0 );
+            
+            $.post( url, data, function ( res ) {
+                
+                if ( res.success ) {
+                    //console.log( res );
+                    
+                    /*
+                    $( '.search_result_tab' ).find( 'li' ).each( function () {
+    
+                        var type    = $( this ).find( '> a' ).data( 'type' );
+                        
+                        var cnt     = ( typeof eval( 'res.data.count_info.' + type ) !== 'undefined' ? eval( 'res.data.count_info.' + type ) : 0 );
+                        
+                        $( this ).find( '.count' ).text( parseInt( cnt ) && not_empty ? parseInt( cnt ) : 0 );
+
+                    } );
+                    
+
+                    
+    
+                    var type    = $( '.search_result_tab' ).find( 'li.active > a' ).data( 'type' );
+                    var cnt     = ( typeof eval( 'res.data.count_info.' + type ) !== 'undefined' ? eval( 'res.data.count_info.' + type ) : 0 );
+    
+                    //$( '.detail_search_result_sort_tit' ).find( 'b' ).text( parseInt( cnt ) && not_empty ? parseInt( cnt ) : 0 );
+                    */
+                    
+                    if ( res.data.total > 0 && not_empty ) {
+    
+                        if ( is_loadmore ) {
+    
+                            $( '.search-result__list', $form ).append( res.data.html.list );
+    
+                        } else {
+    
+                            $( '.search-result__list', $form ).html( res.data.html.list );
+    
+                        }
+    
+                        $( '.jt-pagination', $form ).html( $( res.data.html.pagination ).children() );
+                        
+    
+                    } else {
+    
+                        if ( ! is_loadmore ) {
+    
+                            $( '.search-result__list', $form ).html( res.data.html.nodata );
+    
+                        }
+    
+                        
+                        $( '.jt-pagination', $form ).html( '' );
+    
+                    }
+            
+                    
+                    if($('.search-result__list').find('.search-nodata').length == 1 ){
+                        $('.search-result__list').addClass('no_results_list')
+                    } else {
+                        $('.search-result__list').removeClass('no_results_list')
+                    }
+    
+                    is_tab_change   = false;
+                    is_loadmore     = false;
+                    
+    
+                }
+    
+            } );
+    
+            return false;
+    
+        } );
+    
+    
+    }
+
+    /* **************************************** *
+    * HELPERS
+    * **************************************** */
+    $.fn.serializeObject = function(){
+        var obj = {};
+
+        $.each( this.serializeArray(), function(i,o){
+            var n = o.name,
+            v = o.value;
+
+            obj[n] = obj[n] === undefined ? v
+                : $.isArray( obj[n] ) ? obj[n].concat( v )
+                : [ obj[n], v ];
+        });
+
+            return obj;
+    };
+
+    var loading = true;
+
+    var $container = $( '.inquiry_container' );
+
+    if ( $container.length > 0 ) {
+
+        jt_inquiry_form_submit();
+
+        function jt_inquiry_form_submit() {
+
+            //$('.frm_inquiry').on( 'click', '.jt_inquiry_result', function () {
+            $container.on( 'click', '.jt_inquiry_result', function () {
+            //$container.on( 'submit', '#frm_inquiry', function () {
+
+                var txt = {
+                    ko : {
+                        err_name : '성명을 입력해주세요',
+                        err_phone : '연락처를 입력해주세요',
+                        err_phone_valid : '유효한 연락처를 입력해주세요',
+                        err_cat : '문의하시려는 분류 항목을 선택해 주세요',
+                        err_email : '이메일을 입력해주세요',
+                        err_email_valid : '유효한 이메일을 입력해주세요',
+                        err_content : '문의내용을 입력해주세요',
+                        err_agree : '개인정보 수집 및 이용에 동의해주세요',
+                        success_title : '문의 신청이 완료되었습니다.<br/>빠른 시일내에 답변 드리도록 하겠습니다.',
+                        success_btn : '확인',
+                        success_redirect :  '/문의하기/',
+                        reg_phone_rule : /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/
+                    },
+                    en : {
+                        err_name : 'The name field is required',
+                        err_phone : 'The phone field is required',
+                        err_phone_valid : 'The phone field is not valid',
+                        err_cat : 'Select a category is required',
+                        err_email : 'The email field is required',
+                        err_email_valid : 'The email field is not valid',
+                        err_content : 'The content field is required',
+                        err_agree : 'Agreement to our privacy policy is required',
+                        success_title : 'Your inquiry has been successfully submitted.<br/>Our customer service team will respond to your inquiry as soon as possible.',
+                        success_btn : 'Confirm',
+                        success_redirect :  '/en/contact-us/',
+                        //reg_phone_rule : /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im // 국제 전화번호
+                        reg_phone_rule : /^(?=(?:\s?\d){7,17}$)\d+(?:\s?\d+){0,3}$/ //+ 숫자 정규식
+                        //reg_phone_rule :  /^[0-9]+$/
+                    }
+                }
+                var t = $('body').hasClass('lang-ko') ? txt.ko : txt.en;
+            
+            
+
+                try {
+
+                    var $form       = $( '.frm_inquiry' );
+                    var reg_email = /@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+                    var regExp = /[\{\}\[\]\/?,;:|\)*~`!^\_+<>@\#$%&\\\=\(\'\"]/gi;
+                    var $target, $err, $error_target;
+
+                    $('.not-valid-tip').remove();
+
+                    if (!check_validation($target)) {
+
+                        $err = jt_validation_err($target, t.err_name);
+                        $error_target = $target;
+
+                    }
+
+                    $target = $('[name="jt_inquiry[contact][agree]"', $form);
+                    if (!check_validation($target)) {
+
+                        $err = jt_validation_err($target, t.err_agree);
+                        $error_target = $target;
+
+                    }
+
+                    $target = $('[name="jt_inquiry[contact][content]"]', $form);
+                    if (!check_validation($target)) {
+
+                        $err = jt_validation_err($target, t.err_content);
+                        $error_target = $target;
+
+                    }
+
+                    $target = $('[name="jt_inquiry[contact][category]"]', $form);
+                    if (!check_validation($target)) {
+
+                        $err = jt_validation_err($target, t.err_cat);
+                        $error_target = $target;
+
+                    }
+
+                    var tmp_email = '';
+
+
+                    $target = $('[name="jt_inquiry[contact][mail_id]"]', $form);
+
+                    if (!check_validation($target)) {
+
+                        $err = jt_validation_err($target, t.err_email);
+                        $error_target = $target;
+
+                    }
+
+                    tmp_email = $target.val().trim();
+
+                    if ($( '[name="jt_inquiry[contact][mail_domain]"]', $form ).length > 0 && !$('html').hasClass('mobile') ) {
+
+                        $target = $('[name="jt_inquiry[contact][mail_domain]"]', $form);
+                        if (!check_validation($target)) {
+
+                            $err = jt_validation_err($target, t.err_email);
+                            $error_target = $target;
+
+
+                        }
+
+                        //tmp_email += '@' + $target.val().trim();
+                        tmp_email += '@' + $target.val().replace(regExp, "").trim();
+
+                    }
+
+
+                    if (!reg_email.test(tmp_email)) {
+
+                        $err = jt_validation_err($target, t.err_email_valid);
+                        $error_target = $target;
+
+                    }
+
+                    if ($('[name="jt_inquiry[contact][tel]"]', $form).length > 0 ) {
+
+                        $target = $('[name="jt_inquiry[contact][tel]"]', $form);
+
+                        if (!check_validation($target)) {
+
+                            $err = jt_validation_err($target, t.err_phone);
+                            $error_target = $target;
+
+                        }
+
+                        if ( !t.reg_phone_rule.test( $target.val().trim() ) ) {
+                        //if (!reg_phone.test($target.val().trim())) {
+
+                            $err = jt_validation_err($target, t.err_phone_valid);
+                            $error_target = $target;
+
+                        }
+
+                    }
+
+                    $target = $('[name="jt_inquiry[contact][name]"]', $form);
+                    
+                    if (!check_validation($target)) {
+
+                        $err = jt_validation_err($target, t.err_name);
+                        $error_target = $target;
+
+                    }
+
+                    if ($err) {
+
+                        $('html, body').animate({scrollTop: $err.offset().top - 170}, function(){
+                            $error_target.focus();
+                        });
+                        return false;
+
+                    } else if ($('.not-valid-tip', $form).length > 0) {
+
+                        $('html, body').animate({scrollTop: $('.not-valid-tip:first', $form).offset().top - 170});
+                        return false;
+
+                    } else {
+                        
+                        $('.jt_inquiry_result').prop('disabled', true );
+                        var data = $form.serialize();
+                        var url = $form.data('ajax');
+                        is_submit = true;
+                        $.post(url, data, function (res) {
+
+                            if (res.success) {
+
+                                JT.alert({
+                                    title: t.success_title,
+                                    ok: t.success_btn,
+                                    style: 'basic',
+                                    button_icon: false,
+                                    has_icon: true,
+                                    is_confirm: false,
+                                    primary_button: false,
+                                    type: 'success',
+                                    on_confirm: function () {
+                                        location.href = t.success_redirect;
+                                    }
+                                });
+
+                            }
+
+                        });
+
+                        is_submit = false;
+
+                        return false;
+
+                    }
+                    $('.jt_inquiry_result').prop('disabled', true );
+                    return true;
+
+
+                } catch (e) {
+
+                    console.log(e);
+                    return false;
+
+                }
+
+            } );
+
+        }
+
+
+        function check_validation( target, args ) {
+
+            try {
+
+                var $target = $( target );
+                var tagName = $target.prop( 'tagName' ).toLowerCase();
+                var type    = $target.attr( 'type' );
+
+                args = ( typeof args !== 'undefined' ? args : {} );
+
+                if ( ( tagName == 'input' && ( type == 'text' || type == 'hidden' ) ) || tagName == 'textarea' ) {
+
+                    if ( $target.length == 0 || $target.val().trim().length == 0 ) {
+
+                        return false;
+
+                    } else if ( typeof args.regex !== 'undefined' && ! args.regex.test( $target.val() ) ) {
+
+                        return false;
+
+                    }
+
+                } else if ( tagName == 'input' && type == 'checkbox' ) {
+
+                    var cnt = 0;
+                    $target.each( function () {
+
+                        if ( $( this ).is( ':checked' ) ) {
+
+                            cnt++;
+
+                        }
+
+                    } );
+
+                    if ( typeof args.max_cnt !== 'undefined' && cnt > args.max_cnt ) {
+
+                        return false;
+
+                    } else if ( cnt == 0 ) {
+
+                        return false;
+
+                    }
+
+                } else if ( tagName == 'input' && type == 'radio' ) {
+
+                    var cnt = 0;
+                    $target.each( function () {
+
+                        if ( $( this ).is( ':checked' ) ) {
+
+                            cnt++;
+
+                        }
+
+                    } );
+
+                    if ( cnt != 1 ) {
+
+                        return false;
+
+                    }
+
+
+                }
+
+                return true;
+
+            } catch( e ) {
+
+                console.log( e );
+                return false;
+
+            }
+
+        }
+
+        function jt_validation_err( $target, msg, $err ) {
+
+            try {
+
+
+                var $wrapper = $target.parents( 'div.jt-form__data:first' );
+
+
+                var $msg = $( 'span.not-valid-tip', $wrapper );
+                if ( $msg.length == 0 ) {
+
+                    $msg = $( '<span />', { class: 'not-valid-tip' } ).appendTo( $wrapper );
+
+                }
+
+                $msg.text( msg ).show();
+
+                return ( ! $err ? $wrapper : $err );
+
+            } catch ( e ) {
+
+                console.log( e );
+                return $err;
+
+            }
+
+        }
+
+    }
+
+
+    //inquiry
+    function inquiry_mail_select(){
+
+        //email select
+        if($('html').hasClass('desktop')){
+            $('#field-mail-02').on('focusin',function(){
+                $('.jt-form__email-domain').find('.selectric-wrapper').addClass('selectric-open');
+                $('.jt-form__email-domain').addClass('jt-form__email-domain--active');
+            });
+/*
+            $('.jt-form__email-domain').on('click',function(){
+                if( $('.jt-form__email-domain').hasClass('jt-form__email-domain--active') ){
+                    $('.jt-form__email-domain').find('.selectric-wrapper').removeClass('selectric-open');
+                    $('.jt-form__email-domain').removeClass('jt-form__email-domain--active');
+                } else {
+                    $('.jt-form__email-domain').find('.selectric-wrapper').addClass('selectric-open');
+                    $('.jt-form__email-domain').addClass('jt-form__email-domain--active');
+                }
+            })
+            */
+        }
+
+        //외부영역 클릭시 닫기
+        $(document).mouseup(function (e){
+            if($('.jt-form__email-domain').has(e.target).length === 0){
+                if($('html').hasClass('desktop')){
+                    $('.jt-form__email-domain').find('.selectric-wrapper').removeClass('selectric-open');
+                    $('.jt-form__email-domain').removeClass('jt-form__email-domain--active');
+                } else {
+                    $('.jt-form__email-domain').removeClass('jt-form__mob-email-domain--active');
+
+                    if ( $('#field-mail-02').val() == '직접입력' || $('#field-mail-02').val() == '' || $('.direct-input').is(':selected')) {
+                        $(".jt-form__email-domain option:eq(0)").prop("selected", true);
+                    }
+                }
+            }
+        });
+
+
+
+        $('.jt-selectric--mail').on('change', function( e ){
+
+            $('.jt-form__email-domain').removeClass('jt-form__email-domain--active');
+
+            var domain = $(this).val();
+            var $input = $(this).closest('.jt-form__email-domain').find('#field-mail-02');
+
+            if ( $input.length > 0 ) {
+                if ( domain == '직접입력' || domain == '' ) {
+
+                    $('.jt-form__email-domain').addClass('jt-form__mob-email-domain--active');
+
+                    $input.val('');
+                    $input.focus();
+
+                } else {
+                    $input.val(domain);
+                }
+            }
+        });
+    }
+
+    function inquiry_privacy_popup(){
+        //개인정보 처리방침 팝업
+        $('.inquiry-privacy-popup').magnificPopup({
+            type: 'inline',
+            preloader: false,
+            mainClass : 'inquiry-privacy__wrap',
+            fixedContentPos: false
+            //modal: true
+        });
+        /*$(document).on('click', '.inquiry-privacy__close, html.ie .inquiry-privacy__wrap', function (e) {
+            e.preventDefault();
+            $.magnificPopup.close();
+        });*/
+    }
+
+/*
+    function inquiry_submit_popup(){
+
+        //문의완료 팝업
+        $('.inquiry-submit a').on('click',function(e){
+
+            e.preventDefault();
+
+            JT.alert({
+                title    : '감사합니다.',
+                message  : '문의사항이 전송되었습니다. <br/>빠른 시일 내에 답변드리겠습니다.',
+                ok       : '확인',
+                style    : 'basic',
+                button_icon : false,
+                is_confirm : false,
+                primary_button: false,
+                type     : 'success',
+                on_confirm  : function () { location.href = '/문의하기/'; }
+            });
+        })
+
+    }
+*/
+
+    function inquiry_form_radio(){
+
+        const tradeRadio = document.querySelector('input[name="jt_inquiry[contact][category]"][value="무역사업"]');
+        const pharmRadio = document.querySelector('input[name="jt_inquiry[contact][category]"][value="제약사업"]');
+
+        document.querySelectorAll('input[name="jt_inquiry[contact][category]"]').forEach( radio => {
+            radio.addEventListener('change', function(){
+                if( radio.value == '무역사업' ) {
+                    tradeRadio.parentNode.classList.add('jt-radiobox--checked');
+                } else {
+                    tradeRadio.parentNode.classList.remove('jt-radiobox--checked');
+                }
+
+                if( radio.value == '제약사업' ) {
+                    pharmRadio.parentNode.classList.add('jt-radiobox--checked');
+                } else {
+                    pharmRadio.parentNode.classList.remove('jt-radiobox--checked');
+                }
+            });
+        });
+
+    }
+
+
+} );

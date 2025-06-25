@@ -1,0 +1,55 @@
+jQuery(function($) {
+
+    search_result_thumb($('.jt-press-list__item'));
+
+    // list hover motion
+    function search_result_thumb($item){
+
+        if($('html').hasClass('mobile')) { return; }
+
+        $item.each(function(){
+            var $this = $(this);
+            var $thumb = $(this).find('.jt-press-list__thumb');
+            var $img = $(this).find('.jt-press-list__thumb > img');
+
+            if(!$thumb.length) { return true; }
+
+            $this.on({
+                mouseenter: function(){
+
+                    TweenMax.to($thumb, .3, {
+                        autoAlpha: 1,
+                        ease: Power0.easeNone
+                    });
+                    
+                    /*
+                    $this.bind('mousemove', function(e){
+                        var center_x = $thumb.offset().left + $thumb.width() / 2;
+                        var center_y = $thumb.offset().top + $thumb.height() / 2;
+                        var tween_x = e.pageX - center_x;
+                        var tween_y = e.pageY - center_y;
+
+                        TweenMax.to($img, 1.3, {
+                          x: tween_x / 10,
+                          y: tween_y / 10,
+                          ease: Power3.easeOut
+                        });
+                    });*/
+
+                },
+                mouseleave: function(){
+
+                    TweenMax.to($thumb, .3, {
+                        autoAlpha: 0,
+                        ease: Power0.easeNone
+                    });
+
+                    $this.unbind('mousemove');
+
+                }
+            });
+        });
+
+    }
+
+});

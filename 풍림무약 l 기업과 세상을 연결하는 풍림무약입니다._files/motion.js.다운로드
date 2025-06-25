@@ -1,0 +1,276 @@
+/*
+ * File       : js/motion.js
+ * Author     : STUDIO-JT (Sumi)
+ * Guideline  : JTstyle.1.0
+ *
+ * SUMMARY:
+ * 1) Global Variable
+ * 2) JT Default Functions INIT
+ * 3) Other Functions INIT
+ * 4) ON LOAD
+ * 5) ON RESIZE
+ * 6) JT Default Functions
+ * 7) Other Functions
+ */
+
+
+
+jQuery(function($) {
+
+
+
+//card_motion();
+//jt_draw_line();
+parallax_motion();
+JT.ui.add( split_text_motion, true );
+JT.ui.add( contents_motion, true );
+map_motion();
+
+
+/* **************************************** *
+ * JT Functions
+ * **************************************** */
+function card_motion(){
+
+    $('.card-motion').each(function(){
+        var $this = $(this);
+
+        gsap.to($this,{
+            scrollTrigger: {
+                trigger: $this,
+                start: "top 80%",
+                onEnter: function(){
+                    $this.addClass('animate');
+                }
+            }
+        });
+
+    });
+}
+
+
+
+function jt_draw_line(){
+
+	$('.jt-draw-line svg').each(function() {
+
+		var $svg = $(this);
+		var $paths = $svg.find('path');
+		var tl = new TimelineLite({paused:true});
+
+		gsap.set($paths,{drawSVG:"0%"});
+		tl.staggerTo($paths, 2, {drawSVG:"100%", ease: Power3.easeOut}, .2);
+
+		gsap.to($svg,{
+            scrollTrigger: {
+                trigger: $svg,
+                start: "top 90%",
+                onEnter: function(){
+                    tl.play();
+                }
+            }
+        });
+
+	});
+
+}
+
+
+
+function parallax_motion(){
+
+	$('.parallax-motion-y').each(function(){
+
+		var $this = $(this);
+		var bottomTop = $this.attr('data-bottom-top');
+		var topBottom = $this.attr('data-top-bottom');
+
+		gsap.fromTo($this,{
+			y: bottomTop
+		},{
+			y: topBottom,
+			ease: "none",
+			scrollTrigger : {
+				trigger : $this,
+				scrub : true
+			}
+		});
+
+	})
+
+    $('.parallax-motion-x').each(function(){
+
+		var $this = $(this);
+		var bottomTop = $this.attr('data-bottom-top');
+		var topBottom = $this.attr('data-top-bottom');
+
+		gsap.fromTo($this,{
+			x: bottomTop
+		},{
+			x: topBottom,
+			ease: "none",
+			scrollTrigger : {
+				trigger : $this,
+				scrub : true
+			}
+		});
+
+	})
+
+}
+
+
+
+function split_text_motion(){
+
+    if( !$('.split-text-motion').length ) { return; }
+
+    $('.split-text-motion').each(function(){
+
+        var $element = $(this)
+
+        TweenMax.to($element,0.3,{autoAlpha : 0,onComplete :function(){
+            $element.css('will-change','transform');
+            TweenMax.fromTo($element, 1.2, {autoAlpha:1,ease: Power3.easeOut,delay: 0}, { autoAlpha:1,delay: 0,onComplete :function(){
+                $element.css('will-change','inherit');
+            }});
+        }});
+
+
+        var childSplit = new SplitText($element, {
+          type: "lines",
+          linesClass: "split-child"
+        });
+        var parentSplit = new SplitText($element, {
+          type: "lines",
+          linesClass: "split-parent"
+        });
+
+        gsap.from(childSplit.lines, {
+          duration: 2,
+          yPercent: 100,
+          ease: "power4",
+          stagger: 0.1,
+          delay: 0,
+            scrollTrigger : {
+                trigger : $element,
+                start : 'top 90%',
+            }
+        });
+
+    });
+
+}
+
+
+
+function contents_motion(){
+
+    //if($('html').hasClass('mobile')) { return; }
+    if( !$('.contents-motion').length ) { return; }
+
+    $('.contents-motion').each(function(){
+        var $this = $(this),
+             $item = $this.find('.contents-motion__item')
+
+        gsap.to($this,{
+            scrollTrigger: {
+                trigger: $this,
+                start: "top 90%",
+                onEnter: function(){
+                    $this.addClass('contents-motion--active');
+                    /*setTimeout(function(){
+						$this.addClass('contents-motion--complete');
+                    },1500)*/
+                }
+            }
+        });
+
+    });
+
+}
+
+
+    function map_motion(){
+
+        if( !$('.biz-map__section').length ) { return; }
+
+        tl = new TimelineMax({repeat:-1});
+        timeLine = new TimelineLite();
+        //tm = new TweenMax({repeat:-1});
+        //var $elements = $('.biz-map__pin-item');
+        var $elements = $('.biz-map__pin-item');
+
+        //gsap.set($elements, {autoAlpha:0});
+
+        $elements.each(function(){
+        	var $this = $(this),
+        	    $name = $this.find('.biz-map__pin-name-wrap'),
+        	    $dot = $this.find('.biz-map__dot'),
+        	    $dot_i = $this.find('.biz-map__dot > i:last-child'),
+                //offset = $this.offset().left
+                pin_name_w = $('.biz-map__pin-name-list').outerWidth()
+
+            // append wrap
+            $name.find('.biz-map__pin-name-list p').wrapAll('<div class="biz-map__pin-name-list-inner"></div>');
+
+            if($this.hasClass('biz-map__pin-ngk-nissan')){
+                $name.find('.biz-map__pin-name-list-inner').width( $name.find('.biz-map__pin-name-list').width() );
+            }
+
+            tl.to($this, 0.6, {autoAlpha:1, ease:Back.easeOut,
+                onStart:function(){
+                    var position = $this.position().left + ($this.outerWidth() /2) - 120
+                    $('.biz-map__content').animate({ scrollLeft : position }, 600);
+                    TweenMax.staggerFromTo($dot_i, 0.4, {autoAlpha:1, scale:0}, {autoAlpha:1, scale:1, ease:Back.easeOut}) //, stagger:0.1
+                    TweenMax.fromTo($name, {
+                        autoAlpha: 0
+                    }, {
+                        autoAlpha: 1,
+                        onComplete: function(){
+                            $name.find('.biz-map__pin-name-list-inner').removeAttr('style');
+                            if($this.hasClass('biz-map__pin-ngk-nissan')){
+                                $name.find('.biz-map__pin-name-list-inner').width( $name.find('.biz-map__pin-name-list').width() );
+                            }
+                        }
+                    });
+                    TweenMax.fromTo($dot.find('>span'), {height:0}, {height:30})
+                    TweenMax.fromTo($name.find('.biz-map__pin-name-list'), {width: '0%'}, {width: '100%'})
+                }
+            });
+            tl.to($this, 0.6, {autoAlpha:1, ease:Back.easeOut,
+                onStart:function(){
+                    TweenMax.to($dot_i, 0.4, {autoAlpha:0, scale:0})
+                    TweenMax.to($name, {autoAlpha:0});
+                    TweenMax.to($dot.find('>span'), {height:0})
+                    TweenMax.to($name.find('.biz-map__pin-name-list'), {width: '0%'})
+                }
+            }, "+=1")
+        });
+
+        //tl.to('.biz-map__pin-item', {autoAlpha:1}, "+=1")
+
+        /*
+        tl.staggerFromTo('.biz-map__dot > i', 0.6, {autoAlpha:0, scale:0}, {autoAlpha:1, scale:1, ease:Back.easeOut}, 0.1)
+        //timeLine.staggerFromTo('.biz-map__dot > i:nth-child(3)', 0.8, {autoAlpha:0, scale:0}, {autoAlpha:1, scale:1, ease:Back.easeOut})
+
+        TweenMax.fromTo('.biz-map__pin-name-wrap > i', {height:0}, {height:30, repeat: -1})
+        TweenMax.fromTo('.biz-map__pin-name', {width:0}, {width:'100%', repeat: -1},0.5)
+        */
+
+        /*
+        tl.to(".highflier__icon-bulb", {duration: .2, autoAlpha:1,
+            onStart:function(){
+            }
+        })
+        .to(".highflier__icon-bulb", {autoAlpha:0}, "+=3")
+        .to(".highflier__icon-snowflake", {duration: 0.6, autoAlpha:1})
+        .to(".highflier__icon-snowflake", {autoAlpha:0}, "+=3")
+        .to(".highflier__icon-diamond", {duration: .2, autoAlpha:1,
+            onStart:function(){
+            }
+        })
+        .to(".highflier__icon-diamond", {autoAlpha:0}, "+=4")*/
+    }
+
+}); // End jQuery

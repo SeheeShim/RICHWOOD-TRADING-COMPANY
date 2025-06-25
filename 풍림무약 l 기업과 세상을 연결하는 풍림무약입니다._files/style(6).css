@@ -1,0 +1,438 @@
+@charset "utf-8";
+
+/*
+ * File       : modules/product/style.css
+ * Author     : STUDIO-JT (Sumi)
+ * Guideline  : JTstyle.1.1
+ *
+ * Dependency : css/reset.css
+ *              css/jt-strap.css
+ *
+ * SUMMARY:
+ * 1) PHARM SEARCH LIST
+ * 2) PHARM SEARCH SINGLE
+ */
+
+
+
+/* **************************************** *
+ * PHARM SEARCH LIST
+ * **************************************** */
+.article-pharmaceutical-search .article-header__title {text-align:center;}
+
+.search-filter__consonant {padding: 48rem 50rem 40rem;font-size: 0;border-top: 1rem solid #ddd;}
+
+.search-filter__consonant-title {width: 120rem;font-size:32rem;line-height: 1.58;font-weight:700;letter-spacing:-0.02em;display:inline-block;vertical-align: middle;}
+.search-filter__consonant-title-small {display: none;}
+
+.search-filter__detail-keyword-tab-wrap {display: inline-block;vertical-align: middle;width: -webkit-calc(100% - 180rem);width: calc(100% - 180rem);margin-left: 60rem;}
+.search-filter__detail-keyword-tab-item {display: inline-block;vertical-align: middle;width: auto;padding-right: 66rem;}
+.search-filter__detail-keyword-tab-item:last-child {padding-right: 0;}
+.search-filter__detail-keyword-tab-item a {font-size: 32rem;line-height: 1.5;font-weight: 700;color: #bbb;letter-spacing: -0.02em;-webkit-transition: color .3s;transition: color .3s;}
+.search-filter__detail-keyword-tab-item.search-filter__detail-keyword-tab-item--active a {color:#000}
+html.desktop .search-filter__detail-keyword-tab-item a:hover {color:#000;}
+
+.search-filter__detail {margin-top:100rem; margin-bottom:60rem;}
+.search-filter__detail-tab {font-size:0; text-align:center;}
+.search-filter__detail-tab-item {display:inline-block;text-align:center;position: relative;}
+.search-filter__detail-tab-item + .search-filter__detail-tab-item {margin-left:70rem;}
+.search-filter__detail-tab-item a {display:block;}
+.search-filter__detail-tab-item figure {width:160rem; height:160rem;position:relative;}
+.search-filter__detail-tab-item figure img { position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); width: 100%; height:100%;}
+.search-filter__detail-tab-item figure.search-filter__icon {}
+.search-filter__detail-tab-item figure.search-filter__icon--active {opacity:0;visibility:hidden;position: absolute;top: 0;-webkit-transition: opacity .3s, visibility .3s;transition: opacity .3s, visibility .3s;}
+html.desktop .search-filter__detail-tab-item a:hover figure.search-filter__icon--active {opacity:1; visibility:visible;}
+html.desktop .search-filter__detail-tab-item a:hover p{color:#000;}
+.search-filter__detail-tab-item p {margin-top:20rem; font-size:20rem; line-height:1; font-weight:700; color:#999;-webkit-transition: color .3s; transition: color .3s;}
+.search-filter__detail-tab .search-filter__tab--active p {color:#000;}
+.search-filter__detail-tab .search-filter__tab--active figure.search-filter__icon {opacity:0; visibility:hidden;}
+.search-filter__detail-tab .search-filter__tab--active figure.search-filter__icon--active {opacity:1; visibility:visible;}
+.search-filter__detail-list { margin-top:60rem; background:#f9f9f9; border-radius:20rem; padding:60rem;}
+.search-filter__detail-list ul {margin:-12rem -15rem;font-size: 0;}
+.search-filter__detail-list li {display: inline-block;vertical-align: top;font-size: 16rem;line-height: 1.4;letter-spacing: -0.03em;font-weight: 400;width: -webkit-calc(20% - 30rem);width: calc(20% - 30rem);margin: 11rem 15rem;}
+.search-filter__detail-list li a {color:#666; -webkit-transition: color .3s; transition: color .3s;}
+.search-filter__detail-list li b {  font-size:13rem;margin-top: -4rem;margin-left: 5rem;vertical-align:middle;display: inline-block;}
+.search-filter__detail-list li.search-filter__detail-item--active a {color:#000; font-weight:700;}
+html.desktop .search-filter__detail-list li a:hover {color:#000;}
+.search-filter__detail .content-tabs__select {display: none;opacity: 0;}
+
+.pharmaceutical-search .jt-pagination {margin-bottom:160rem;}
+.pharmaceutical-search .search-nodata {padding-top:60rem;}
+.pharmaceutical-search .search-filter__wrap + .search-nodata { padding-top:120rem;}
+.prd-search__list-wrap {margin-top:82rem;}
+.prd-search__list-total {margin-bottom:20rem;font-size:16rem;line-height: 1.8;color:#666;font-weight:500;letter-spacing:-0.03em;}
+.prd-search__list-total span {color:#000;}
+.prd-search__list {margin:-40rem -16rem; font-size:0;}
+.prd-search__item {display:inline-block; vertical-align:top; width:-webkit-calc(25% - 32rem); width:calc(25% - 32rem); margin:40rem 16rem;}
+.prd-search__item figure {padding-top:54.5%;}
+.prd-search__item-info {font-size:0; margin-top:15rem; display:-webkit-box;display:-webkit-flex;display:-ms-flexbox; display:flex;}
+.prd-search__item-info li {margin-top:5rem; margin-right:8rem; padding-right:8rem; font-size:14rem; line-height:1.35; letter-spacing:-0.03em; color:#888; display:inline-block; vertical-align:middle; position:relative;}
+.prd-search__item-info li:before {width:1rem; height:14rem; background:#ddd; content:''; display:block; position:absolute; right:0; top:50%; margin-top:-6rem;}
+.prd-search__item-info li:last-child {padding-right:0; margin-right:0; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}
+.prd-search__item-info li:last-child:before {display:none;}
+.prd-search__item-title {margin-top:5rem;font-size:22rem;line-height: 1.6;font-weight:500; word-break: break-all;}
+.pharmaceutical-search .search-nodata__wrap {margin-top:82rem;}
+.ie11 .prd-search__item-info li:before {margin-top: -6rem;}
+
+
+
+ /* **************************************** *
+ * PHARM SEARCH SINGLE
+ * **************************************** */
+.pharm-prd-single__header {background:#f9f9f9;}
+.pharm-prd-single__header-inner {width:100%;padding: 140rem 0 174rem;font-size: 0;}
+.pharm-prd-single__slider, .pharm-prd-single__no-img {width: 492rem;display: inline-block;vertical-align: top;padding-bottom:126rem;padding-top: 53rem;}
+.pharm-prd-single__slider .swiper-slide { text-align:center;}
+.pharm-prd-single__slider .swiper-slide img {max-width:100%; margin:0 auto; display:block;}
+.pharm-prd-single__no-img img {max-width:100%; margin:0 auto; display:block;}
+.pharm-prd-single__info-wrap {display: inline-block;vertical-align: top;width: -webkit-calc(100% - 752rem);width: calc(100% - 752rem);margin-left: 162rem;}
+.pharm-prd-single__category {font-size:0}
+.pharm-prd-single__category li {display:inline-block;vertical-align:middle;font-size:16rem;line-height: 1.8;letter-spacing:-0.03em;font-weight:700;}
+.pharm-prd-single__category li:first-child {color:#999;}
+.pharm-prd-single__category li + li {position:relative;padding-left: 15rem;margin-left: 7rem;}
+.pharm-prd-single__category li + li:before {content: "\e90c"; font-family: jt-font; font-size:10rem; font-weight:normal; color:#999; position:absolute; left:0; top:-webkit-calc(50% + 1rem); top:calc(50% + 1rem); -webkit-transform:translateY(-50%); -ms-transform:translateY(-50%); transform:translateY(-50%);}
+.pharm-prd-single__title {margin-top:15rem;font-size:48rem;line-height:1.25;letter-spacing:-0.03em;font-weight:700;word-break: break-all;}
+.pharm-prd-single__info {margin-top:35rem;}
+.pharm-prd-single__info li { font-size:18rem; line-height:1.7; letter-spacing:-0.03em;}
+.pharm-prd-single__info li + li {margin-top:20rem;}
+.pharm-prd-single__info li b {width: 107rem;font-weight:700;display:inline-block;vertical-align:middle;margin-top: -3rem;}
+.pharm-prd-single__info li span {font-weight:400;display:inline-block;vertical-align: top;width: -webkit-calc(100% - 107rem);width: calc(100% - 107rem);color: #666;}
+.pharm-prd-single__link {margin-top:60rem;max-width: 493rem;}
+.pharm-prd-single__link a {width:100%; padding-top:24rem; padding-bottom:24rem;}
+.pharm-prd-single__link a > span {display: inline-block;padding-right:20rem;position:relative; letter-spacing:-0.03em;}
+.pharm-prd-single__link a > span:after {font-family:'jt-font'; content:'\e905'; font-size:10rem; position:absolute; top:-webkit-calc(50% + 1rem); top:calc(50% + 1rem); right:0; -webkit-transform:translateY(-50%); -ms-transform:translateY(-50%); transform:translateY(-50%);}
+html.desktop .pharm-prd-single__link a:hover {border-radius:40rem;}
+.pharm-prd-single__slider .swiper-pagination {bottom: -125rem;}
+.pharm-prd-single__slider .swiper-pagination .swiper-pagination-bullet {width:7rem;height:7rem;background:#ddd;opacity:1;margin: 0 12rem; -webkit-transition: background .3s; transition: background .3s;}
+.pharm-prd-single__slider .swiper-pagination .swiper-pagination-bullet-active {background:#000;}
+html.ios .pharm-prd-single__category li + li {margin-top:-1rem;}
+html.ios .pharm-prd-single__link a {padding-top: 23rem; padding-bottom: 25rem;}
+html.android .pharm-prd-single__link a {padding-top: 23rem; padding-bottom: 25rem;}
+
+.pharm-prd-single__content {padding: 100rem 0 200rem;}
+.pharm-prd-single__content-inner {max-width:754rem; margin:0 auto;}
+.edit-content > *:first-child {margin-top:0;}
+.edit-content h1, .edit-content h2, .edit-content h3, .edit-content h4, .edit-content h5, .edit-content h6 {font-weight:700; line-height:1.36; letter-spacing:-0.03em;margin-bottom: 15rem; margin-top: 20rem;}
+.edit-content h1, .edit-content h2 { margin-top:100rem; margin-bottom:40rem; font-size:28rem; }
+.edit-content h3 { margin-top:40rem; font-size:24rem; font-weight:700; }
+.edit-content h4 { margin-top:40rem; font-size:22rem; font-weight:700; }
+.edit-content h5 { margin-top:40rem; font-size:20rem; font-weight:700; }
+.edit-content h6 { margin-top:40rem; font-size:18rem; font-weight:700; }
+.edit-content p { margin-top:15rem; font-size:18rem; line-height:1.7; letter-spacing:-0.03em; color:#666;}
+.edit-content img {max-width: 100%; height: auto; display:block;}
+.edit-content strong {font-weight:bold; color:#000;}
+.edit-content sup {vertical-align: super;color: #666; font-size: 13rem;}
+.edit-content ul {margin-top:50rem; margin-bottom:60rem; margin-left:58rem;}
+.edit-content ul > li {font-size:18rem; line-height:1.6; padding-left:13rem; position:relative; color:#666;}
+.edit-content ul > li:before {width:5rem; height:5rem; background:#ccc; border-radius:50%; position:absolute; left:0; top:11rem; content:''; display:block;}
+.edit-content ul > li + li {margin-top:12rem;}
+.edit-content ol {margin-top:50rem;counter-reset: item;}
+.edit-content ol > li {padding-left:36rem; font-size:18rem; line-height:1.7; color:#666; counter-increment: item; position:relative; }
+.edit-content ol > li + li {margin-top:14rem;}
+.edit-content ol > li:before {width:26rem;height:26rem;line-height:26rem;text-align:center;border-radius:50%;background:#ccc;font-family: 'Montserrat','NotoSansKR',sans-serif;font-size:14rem;font-weight:700;color:#fff; content: counter(item);display: block;position: absolute;top: 2rem;left: 0;}
+.edit-content table {position:relative;display:table; margin-top:30rem; margin-bottom:30rem; border-top:3rem solid #000;width: 100%; word-break: break-all;}
+.edit-content table:after {width:1rem;height:100%;background:#fff;content:'';display:block;position: absolute;right: 0px;top: 0rem;}
+.edit-content table th {font-size:18rem;line-height:1.7;font-weight:500;text-align:center;border-bottom: 1rem solid #ddd;border-right: 1rem solid #ddd;padding: 34rem 10rem; vertical-align:middle; }
+.edit-content table th:last-child {border-right: none;}
+.edit-content table td {border-right: 1rem solid #ddd;border-bottom: 1rem solid #ddd;padding: 25rem;font-size: 18rem;line-height: 1.6;letter-spacing: -0.03em;color: #666;vertical-align: middle;}
+.edit-content table td:last-child {/*border-right: none;*/}
+.edit-content .spidochescaler-container {margin-top:30rem; margin-bottom:30rem;}
+html.ios .edit-content ul > li:before {top:10rem;}
+
+/*.pharm-prd-single__detail {max-height:1700rem; overflow:hidden; transition: max-height 0.5s ease-in-out; -moz-transition: max-height 0.5s ease-in-out; -webkit-transition: max-height 0.5s ease-in-out;}*/
+.pharm-prd-single__detail-view {border:none;background:none;text-align:center;font-size:18rem;line-height:1.7;letter-spacing:-0.03em;font-weight:700;cursor:pointer;padding: 30rem 0;width: 100%;position:relative;margin-top: 30rem;}
+.pharm-prd-single__detail-view:before {width:100%;height: 100rem;background: -webkit-gradient(linear, left bottom, left top, color-stop(50%, #fff), to(rgba(255, 255, 255, 0)));background: -webkit-linear-gradient(bottom, #fff 50%, rgba(255, 255, 255, 0) 100%);background: linear-gradient(0deg, #fff 50%, rgba(255, 255, 255, 0) 100%);content:'';display:block;position: absolute;left: 0;top: -80rem;z-index:10;}
+.pharm-prd-single__detail-view span {position:relative;padding-right: 18rem;display:inline-block;}
+.pharm-prd-single__detail-view span:after {font-family:'jt-font';content: '\e961';position:absolute;right:0;top:50%;margin-top: -5rem;font-size:10rem;font-weight: bold;line-height: 1; -webkit-transition: transform .3s;    -webkit-transition: -webkit-transform .3s; transition: -webkit-transform .3s;    transition: transform .3s;    transition: transform .3s, -webkit-transform .3s;}
+.pharm-prd-single__detail-view.active span:after { -webkit-transform: rotate( -180deg ); -ms-transform: rotate(-180deg); transform: rotate( -180deg );}
+.pharm-prd-single__detail-view.active:before {display:none;}
+
+.pharm-prd-single__caution {margin-top: 120rem;}
+.pharm-prd-single__caution .jt-accordion__item { border-bottom:none;}
+.pharm-prd-single__caution .jt-accordion__title { border-top:1rem solid #000; border-bottom:1rem solid #ddd; padding:35rem 40rem; }
+.pharm-prd-single__caution .jt-accordion__title h2 {font-size: 28rem;font-weight:700;line-height: 1.23;letter-spacing:-0.03em;}
+.pharm-prd-single__caution .jt-accordion__control {position: absolute;right: 39rem;margin-top:0;top: 50%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%);}
+.pharm-prd-single__caution .jt-accordion__control:before { content:'\e900';  font-size:19rem;}
+.pharm-prd-single__caution .jt-accordion--active .jt-accordion__control:before { content:'\e904'; font-size:19rem;-webkit-transform:none; -ms-transform:none; transform:none;}
+.pharm-prd-single__caution .jt-accordion__content {background:none; border-top:none; padding:60rem 40rem 0;}
+
+.jt-btn__go-to-list {margin-top:120rem;}
+
+/* 제품소식 */
+.pharm-prd-single__news {background:#f9f9f9;padding: 160rem 0 200rem;}
+.pharm-prd-single__news h2 {font-size: 48rem;line-height: 1.25;letter-spacing:-0.03em;font-weight: 700;}
+.pharm-prd-single__news-list {border-top:3rem solid #000;margin-top:60rem;display: table;table-layout: fixed;width: 100%;}
+.pharm-prd-single__news-item {border-bottom:1rem solid #ddd;font-size: 0;display: table;width: 100%;table-layout: fixed;}
+.pharm-prd-single__news-date {width: 262rem;display: table-cell;vertical-align: middle;}
+.pharm-prd-single__news-date time  {text-align:center;line-height: 1;display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;-webkit-flex-direction: column;-ms-flex-direction: column;flex-direction: column;}
+.pharm-prd-single__news-date time b {font-size: 56rem;font-weight: 700;line-height: 1;letter-spacing: -0.03em;display:block;color: #bbb;-webkit-transition: color .3s;transition: color .3s;-ms-flex-order: 1; -webkit-order: 1; -webkit-box-ordinal-group: 2; order: 1;}
+.pharm-prd-single__news-date time span {margin-top:6rem;font-size:15rem;line-height: 1;font-weight:500;display:block;color: #bbb;-webkit-transition: color .3s;transition: color .3s;-ms-flex-order: 2; -webkit-order: 2; -webkit-box-ordinal-group: 3; order: 2;}
+html.desktop .pharm-prd-single__news-item:hover .pharm-prd-single__news-date time b {color: #000;}
+html.desktop .pharm-prd-single__news-item:hover .pharm-prd-single__news-date time span {color: #999;}
+
+.pharm-prd-single__news-content {display: table-cell;padding: 60rem 80rem 60rem 80rem;}
+.pharm-prd-single__news-title {overflow: hidden;white-space: nowrap;}
+.pharm-prd-single__news-title h3 {font-size:26rem;line-height:1.48;letter-spacing:-0.03em;}
+.pharm-prd-single__news-title h3 span {display:block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-wrap: normal;}
+
+
+
+/* **************************************** *
+ * RWD
+ * **************************************** */
+@media (max-width: 1800px){
+
+    .search-filter__detail-keyword-tab-item {width: 7.14%;padding-right: 0;}
+
+}
+
+@media (max-width: 1600px){
+
+    .search-filter__consonant {padding-left: 30rem;padding-right: 0;}
+    .search-filter__detail-tab-item {width: -webkit-calc(16.66% - 20rem);width: calc(16.66% - 20rem);}
+    .search-filter__detail-tab-item figure {width: 140rem;height: 140rem;}
+    .search-filter__detail-tab-item figure.search-filter__icon {margin: 0 auto;}
+    .search-filter__detail-tab-item figure.search-filter__icon--active {left: 50%;margin-left: -70rem;}
+    .search-filter__detail-tab-item + .search-filter__detail-tab-item {margin-left: 24rem;}
+
+}
+
+@media (max-width: 1480px){
+
+    .search-filter__detail-tab-item figure {width: 116rem;height: 116rem;}
+    .search-filter__detail-tab-item figure.search-filter__icon--active {margin-left: -58rem;}
+    .search-filter__detail-list {margin-top: 55rem;padding: 50rem;}
+
+}
+
+@media (max-width: 1023px){
+
+    .pharmaceutical-search .jt-pagination {margin-bottom: 135rem;}
+
+    .search-filter__consonant {padding-bottom: 22rem;padding-left: 0;}
+    .search-filter__consonant-title {display: block;width: auto;margin-bottom: 20rem;font-size: 28rem;}
+    .search-filter__consonant-title-large {display: none;}
+    .search-filter__consonant-title-small {display: block;}
+    .search-filter__detail-keyword-tab-wrap {display: block;width: 100%;margin-left: 0;}
+    .search-filter__detail-keyword-tab-item {text-align: center;}
+    .search-filter__detail-keyword-tab-item a {font-size: 26rem;}
+
+    .search-filter__detail-tab-item figure {width: 90rem;height: 90rem;}
+    .search-filter__detail-tab-item figure.search-filter__icon--active {margin-left: -45rem;}
+    .search-filter__detail-tab-item p {font-size: 17rem;}
+
+    .search-filter__detail-list {padding: 35rem 44rem;}
+    .search-filter__detail-list ul {margin: -10rem -12rem;}
+    .search-filter__detail-list li {width: -webkit-calc(25% - 24rem);width: calc(25% - 24rem);margin: 10rem 12rem;}
+
+    .prd-search__list-wrap {margin-top: 110rem;}
+    .prd-search__list {margin: -35rem -10rem;}
+    .prd-search__item {width: -webkit-calc(33.33% - 20rem);width: calc(33.33% - 20rem);margin: 35rem 10rem;}
+    .prd-search__item-title {font-size: 18rem;}
+    .pharmaceutical-search .search-nodata__wrap {margin-top:110rem;}
+
+    /* single */
+    .pharm-prd-single__header-inner {padding-top: 120rem; padding-bottom: 120rem;}
+    .pharm-prd-single__slider, .pharm-prd-single__no-img {width: 390rem;padding-bottom: 80px;padding-top: 0;}
+    .pharm-prd-single__slider .swiper-pagination { bottom: -30px; margin-bottom:30rem;}
+    .pharm-prd-single__info-wrap {width: -webkit-calc(100% - 470rem);width: calc(100% - 470rem);margin-left: 80rem;}
+    .pharm-prd-single__title {font-size:42rem;}
+    .pharm-prd-single__info li b {width:90rem;}
+    .pharm-prd-single__info li span {width:-webkit-calc(100% - 90rem);width:calc(100% - 90rem)}
+
+    .pharm-prd-single__content { padding-bottom:160rem;}
+    .edit-content h2 {font-size:26rem; margin-bottom: 30rem; margin-top: 80rem;}
+    .edit-content ul { margin-top: 40rem; margin-bottom: 50rem; margin-left: 40rem;}
+
+    .pharm-prd-single__caution { margin-top: 100rem;}
+    .pharm-prd-single__caution .jt-accordion__title h2 {font-size:26rem;}
+    .pharm-prd-single__caution .jt-accordion__content {padding-top:40rem;}
+
+    .jt-btn__go-to-list { margin-top: 100rem;}
+
+    .pharm-prd-single__news {padding: 140rem 0 160rem;}
+    .pharm-prd-single__news h2 {font-size:42rem;}
+    .pharm-prd-single__news-date { width: 20%;}
+    .pharm-prd-single__news-date time b { font-size: 52rem;}
+    .pharm-prd-single__news-list {margin-top:50rem;}
+    .pharm-prd-single__news-content { padding: 50rem 60rem 50rem 20rem;}
+    .pharm-prd-single__news-title h3 {font-size:22rem;}
+
+}
+
+
+@media (max-width: 860px){
+
+    .pharmaceutical-search .jt-pagination {margin-bottom: 100rem;}
+    .pharmaceutical-search .search-nodata {padding-top:60rem;}
+
+    .search-filter__consonant {margin-top: 50rem; border-color:#eee;}
+    .search-filter__consonant-title {font-size: 25rem;}
+    .search-filter__detail-keyword-tab-item a {display: block;font-size: 23rem;}
+    .search-filter__detail {margin-top: 60rem;margin-bottom: 45rem;}
+    .search-filter__detail-tab-item {width: 16.66%;}
+    .search-filter__detail-tab-item + .search-filter__detail-tab-item {margin-left: 0;}
+    .search-filter__detail-tab-item figure {width: 62rem;height: 62rem;}
+    .search-filter__detail-tab-item figure.search-filter__icon--active {margin-left: -31rem;}
+    .search-filter__detail-tab-item p {margin-top: 16rem;font-size: 15rem;}
+    .search-filter__detail-list {margin-top: 40rem;padding: 32rem;}
+    .search-filter__detail-list ul {margin: -10rem;}
+    .search-filter__detail-list li {width: -webkit-calc(25% - 20rem);width: calc(25% - 20rem);margin: 10rem;font-size: 14rem;}
+
+    .prd-search__list-wrap {margin-top: 80rem;}
+    .prd-search__list-total {font-size: 15rem;}
+    .prd-search__item-title {font-size: 16rem;}
+    .pharmaceutical-search .search-nodata__wrap {margin-top:80rem;}
+
+    .prd-search__list {margin: -28rem -10rem;}
+    .prd-search__item {margin: 28rem 10rem;}
+    html.ios .prd-search__item-info li:before {margin-top:-8rem;}
+
+    /* single */
+    .pharm-prd-single__header-inner {padding-top: 100rem; padding-bottom: 100rem;}
+    .pharm-prd-single__slider, .pharm-prd-single__no-img {width:100%; padding-bottom: 60rem; padding-top: 0; display:block;}
+    .pharm-prd-single__slider .swiper-slide img {margin:0 auto;}
+    .pharm-prd-single__slider .swiper-pagination { bottom: -30px;}
+    .pharm-prd-single__slider .swiper-pagination .swiper-pagination-bullet {margin:0 8rem;}
+    .pharm-prd-single__info-wrap {width:100%; margin-left:0; display:block;}
+    .pharm-prd-single__title {font-size:32rem;}
+    .pharm-prd-single__info li {font-size:16rem;}
+    .pharm-prd-single__info li span {width:-webkit-calc(100% - 90rem);width:calc(100% - 90rem)}
+    .pharm-prd-single__link {max-width:inherit; width:100%; margin-top:40rem;}
+    .pharm-prd-single__category li {font-size:15rem;}
+    .pharm-prd-single__category li + li:before {top: 50%;}
+    .pharm-prd-single__link a {padding-top: 25rem; padding-bottom: 23rem;}
+    .pharm-prd-single__link a > span:after {top: -webkit-calc(50% + 1rem); top: calc(50% + 1rem);}
+    html.ios .pharm-prd-single__category li + li {margin-top:0;}
+    html.ios .pharm-prd-single__category li + li:before {top: -webkit-calc(50% - 1rem); top: calc(50% - 1rem);}
+    html.ios .pharm-prd-single__link a {padding-top:26rem; padding-bottom:23rem;}
+    html.ios .pharm-prd-single__link a > span:after {top: -webkit-calc(50% - 1rem); top: calc(50% - 1rem); }
+
+    .pharm-prd-single__content { padding: 80rem 0 120rem;}
+    .pharm-prd-single__content-inner {margin:0 30rem;}
+
+    .edit-content h2 { font-size: 22rem;margin-top:60rem;margin-bottom: 20rem;}
+    .edit-content p {font-size:17rem;}
+    .edit-content ul { margin-top: 30rem; margin-bottom: 30rem; margin-left: 30rem;}
+    .edit-content ul > li {font-size:17rem;}
+    .edit-content ul > li + li { margin-top: 8rem;}
+    .edit-content ol { margin-top: 30rem; }
+    .edit-content ol > li {font-size:17rem; padding-left:30rem;}
+    .edit-content ol > li:before { width: 22rem; height: 22rem; line-height: 22rem; font-size:13rem; top:4rem;}
+    .edit-content ol > li + li { margin-top: 8rem;}
+    .edit-content table td {font-size:17rem; padding:20rem;}
+    .edit-content sup {font-size:11rem;}
+    .edit-content .spidochescaler-container {margin-bottom:40rem;}
+    html.ios .edit-content ol > li:before {top:3rem}
+    html.ios .edit-content ul > li:before {top:9rem;}
+
+    .pharm-prd-single__caution { margin-top: 80rem;}
+    .pharm-prd-single__caution .jt-accordion__title {padding:30rem;}
+    .pharm-prd-single__caution .jt-accordion__title h2 { font-size: 22rem}
+    .pharm-prd-single__caution .jt-accordion__content {padding:30rem 30rem 0;}
+
+    .jt-btn__go-to-list {margin-top:80rem;}
+
+    .pharm-prd-single__news { padding: 100rem 0 120rem;}
+    .pharm-prd-single__news h2 {font-size:32rem;}
+    .pharm-prd-single__news-list {margin-top:40rem;}
+    .pharm-prd-single__news-item { padding:30rem 20rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column;}
+    .pharm-prd-single__news-title h3 {font-size:18rem;}
+    .pharm-prd-single__news-date {width:100%; margin-top:10rem; -ms-flex-order: 2; -webkit-order: 2; -webkit-box-ordinal-group: 3; order: 2;}
+    .pharm-prd-single__news-date time {display: block; text-align: left;}
+    .pharm-prd-single__news-date time span {font-size:14rem; display:inline-block;}
+    .pharm-prd-single__news-date time span:after {content:'.'; display:inline-block;}
+    .pharm-prd-single__news-date time b { font-size: 14rem; font-weight:500; display:inline-block; -webkit-box-ordinal-group: 3; -webkit-order: 2; -ms-flex-order: 2; order: 2;}
+    .pharm-prd-single__news-content {padding:0; -ms-flex-order: 1; -webkit-order: 1; -webkit-box-ordinal-group: 2; order: 1;}
+
+}
+
+
+
+@media (max-width: 540px){
+
+    .pharmaceutical-search .search-nodata {padding-top:20rem;}
+    .pharmaceutical-search .search-filter__wrap + .search-nodata {padding-top:80rem;}
+    .pharmaceutical-search .jt-pagination {margin-bottom: 80rem;}
+    .pharm-prd-single__slider, .pharm-prd-single__no-img {padding-bottom:40rem;}
+    .pharm-prd-single__slider .swiper-pagination {bottom:-20rem;}
+
+    .search-filter__consonant {margin-top: 42rem;padding-top: 0; padding-bottom:0; border-top: none;}
+    .search-filter__consonant-title {font-size: 18rem; margin-bottom:18rem;}
+    .search-filter__detail-keyword-tab-wrap {width: auto;margin: 0 -24rem;overflow: hidden;}
+    .search-filter__detail-keyword-tab-item {width: auto;padding: 0 5rem;}
+    .search-filter__detail-keyword-tab-item a {display: block;width: 42rem;height: 42rem;font-size: 18rem;line-height: 40rem;}
+    .search-filter__detail-keyword-tab-item:first-child {padding-left: 24rem;}
+    .search-filter__detail-keyword-tab-item:last-child {padding-right: 24rem;}
+    .search-filter__detail-keyword-tab-item.search-filter__detail-keyword-tab-item--active a {color: #fff;background: #000;border-radius: 50%;}
+    .search-filter__detail {margin-top:42rem; margin-bottom: 50rem;}
+    .search-filter__detail-tab, .search-filter__detail-list-wrap {display: none;}
+    .search-filter__detail .content-tabs__select {display: block;}
+    html.ios .search-filter__detail-keyword-tab-item a {line-height: 44rem;}
+
+    .prd-search__list-wrap {margin-top: 60rem;}
+    .prd-search__list-total {margin-bottom: 10rem; font-size:14rem;}
+    .prd-search__list {margin: -12rem -6rem;}
+    .pharmaceutical-search .search-nodata__wrap {margin-top:60rem;}
+    .prd-search__item {width: -webkit-calc(50% - 12rem);width: calc(50% - 12rem);margin: 12rem 6rem;}
+    .prd-search__item-title {margin-top: 12rem;font-size: 15rem;}
+    .prd-search__item-info {display: none;}
+    html.ios .prd-search__item-info li:before {margin-top:-8rem;}
+    /*
+    .prd-search__item-info {margin-top: 16rem;}
+    .prd-search__item-info li {font-size: 12rem;}
+    .prd-search__item-info li + li {margin-left: 6rem;padding-left: 6rem;}
+    .prd-search__item-info li + li:before {height: 12rem;}
+    */
+
+    /* single */
+    .pharm-prd-single__header-inner { padding-top: 80rem; padding-bottom: 80rem;}
+    .pharm-prd-single__category li {font-size:15rem;}
+    .pharm-prd-single__category li + li:before {top:50%;}
+    .pharm-prd-single__title {margin-top:12rem; font-size:26rem;}
+    .pharm-prd-single__info {margin-top: 30rem;}
+    .pharm-prd-single__info li b {width:75rem;}
+    .pharm-prd-single__info li {font-size:15rem;}
+    .pharm-prd-single__info li + li {margin-top: 10rem;}
+    .pharm-prd-single__info li span { width: -webkit-calc(100% - 75rem);  width: calc(100% - 75rem); margin-top:-1rem;}
+    .pharm-prd-single__link {margin-top:30rem;}
+    .pharm-prd-single__link a {font-size:16rem;}
+    html.ios .pharm-prd-single__category li + li:before {top: -webkit-calc(50% - 1rem);top: calc(50% - 1rem);}
+
+    .pharm-prd-single__content {padding-bottom:80rem;}
+
+    .edit-content h2 {font-size:18rem; margin-top:40rem; margin-bottom:15rem;}
+    .edit-content p {margin-top:10rem; font-size:16rem; line-height:1.6;}
+    .edit-content ul {margin:20rem 0 20rem 15rem;}
+    .edit-content ul > li {font-size:16rem}
+    .edit-content ul > li:before {top:10rem;}
+    .edit-content ul > li + li {margin-top: 5rem;}
+    .edit-content ol  {margin-top:20rem;}
+    .edit-content ol > li {font-size:16rem; padding-left:26rem;}
+    .edit-content ol > li:before { width: 20rem; height: 20rem; line-height: 20rem; font-size:12rem; }
+    .edit-content ol > li + li { margin-top: 8rem;}
+    .edit-content .spidochescaler-container {margin-top:30rem; margin-bottom:0;}
+    .edit-content table td {font-size:16rem; padding:10rem;}
+    .edit-content table:after {width:2rem;}
+    html.ios .edit-content ul > li:before {top:8rem;}
+    html.ios .edit-content ol > li:before {top:2rem;}
+
+    .pharm-prd-single__caution { margin-top: 60rem;}
+    .pharm-prd-single__caution .jt-accordion__title {padding:20rem;}
+    .pharm-prd-single__caution .jt-accordion__title h2 { font-size: 18rem}
+    .pharm-prd-single__caution .jt-accordion__control {right:20rem;}
+    .pharm-prd-single__caution .jt-accordion__content {padding:30rem 0 0;}
+    html.android .pharm-prd-single__caution .jt-accordion__title { padding-top:19rem; padding-bottom:21rem;}
+
+
+    .jt-btn__go-to-list {margin-top:60rem;}
+
+    .pharm-prd-single__news { padding: 80rem 0 100rem;}
+    .pharm-prd-single__news h2 {font-size:28rem;}
+    .pharm-prd-single__news-list {margin-top:30rem;}
+    .pharm-prd-single__news-item {padding:24rem 0}
+    .pharm-prd-single__news-title h3 {font-size:16rem;}
+    .pharm-prd-single__news-date time span {font-size:13rem;}
+    .pharm-prd-single__news-date time b {font-size:13rem;}
+
+}

@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+/*
+ * File       : modules/webzine/style.css
+ * Author     : STUDIO-JT (Sumi)
+ * Guideline  : JTstyle.1.1
+ *
+ * Dependency : css/reset.css
+ *              css/jt-strap.css
+ *
+ * SUMMARY:
+ * 1) JT webzine LIST
+ * 2) RWD
+ */
+
+
+
+/* **************************************** *
+ * JT webzine LIST
+ * **************************************** */
+.jt-webzine-list {position:relative; margin:-58rem -16rem;}
+.jt-webzine-list:after {content: '';display: table;clear: both;}
+
+.jt-webzine-list__item {float: left;width: -webkit-calc(33.33% - 32rem);width: calc(33.33% - 32rem);margin: 58rem 16rem;}
+.jt-webzine-list__link {display: block;position: relative;}
+.jt-webzine-list__thumb {display: block;}
+.jt-webzine-list__thumb img {display: block;width: 100%; webkit-transform: scale(1) rotate(0deg); -ms-transform: scale(1) rotate(0deg); -webkit-transform: scale(1) rotate( 0deg ); transform: scale(1) rotate( 0deg ); -webkit-transition: -webkit-transform .6s; transition: -webkit-transform .6s; transition: transform .6s; transition: transform .6s, -webkit-transform .6s; will-change:transform;}
+html.desktop .jt-webzine-list__item:hover .jt-webzine-list__thumb img{-webkit-transform: scale(1.05) rotate(0.01deg);-ms-transform: scale(1.05) rotate(0.01deg);transform: scale(1.05) rotate(0.01deg);}
+.jt-webzine-list__content {border-top:none;}
+.jt-webzine-list__title {margin-top: 32rem;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;font-size: 32rem;line-height: 1.2;font-weight: 500;color: #222;letter-spacing: -0.03em;}
+.jt-webzine-list__content time { display:block; margin-top:45rem; font-size:15rem; line-height:1; font-weight:500; color:#bbb; letter-spacing:-0.03em;}
+.jt-webzine-list__download {margin-top:50rem; margin-left:-10rem;display:inline-block; position:relative;background:none; border:none; cursor:pointer;}
+.jt-webzine-list__download:before {font-family: 'jt-font'; content:'\e907'; font-size:24rem; color:#000; padding:10rem;}
+
+/* Lazyload */
+.jt-webzine-list__thumb.jt-lazyload {padding-top: 130.1%;}
+
+
+
+/* **************************************** *
+ * RWD
+ * **************************************** */
+@media (max-width: 1480px){
+    .jt-webzine-list {margin-top:-40rem; margin-bottom:-40rem;}
+    .jt-webzine-list__item { margin-top:40rem; margin-bottom:40rem;}
+    .jt-webzine-list__content time {margin-top:40rem;}
+ }
+
+ @media (max-width: 1023px){
+    .jt-webzine-list__title {margin-top:30rem;font-size:26rem;}
+}
+
+
+@media (max-width: 860px){
+
+    .jt-webzine-list {margin:-40rem -16rem}
+    .jt-webzine-list__item { width: -webkit-calc(50% - 20rem); width: calc(50% - 32rem); margin:40rem 16rem}
+    .jt-webzine-list__title {font-size:22rem;}
+    .jt-webzine-list__content time {font-size:14rem; margin-top:20rem;}
+
+}
+
+@media (max-width: 540px){
+
+    .jt-webzine-list {margin:-30rem -7rem}
+    .jt-webzine-list__item { width: -webkit-calc(50% - 14rem); width: calc(50% - 14rem); margin:30rem 7rem}
+    .jt-webzine-list__title {margin-top:15rem;font-size:16rem;}
+    .jt-webzine-list__content time {margin-top:20rem; font-size:13rem;}
+
+}

@@ -1,0 +1,78 @@
+@charset "utf-8";
+
+/*
+ * File       : modules/recruit/style.css
+ * Author     : STUDIO-JT (Sumi)
+ * Guideline  : JTstyle.1.1
+ *
+ * Dependency : css/reset.css
+ *              css/jt-strap.css
+ *
+ * SUMMARY:
+ * 1) JT ACCORDION LIST
+ * 2) RWD
+ */
+
+
+/* **************************************** *
+* JT ACCORDION LIST
+* **************************************** */
+.article-recruit-faq .article-header {padding-bottom:116rem;}
+.article-recruit-faq .jt-accordion__title {font-size:0;}
+.article-recruit-faq .jt-accordion__num { width:6%; text-align:center; font-size:16rem; font-weight:500; line-height:1.6; letter-spacing:-0.03em; color:#bbb; display:inline-block; vertical-align:middle;}
+.article-recruit-faq .jt-accordion__questions { width: -webkit-calc(100% - 6%); width: calc(100% - 6%); margin-left:7rem; display:inline-block; vertical-align:middle;}
+.article-recruit-faq .jt-accordion__questions h3 {line-height:1.1; letter-spacing:-0.03em;}
+.article-recruit-faq .jt-accordion__content {position:relative; background:none;padding: 45rem 250rem 45rem -webkit-calc(6% + 7rem);padding: 45rem 250rem 45rem calc(6% + 7rem);}
+.article-recruit-faq .jt-accordion__content p {word-break: break-all;font-size:18rem; line-height:1.8;letter-spacing: -0.03em; color:#666;}
+.ie11 .article-recruit-faq .jt-accordion__num {padding-top: 2rem;}
+
+.article-recruit-faq .jt-accordion__download { position:absolute; right:40rem; top:50%; transform:translateY(-50%);}
+.article-recruit-faq .jt-accordion__download a {padding:13rem 46rem 14rem;}
+
+
+
+/* **************************************** *
+ * RWD
+ * **************************************** */
+@media (max-width: 1480px){
+
+    .article-recruit-faq .jt-accordion__content p {font-size:18rem;}
+    html.ios .article-recruit-faq .jt-accordion__num {margin-top:1rem;}
+    html.ios .article-recruit-faq .jt-accordion__title { padding-bottom:42rem;}
+
+ }
+
+@media (max-width: 1023px){
+
+    .article-recruit-faq .article-header {padding-bottom:90rem;}
+    .article-recruit-faq .jt-accordion__questions h3 {line-height:1.3;}
+}
+
+
+@media (max-width: 860px){
+
+    .article-recruit-faq .article-header {padding-bottom:60rem;}
+    .article-recruit-faq .jt-accordion__content {padding-top:30rem; padding-bottom:30rem; padding-right:210rem;}
+    .article-recruit-faq .jt-accordion__content p {font-size:15rem; line-height:1.6;}
+    .article-recruit-faq .jt-accordion__download a {padding:10rem 36rem;}
+
+    html.ios .article-recruit-faq .jt-accordion__num {margin-top:-1rem; }
+    html.ios .article-recruit-faq .jt-accordion__control {top: -webkit-calc(50% - 2rem); top: calc(50% - 2rem);}
+    html.ios .article-recruit-faq .jt-accordion__title {padding-bottom:26rem;}
+
+}
+
+
+@media (max-width: 540px){
+
+    .article-recruit-faq .jt-accordion__num {font-size:15rem; line-height:1.35;}
+    .article-recruit-faq .article-header {padding-bottom:65rem;}
+    .article-recruit-faq .jt-accordion__content {padding-top:25rem; padding-bottom:25rem; padding-right:calc(6% + 7rem)}
+    .article-recruit-faq .jt-accordion__content p {line-height:1.4;}
+    .article-recruit-faq .jt-accordion__download {position:static; transform:none; margin-top:20rem;}
+    .article-recruit-faq .jt-accordion__download a {padding:10rem 36rem;}
+
+    html.ios .article-recruit-faq .jt-accordion__title {padding-bottom:20rem;}
+    html.ios .article-recruit-faq .jt-accordion__download a {padding-top:10rem; padding-bottom:9rem;}
+
+}

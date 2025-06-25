@@ -1,0 +1,141 @@
+/*
+ * File       : js/project.js
+ * Author     : STUDIO-JT (Sumi, Mason)
+ * Guideline  : JTstyle.1.0
+ *
+ * SUMMARY:
+ * 1) 
+ */
+
+
+
+jQuery(function($) {
+
+    auto_scroll_after_search();
+
+    /* **************************************** *
+     * JT Functions
+     * **************************************** */
+    function auto_scroll_after_search() {
+
+        link_action();
+
+        $form = $( '.employment_form' );
+
+        if ( $form.length == 0 ) return;
+
+        function link_action() {
+
+            $( document ).on( 'click', '.employment_form .filter__detail-tab-item a, .employment_form .jt-pagination a', function ( e ) {
+                e.preventDefault();
+
+                var $this   = $( this );
+                var $form   = $this.closest('.wrap');
+                var url     = $this.attr( 'href' );
+
+                $execAjax = $.get( url );
+
+                $execAjax.done(function( res ){
+
+                    var queryString = '';
+
+                    $form.children('div').remove();
+                    if( $( res ).find('.recruitment-system').find('.recruit-content').length > 0 ) {
+                        $form.append($(res).find('.recruitment-system').find('.recruit-content'));
+                        $form.append($(res).find('.recruitment-system').find('.jt-pagination'));
+                    } else {
+                        $form.append($(res).find('.recruitment-system').find('.search-nodata'));
+                    }
+
+                    JT.ui.call('contents_motion');
+					JT.ui.call('recruit_alert');
+
+                    window.history.pushState( '', '', url );
+
+                    queryString = getUrlParameter('cate');
+
+                    $('a:contains(' + queryString + ')').closest('li').addClass('active');
+                    $('a:contains(' + queryString + ')').closest('li').siblings().removeClass('active');
+
+                    $( 'html, body' ).animate( { scrollTop: $form.offset().top -100 } );
+
+                });
+            });
+/*
+            var $form = $( '.employment_form' );
+            
+            $( '.employment_form .filter__detail-tab-item a' ).on( 'click', function () {
+                
+                var $this   = $( this );
+                var $form   = $this.closest( '.employment_form' );
+                var url     = $this.attr( 'href' );
+            
+                $.get( url, function ( res ) {
+
+                    $form.html( $( res ).find( '.employment_form' ).children() );
+
+                    JT.ui.init();
+                    link_action();
+
+                    $( 'html, body' ).animate( { scrollTop: $form.find('.recruitment-system.recruit-section').offset().top - 100 } );
+
+                    window.history.pushState( '', '', url );
+
+                } );
+
+                return false;
+
+            } );
+*/
+            /*
+            $( '.employment_form .jt-pagination a' ).on( 'click', function () {
+
+                var $this   = $( this );
+                var $form   = $this.closest( '.employment_form' );
+                var url     = $this.attr( 'href' );
+
+                $.get( url, function ( res ) {
+
+                    $form.html( $( res ).find( '.employment_form' ).children() );
+
+                    JT.ui.init();
+                    link_action();
+
+                    $( 'html, body' ).animate( { scrollTop: $form.offset().top - 100 } );
+
+                    window.history.pushState( '', '', url );
+
+                } );
+
+                return false;
+
+
+            } );*/
+
+        }
+        
+    }
+
+    function getUrlParameter(sParam) {
+
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if( sParameterName[0] == '') {
+                return '전체';
+            }
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? '1' : sParameterName[1];
+            }
+
+        }
+    };
+
+});

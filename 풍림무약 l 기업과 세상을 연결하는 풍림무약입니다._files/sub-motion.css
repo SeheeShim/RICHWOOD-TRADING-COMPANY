@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+/*
+ * File       : sub-motion.css
+ * Author     : STUDIO-JT (Sumi)
+ * Guideline  : JTstyle.1.1
+ *
+ * Dependency : css/reset.css
+ *              css/jt-strap.css
+ *
+ * SUMMARY:
+ * 1)
+ */
+
+
+/* **************************************** *
+ *  MOTION
+ * **************************************** */
+/* split text motion */
+.split-text-motion {opacity:0; visibility:hidden;}
+.split-parent { overflow: hidden;}
+.split-child {display: inline-block;}
+
+/* contents motion */
+.contents-motion, .contents-motion__item {opacity: 0; -webkit-transform: translate3d(0,40px,0); -ms-transform: translate3d(0,40px,0); transform: translate3d(0,40px,0); -webkit-transition: all 1s ease; transition: all 1s ease; will-change:transform;}
+.contents-motion--active.contents-motion, .contents-motion--active .contents-motion__item {opacity: 1; -webkit-transform: translate3d(0,0,0); -ms-transform: translate3d(0,0,0); transform: translate3d(0,0,0);}
+
+.contents-motion__item:nth-child(1) {-webkit-transition: all 1s ease .0s;	transition: all 1s ease .0s;}
+.contents-motion__item:nth-child(2) {-webkit-transition: all 1s ease .2s;	-webkit-transition:all 1s ease .1s;	transition: all 1s ease .1s;}
+.contents-motion__item:nth-child(3) {-webkit-transition: all 1s ease .4s;	-webkit-transition:all 1s ease .2s;	transition: all 1s ease .2s;}
+.contents-motion__item:nth-child(4) {-webkit-transition: all 1s ease .6s;	-webkit-transition:all 1s ease .3s;	transition: all 1s ease .3s;}
+.contents-motion__item:nth-child(5) {-webkit-transition: all 1s ease .8s;	-webkit-transition:all 1s ease .4s;	transition: all 1s ease .4s;}
+.contents-motion__item:nth-child(6) {-webkit-transition: all 1s ease 1s;	-webkit-transition:all 1s ease .5s;	transition: all 1s ease .5s;}
+.contents-motion__item:nth-child(7) {-webkit-transition: all 1s ease 1.2s;	-webkit-transition:all 1s ease .6s;	transition: all 1s ease .6s;}
+.contents-motion__item:nth-child(8) {-webkit-transition: all 1s ease 1.4s;	-webkit-transition:all 1s ease .7s;	transition: all 1s ease .7s;}
+.contents-motion__item:nth-child(9) {-webkit-transition: all 1s ease 1.6s;	-webkit-transition:all 1s ease .8s;	transition: all 1s ease .8s;}
+.contents-motion__item:nth-child(10) {-webkit-transition: all 1s ease 1.8s;	-webkit-transition:all 1s ease .9s;	transition: all 1s ease .9s;}

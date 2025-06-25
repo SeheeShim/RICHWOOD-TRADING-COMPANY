@@ -1,0 +1,1426 @@
+/*
+ * File       : js/jt-strap.js
+ * Author     : STUDIO-JT (KMS)
+ * Guideline  : JTstyle.1.0
+ *
+ * SUMMARY:
+ * 1) Global Variable
+ * 2) JT Functions INIT
+ * 3) ON LOAD
+ * 4) ON RESIZE
+ * 5) JT Functions
+ */
+
+
+
+jQuery(function($) {
+
+
+
+/* **************************************** *
+ * Global Variable
+ * **************************************** */
+
+
+
+/* **************************************** *
+ * JT Functions INIT
+ * **************************************** */
+// INPUT
+//JT.ui.add( icheck_init, true );
+JT.ui.add( selectric_init, true );
+//JT.ui.add( custom_input_file, true );
+//JT.ui.add( nicescroll_init, true );
+
+// TABS COMPONENT
+JT.ui.add( jt_tabs, true );
+JT.ui.add( tab_scroll_position_init, true );
+
+// LAZYLOAD
+JT.ui.add( lazyload_init, true );
+
+// SHARE
+JT.ui.add( share_clipboard, true );
+//JT.ui.add( sns_popup_init, true );
+
+// VIDEO
+JT.ui.add( vimeo_play, true );
+JT.ui.add( youtube_play, true );
+//JT.ui.add( video_modal, true );
+//JT.ui.add( media_element_player, true );
+
+// LOADMORE
+JT.ui.add( loadmore, true );
+JT.ui.add( loadmore_back_history, true );
+
+// LIST COMPONENT
+JT.ui.add( jt_board_list_fullclick, true );
+JT.ui.add( jt_category_swip, true );
+
+// SINGLE
+JT.ui.add( media_image_popup, true );
+JT.ui.add( share_hover, true );
+
+// RWD Helper
+JT.ui.add( split_word_helper, true );
+
+// ACCORDION
+JT.ui.add( jt_accordion, true );
+
+
+
+/* **************************************** *
+ * ON LOAD
+ * **************************************** */
+$(window).on('load',function() {
+
+    // add here
+
+});
+
+
+
+/* **************************************** *
+ * ON RESIZE
+ * **************************************** */
+// INITIALIZE RESIZE
+function init_resize(){
+
+    // add here
+    JT.ui.add( media_element_player, true );
+	
+	tab_scroll_position();
+}
+
+// Init resize on reisize
+$(window).on('resize',init_resize);
+
+
+
+/* **************************************** *
+ * JT Functions
+ * **************************************** */
+/**
+ * icheck plugin init 함수
+ * checkbox와 radio 커스텀 스타일을 설정합니다.
+ * 각 사이트별 맞춤 skin css 파일을 연동합니다. (ex. minimal.css)
+ *
+ * @version 1.0.0
+ * @author STUDIO-JT (KMS)
+ * @see {@link http://icheck.fronteed.com|icheck API}
+ * @requires icheck.js
+ * @requires /icheck/*.css
+ *
+ * @example
+ * // markup sample
+ * <label class="jt-icheck__label"><input class="jt-icheck" type="checkbox" /> <span>체크박스</span></label>
+ * <label class="jt-icheck__label"><input class="jt-icheck" type="radio" /> <span>라디오</span></label>
+ */
+function icheck_init() {
+
+    $('.jt-icheck').iCheck({
+        checkboxClass: 'jt-icheck--icheckbox',
+        radioClass: 'jt-icheck--iradio'
+    });
+
+}
+
+
+
+/**
+ * selectbox custom plugin init 함수
+ * selectbox 커스텀 스타일을 설정합니다.
+ *
+ * @version 1.0.0
+ * @author STUDIO-JT (KMS)
+ * @see {@link http://selectric.js.org/|selectric API}
+ * @requires jquery.selectric.js
+ * @requires jt-strap.css
+ * @requires jt-strap-rwd.css
+ *
+ * @example
+ * markup sample
+ * <div class="jt-selectric__wrap">
+ *     <select class="jt-selectric">
+ *         <option value="op1">OP1</option>
+ *         <option value="op2">OP2</option>
+ *         <option value="op3">OP3</option>
+ *     </select>
+ * </div>
+ */
+function selectric_init() {
+
+    $('.footer__lang-selectric').selectric({
+        disableOnMobile: false,
+		nativeOnMobile: true,
+    });
+
+	// custom multiple select
+	$('.jt-selectric').each(function(){
+
+		var $this = $(this);
+
+		$this.on('selectric-init',function(event, element, selectric){
+
+			$this.closest('.selectric-wrapper').find('.selectric-scroll').niceScroll({
+				autohidemode       : false,
+				cursorborder       : "0px solid #717b84",
+				cursorcolor        : "#717b84",
+				background         : "#ddd",
+				cursorwidth        : "4px",
+				railwidth          : 4,
+				cursorborderradius : "5px",
+				zindex             : 1,
+				railoffset		   : { top: 0, left: -1, },
+				railpadding        : { top:  0, right: 0, left: 0, bottom: 1 }
+			});
+		})
+
+		$this.on('selectric-open',function(){
+			 //JT.smoothscroll.destroy();
+			 $this.closest('.selectric-wrapper').find('.selectric-scroll').getNiceScroll().resize();
+
+		})
+		$this.on('selectric-close',function(){
+			 //JT.smoothscroll.init();
+
+		})
+
+		if($('html').hasClass('desktop')){
+			$this.selectric({
+				disableOnMobile: true
+			});
+		}
+
+		/*
+		// init selectric
+		if(typeof $this.attr("multiple") != "undefined"){
+
+			$this.addClass('jt-selectric--multiple').selectric({
+				disableOnMobile: false,
+				nativeOnMobile: false,
+				labelBuilder: function(currItem) {
+					var label = '';
+					if(currItem.index === 0 ){
+						label = '<span class="jt-selectric__tag--default">' + currItem.text + '</span>';
+					}else{
+						label = '<span class="jt-selectric__tag">' + currItem.text + '</span>';
+					}
+					return label;
+				},
+				//optionsItemBuilder: function(itemData) {
+					//return itemData.value.length ? '<span class="ico ico-' + itemData.value +  '"></span>' + itemData.text : itemData.text;
+					//return itemData.value.length ? '<label class="jt-icheck__label"><input class="jt-icheck" type="checkbox" /><span>'+itemData.text+'</span></label>': itemData.text;
+				//}
+
+			});
+
+		}else{
+
+			$this.selectric({
+				disableOnMobile: true
+			});
+
+		}*/
+
+	});
+
+
+}
+
+
+
+
+/**
+ * input file custom plugin init 함수
+ * file타입 input 스타일을 설정합니다.
+ *
+ * @version 1.0.0
+ * @author STUDIO-JT (KMS)
+ * @requires jquery.customFile_jt-custom.js
+ * @requires jt-strap.css
+ * @requires jt-strap-rwd.css
+ *
+ * @example
+ * markup sample
+ * <input class="jt-form__field--customfile" type="file" />
+ */
+function custom_input_file(){
+
+    $('.jt-form__field--customfile').customFile({
+        input_class: 'jt-form__field', // input text에 추가할 class
+        input_placeholder: '선택된 파일 없음', // input text placeholder
+        // btn_class: '', // 파일찾기 버튼에 추가할 class
+        btn_text: '찾아보기', // 파일찾기 버튼에 들어갈 value
+        // remove_btn_class: '', // 삭제 버튼에 추가할 class
+        remove_btn_text: '삭제' // 삭제 버튼에 들어갈 value
+    });
+
+}
+
+
+
+/**
+ * nicescroll plugin init 함수
+ * 커스텀 스크롤바를 설정합니다.
+ *
+ * @version 1.0.0
+ * @author STUDIO-JT (KMS)
+ * @see {@link https://github.com/inuyaksa/jquery.nicescroll|nicescroll API}
+ * @requires jquery.nicescroll.js
+ *
+ * @example
+ * // markup sample
+ * <div class="jt-nicescroll">
+ *     <div class="jt-nicescroll__content"></div>
+ * </div>
+ */
+function nicescroll_init() {
+
+    $('.nicescroll_area').niceScroll({
+        autohidemode       : false,
+        cursorborder       : "0px solid #f4f5f6",
+        cursorcolor        : "#ddd",
+        background         : "#f4f5f6",
+        cursorwidth        : 12,
+        cursorborderradius : "0px",
+        railoffset		   : {top: 0, left: 0}
+    });
+
+}
+
+
+
+/**
+ * Ajax loadmore function
+ *
+ * @version 1.0.0
+ * @author STUDIO-JT (Nico)
+ */
+function loadmore(){
+
+    var is_loading = false;
+
+    $('#jt-loadmore').on('click', 'a', function(e){
+
+        e.preventDefault();
+
+        if(is_loading) return;
+
+        var $this = $(this);
+        var $loadmore = $this.parent();
+        var list_selector = $this.attr('data-loadmore-list');
+        var $list = $(list_selector);
+        var url = $this.attr('href');
+
+        is_loading = true;
+
+        $loadmore.addClass('jt-loadmore--loading');
+
+        $.get( url, function(response) {
+            var next_url = $(response).find('#jt-loadmore a').attr('href');
+            var $more_items = null;
+
+            if($list.length > 0) {
+
+                $more_items = $(response).find( list_selector + ' > *' );
+
+                // lazyload check
+				$more_items.find('.jt-lazyload').each(function(){
+                    var $this = $(this);
+                    var $img = $this.find('img');
+					$img.attr('src', $img.attr('data-unveil')).addClass('jt-lazyload--loaded');
+				});
+
+                $more_items.imagesLoaded(function() {
+                    gsap.set($more_items,{autoAlpha:0, scale:0.5});
+                    $list.append($more_items);
+                    gsap.to($more_items,.3,{autoAlpha:1, scale:1, stagger:0.1});
+                });
+
+            } else if($(response).find('.jt-isotope-list').length > 0) {
+
+                // isotope
+                $more_items = $(response).find('.jt-isotope-list__item');
+
+                // lazyload check
+				$more_items.find('.jt-lazyload--masonry').each(function(){
+                    var $this = $(this);
+                    var $img = $this.find('img');
+                    var w = $img.attr('width');
+                    var h = $img.attr('height');
+                    var padding_top = (h/w)*100;
+                    $this.css('paddingTop',padding_top+"%");
+
+					$img.attr('src', $img.attr('data-unveil')).addClass('jt-lazyload--loaded');
+				});
+
+                $('.jt-isotope-list').isotope('insert', $more_items );
+                $('.jt-isotope-list').imagesLoaded( function() {
+                    $('.jt-isotope-list').isotope('layout');
+                });
+
+            } else if($(response).find('.jt-history').length > 0) {
+
+                // history
+                $more_items = $(response).find('.jt-history__year, .jt-history__item');
+
+                // check duplication year
+                var more_items_first_year = $more_items[0].innerText;
+                var exist_items_last_year = $('.jt-history').children('.jt-history__year').last().text();
+                if(more_items_first_year === exist_items_last_year){
+                    $more_items.splice(0,1);
+                }
+
+                $more_items.imagesLoaded(function() {
+                    gsap.set($more_items,{autoAlpha:0, scale:0.5});
+                    $('.jt-history').append($more_items);
+                    gsap.to($more_items,.3,{autoAlpha:1, scale:1, stagger:0.1});
+                });
+
+            } else {
+
+                // Nothing
+
+            }
+
+            // Update URL
+            /*
+            if ('history' in window && 'pushState' in history) {
+                window.history.pushState(null, null, url);
+            }
+            */
+
+            // Remove loading class after some delay to avoid
+            setTimeout(function(){
+                $loadmore.removeClass('jt-loadmore--loading');
+            },300);
+
+            if(next_url !== undefined){
+                // Update url
+                $this.attr('href', next_url);
+
+                // Update flag
+                is_loading = false;
+            }else{
+                $('#jt-loadmore').fadeOut(500,function(){
+                    $this.remove()
+                });
+                return;
+            }
+
+        });
+
+    });
+
+}
+
+
+
+/**
+ *  loadmore 상세 back button keep position
+ *
+ * @version 1.0.0
+ * @author STUDIO-JT (Nico)
+ */
+function loadmore_back_history(){
+
+    var $container = null;
+    var history_selector = $('#jt-loadmore a').attr('data-loadmore-history');
+
+    if( history_selector != '' ) {
+
+        $container = $(history_selector);
+
+        if($container.length > 0) {
+
+            var current_url = window.location.href;
+            var cache_namespace = 'jt_loadmore_cache_'+current_url;
+            var scroll_namespace = 'jt_loadmore_scroll_'+current_url;
+            var jt_cache = '';
+            var jt_scroll_pos = null;
+
+            // 1. clear the cache If reload;
+            if (window.performance && performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+                sessionStorage.removeItem(cache_namespace);
+                sessionStorage.removeItem(scroll_namespace);
+            }
+
+            // 2. Get cache add display if exist
+            jt_cache = sessionStorage.getItem(cache_namespace);
+            jt_scroll_pos = sessionStorage.getItem(scroll_namespace);
+
+            if(jt_cache !== null && jt_scroll_pos !== null ){
+
+                $container.html(jt_cache);
+
+                // if( $container.hasClass('jt-isotope-list') ) {
+                //     $container.isotope('destroy');
+                //     JT.ui.get('jt_masonry_init');
+                // }
+
+                $('html,body').scrollTop(jt_scroll_pos);
+
+            }
+
+            // 3. Save to the cache the current list html on click to detail page
+            $container.on('click','a',function(e){
+
+    			e.preventDefault();
+
+    			var $this = $(this);
+
+    			if(!$this.parent().hasClass('jt-loadmore')){
+
+    				var href = $(this).attr('href');
+                    var current_html = $container.html();
+                    var current_scroll_pos = window.scrollY;
+
+    				sessionStorage.setItem(cache_namespace, current_html);
+                    sessionStorage.setItem(scroll_namespace, current_scroll_pos);
+
+    				window.location.href = href;
+
+    			}
+
+            });
+
+        } // END if $container.length > 0
+
+    }
+
+    // 4. Finally Every where clear cache if click outside the container (Fix over caching issue)
+    $(document).on('click','a',function(){
+
+        if( ($container != null && $(this).closest( $container.length > 0 )) || $(this).closest('#jt-loadmore').length > 0 ) { return; }
+
+        var arr = [];
+        // Because Removing element while iterating is unsafe, instead
+        // first Iterate over sessionStorage and insert the keys that meet the condition into arr
+        for (var i = 0; i < sessionStorage.length; i++){
+            if (sessionStorage.key(i).indexOf('jt_loadmore_') !== -1) {
+                arr.push(sessionStorage.key(i));
+            }
+        }
+        // then Iterate over arr and remove the items by key
+        for (var j = 0; j < arr.length; j++) {
+            sessionStorage.removeItem(arr[j]);
+        }
+
+    });
+
+}
+
+
+
+/**
+ * 게시판 리스트 fullclick action을 추가합니다
+ *
+ * @version 1.0.0
+ * @author STUDIO-JT (KMS)
+ */
+function jt_board_list_fullclick() {
+
+    if( $('html[lang=en-US] body').hasClass('page-template-trading-about') && JT.is_screen(1480) ) return
+
+    $('.js-full-click').on('click', function(e){
+
+        e.stopPropagation();
+
+		//var target = e.target;
+
+		var url = $(this).find('a:first').attr('href');
+        var target = $(this).find('a').attr('target');
+        
+		if(url != undefined){
+            if(target == '_blank'){
+                //var openNewWindow = window.open("about:blank");
+                //openNewWindow.location.href = url;
+                window.open(url,target);
+		    } else {
+		    	window.location.href = url;
+		    }
+		}
+
+    });
+
+}
+
+
+
+/**
+ * Category swip
+ *
+ * @version 1.0.0
+ * @author STUDIO-JT (KMS)
+ */
+function jt_category_swip(){
+
+    $('.jt-category').each(function(){
+
+        var $outer = $(this);
+        var $list = $(this).find('> ul');
+
+        $outer.append('<button style="display: none;" class="jt-category__button jt-category__prev"><span class="sr-only">이전</span></button>');
+        $outer.append('<button style="display: none;" class="jt-category__button jt-category__next"><span class="sr-only">다음</span></button>');
+
+        product_category_resize();
+        $(window).resize(product_category_resize);
+
+        // active check
+        if( $list.find('> li.jt-category--active').length > 0 ){
+            var current_item_pos = $list.find('> li.jt-category--active').offset().left + $list.find('> li.jt-category--active').outerWidth();
+
+            if(current_item_pos >= $outer.outerWidth()){
+                var current_pos = $list.find('> li.jt-category--active').offset().left - (($(window).width() - $outer.outerWidth()) / 2) - parseInt($outer.css('padding-left'));
+                $list.scrollLeft(current_pos);
+            }
+        }
+
+        // ScrollTo on click to the arrow
+        $outer.find('.jt-category__button').on('click', function(){
+
+            var size = '200';
+
+            if($(this).hasClass('jt-category__prev')){
+                size = '-='+size;
+            } else {
+                size = '+='+size;
+            }
+
+            $list.animate({
+                scrollLeft : size
+            },500);
+
+            return false;
+
+        });
+
+        // scroll pos check function
+    	function product_category_resize(){
+
+            var el_width = 0;
+
+            $.each($list.children(), function(){
+                el_width += parseFloat($(this).outerWidth());
+            });
+
+            if($('html').hasClass('desktop')) {
+                if(el_width > $outer.outerWidth() - parseInt($outer.css('padding-left')) - parseInt($outer.css('padding-right'))){
+                    $outer.find('.jt-category__button').show();
+                } else {
+                    $outer.find('.jt-category__button').hide();
+                }
+            }
+
+    	}
+
+    });
+
+}
+
+
+
+/**
+ * JT basic tabs component
+ *
+ * @version 1.0.1
+ * @author STUDIO-JT (Nico)
+ */
+function jt_tabs(){
+
+    var $el = $('.jt-tabs'); //.not('.jt-tabs-alpha');
+
+	$el.each(function(){
+
+		var $this = $(this);
+
+		// Hide tabs if not already hidden
+
+		$this.find('> div > div').hide();
+
+
+		// Init display the right tab
+        // TODO : DRY this stuff
+		if(location.hash != "#"){
+			if ($(location.hash).length > 0) {
+				var current_hash = 	location.hash;
+				var current_hash_index = $(current_hash).index();
+				$this.find('> div > div').hide();
+				$this.find('> div > div:eq('+current_hash_index+')').show();
+				$this.find('> ul > li:first').removeClass('jt-tabs--active');
+				$this.find('> ul > li:eq('+current_hash_index+')').addClass('jt-tabs--active');
+			} else{
+                var list_data = ['first', 'last'];
+                list_data.sort( () => Math.random() - 0.5 );
+                $this.find('> div > div:' + list_data[0] ).show();
+				$this.find('> ul > li:' + list_data[0] ).addClass('jt-tabs--active');
+                $this.find('ul > li:' + list_data[0] ).insertBefore($this.find('ul > li:' + list_data[1] ));
+                $this.find('.jt-tabs__panels > div:' + list_data[0] ).insertBefore($this.find('.jt-tabs__panels > div:' + list_data[1] ));
+			}
+		}else{
+			$this.find('> div > div:first').show();
+			$this.find('> ul > li:first').addClass('jt-tabs--active');
+		}
+
+		// Add click event
+		$this.find('> ul li').on('click',function(){
+
+            if( $(window).scrollTop() > $this.offset().top - 30 ){
+                    offset = ( $('#header').outerHeight() + 30 )
+            } else {
+                    offset = ( $('#header').outerHeight() - 35) 
+            }
+
+           var $li = $(this)
+
+		    if( $('html[lang=en-US]').length > 0 && $li.parent().hasClass('main-biz__tab')) {
+				$('html,body').animate({scrollTop: $this.offset().top - $('#header').outerHeight() - 30});
+			} else {
+				$('html,body').animate({scrollTop: $this.offset().top - offset});
+			}
+   
+            //$('html,body').animate({scrollTop: $this.offset().top - $('#header').outerHeight()});
+
+			var $that = $(this).find('a');
+			var hash = $that.attr('href');
+			$this.find('> ul li').removeClass('jt-tabs--active');
+			$that.parent().addClass('jt-tabs--active');
+
+			var target_index = $that.parent().index();
+			$this.find('> div > div').hide();
+			$this.find('> div > div:eq('+target_index+')').show();
+
+			//if($li.parent().hasClass('main-biz__tab')) {
+				//JT.ui.call( 'main_biz_slider' );
+			//}
+
+			// add hash
+			if ('history' in window && 'pushState' in history) {
+				history.pushState(null, null, hash)
+			}
+
+			return false;
+		});
+
+		// Listner hash change
+		// TODO DRY THIS CODE !!!
+		if ("onhashchange" in window) {
+			window.onhashchange = function locationHashChanged() {
+				var _current_hash = location.hash;
+				var _current_hash_index = $(_current_hash).index();
+				$this.find('> div > div').hide();
+				$this.find('> div > div:eq('+_current_hash_index+')').show();
+				$this.find('> ul > li').removeClass('jt-tabs--active');
+				$this.find('> ul > li:eq('+_current_hash_index+')').addClass('jt-tabs--active');
+			}
+		}
+
+	}); 
+
+
+	//process tab
+	if( $('.biz-process__section').length) {
+
+		$(window).on('resize', function(){
+			process_tabs();
+		});
+
+		process_tabs();
+
+		function process_tabs() {
+
+			if(JT.is_screen(1023)) {
+
+				var $this = $('.process-tabs');
+
+				// Hide tabs if not already hidden
+				$('.process-tabs__panels > div').hide();
+
+				// Init display the right tab
+				if(location.hash != "#"){
+					if ($(location.hash).length > 0) {
+						var current_hash = 	location.hash;
+						var current_hash_index = $(current_hash).index();
+						$('.process-tabs__panels > div').hide();
+						$('.process-tabs__panels > div:eq('+current_hash_index+')').show();
+						$this.find('> ul > li:first').removeClass('jt-tabs--active');
+						$this.find('> ul > li:eq('+current_hash_index+')').addClass('jt-tabs--active');
+					} else{
+						$('.process-tabs__panels > div:first').show();
+						$this.find('> ul > li:first').addClass('jt-tabs--active');
+					}
+				}else{
+					$('.process-tabs__panels > div:first').show();
+					$this.find('> ul > li:first').addClass('jt-tabs--active');			
+				}
+
+				// Add click event
+				$this.find('> ul li').on('click',function(){
+
+					//$('html,body').animate({scrollTop: $this.offset().top - $('#header').outerHeight()});
+
+					var $that = $(this).find('a');
+					var hash = $that.attr('href');
+					$this.find('> ul li').removeClass('jt-tabs--active');
+					$that.parent().addClass('jt-tabs--active');
+
+					var target_index = $that.parent().index();
+					$('.process-tabs__panels > div').hide();
+					$('.process-tabs__panels > div:eq('+target_index+')').show();
+
+					// add hash
+					if ('history' in window && 'pushState' in history) {
+						history.pushState(null, null, hash)
+					}
+
+					return false;
+				});
+
+				// Listner hash change
+				// TODO DRY THIS CODE !!!
+				if ("onhashchange" in window) {
+					window.onhashchange = function locationHashChanged() {
+						var _current_hash = location.hash;
+						var _current_hash_index = $(_current_hash).index();
+						$('.process-tabs__panels > div').hide();
+						$('.process-tabs__panels > div:eq('+_current_hash_index+')').show();
+						$this.find('> ul > li').removeClass('jt-tabs--active');
+						$this.find('> ul > li:eq('+_current_hash_index+')').addClass('jt-tabs--active');
+					}
+				}
+			} else {
+				$('.biz-process__item-wrap').removeAttr('style');
+			}
+		}
+
+    }
+
+
+    //location
+    if( $('.article-contact').length) {
+
+        var $this = $('.contact-tabs');
+
+        // Hide tabs if not already hidden
+        $('.contact-tabs__panels > div').hide();
+
+        // Init display the right tab
+		if(location.hash != "#"){
+			if ($(location.hash).length > 0) {
+				var current_hash = 	location.hash;
+				var current_hash_index = $(current_hash).index();
+				$('.contact-tabs__panels > div').hide();
+				$('.contact-tabs__panels > div:eq('+current_hash_index+')').show();
+				$this.find('> ul > li:first').removeClass('active');
+				$this.find('> ul > li:eq('+current_hash_index+')').addClass('active');
+			} else{
+				$('.contact-tabs__panels > div:first').show();
+				$this.find('> ul > li:first').addClass('active');
+			}
+		}else{
+			$('.contact-tabs__panels > div:first').show();
+			$this.find('> ul > li:first').addClass('active');			
+		}
+
+        // Add click event
+        $this.find('> ul li').on('click',function(){
+  
+            if( $(window).scrollTop() > $this.offset().top){
+                if($('#header').hasClass('minimize')){
+				    offset = ( $('#header').outerHeight() + 23 );
+                } else {
+                    offset = ( $('#header').outerHeight() - 10 );
+                }
+			} else {
+                if($('#header').hasClass('minimize')){
+				    offset = ( $('#header').outerHeight() + 23);
+                } else {
+                    offset = ( $('#header').outerHeight() - 10);
+                }
+			}
+
+			$('html,body').animate({scrollTop: $this.offset().top - offset});
+
+            var $that = $(this).find('a');
+            var hash = $that.attr('href');
+            $this.find('> ul li').removeClass('active');
+            $that.parent().addClass('active');
+
+            var target_index = $that.parent().index();
+            $('.contact-tabs__panels > div').hide();
+            $('.contact-tabs__panels > div:eq('+target_index+')').show();
+
+            JT.ui.call( 'naver_map_init' );
+
+            // add hash
+            if ('history' in window && 'pushState' in history) {
+                history.pushState(null, null, hash)
+            }
+
+            return false;
+        });
+
+        // Listner hash change
+        // TODO DRY THIS CODE !!!
+        if ("onhashchange" in window) {
+            window.onhashchange = function locationHashChanged() {
+                var _current_hash = location.hash;
+                var _current_hash_index = $(_current_hash).index();
+                $('.contact-tabs__panels > div').hide();
+                $('.contact-tabs__panels > div:eq('+_current_hash_index+')').show();
+                $this.find('> ul > li').removeClass('active');
+                $this.find('> ul > li:eq('+_current_hash_index+')').addClass('active');
+            }
+        }
+
+    }
+
+    $('.sub-tab__nav-container').not('.pharma-tab').find('.sub-tab__nav > li').on('click',function(){
+        //gsap.to( $('#header'), 0.4, { autoAlpha:0, y: -$('#header').outerHeight(), ease: Power3.easeOut });
+        tab_scroll_position();
+    });
+
+}
+
+
+
+/**
+ * Image Lazyload
+ *
+ * @version 1.0.0
+ * @author STUDIO-JT (KMS)
+ *
+ * @example
+ * Markup sample
+ * <figure class="jt-lazyload">
+ * 	 <span class="jt-lazyload__color-preview"></span>
+ * 	 <img width="120" height="120" data-unveil="some_img_url.jpg" src="blank.gif" alt="" />
+ * 	 <noscript><img src="some_img_url.jpg" alt="" /></noscript>
+ * </figure>
+ *
+ * @description masonry 타입일경우 jt-lazyload에 jt-lazyload--masonry class를 추가로 붙여주세요
+ */
+function lazyload_init(){
+
+    // lazyload
+    $("[data-unveil]").unveil(300, function() {
+    	$(this).on('load',function() {
+    		$(this).addClass('jt-lazyload--loaded');
+    	});
+    });
+
+}
+
+
+
+// clipboard
+function share_clipboard(){
+
+    $('.jt-share--url').each(function(){
+
+        if(typeof Clipboard != "undefined"){
+
+            var $this = $(this);
+            var clipboard = new Clipboard($this[0]);
+            var $clipboard_tooltip = $this.closest('.jt-share').next();
+
+            $clipboard_tooltip.appendTo('.main-container');
+
+            $this.on('click', function(e){
+                e.preventDefault();
+                e.stopPropagation();
+            });
+
+            clipboard.on('success', function(e) {
+
+                e.clearSelection();
+                TweenMax.fromTo($clipboard_tooltip, 0.2, {autoAlpha: 0}, {autoAlpha: 1});
+
+                setTimeout(function(){
+                    TweenMax.fromTo($clipboard_tooltip, 0.2, {autoAlpha: 1}, {autoAlpha: 0});
+                }, 3000);
+
+            });
+
+        }else{
+			// not support
+        }
+
+    }); // end each
+
+}
+
+
+
+/**
+ * SNS 공유 팝업창을 생성합니다.
+ *
+ * @version 1.0.0
+ * @author STUDIO-JT (Jun)
+ */
+function sns_popup_init(){
+
+    // SNS POPUP
+    $('.jt-share__item').each(function(){
+
+        var element = this;
+        var $element = $(element);
+
+        $element.on('click', function(e){
+
+            // return kakao share
+            if($(this).hasClass('jt-share--kakao') || $(this).hasClass('jt-share--url')) { return; }
+
+            e.preventDefault();
+
+            // OPTIONS
+            var options = {
+                href        : this.href,    // 주소
+                title       : '',           // 타이틀
+                width       : '600',        // { number } 열리는 창의 가로 크기
+                height      : '600',        // { number } 열리는 창의 세로 크기
+                top         : '0',          // { number } 열리는 창의 좌표 위쪽
+                left        : '0',          // { number } 열리는 창의 좌표 왼쪽
+                status      : 'no',         // { yes | no | 1 | 0 } 상태 표시바 보이거나 숨기기
+                fullscreen  : 'no',         // { yes | no | 1 | 0 } 전체 창 (기본값은 no)
+                channelmode : 'no',         // { yes | no | 1 | 0 } 채널모드 F11 키 기능이랑 같음
+                location    : 'no',         // { yes | no | 1 | 0 } 주소창 (기본값은 yes)
+                menubar     : 'no',         // { yes | no | 1 | 0 } 메뉴바 (기본값은 yes)
+                toolbar     : 'no',         // { yes | no | 1 | 0 } 툴바 (기본값은 yes)
+                resizable   : 'yes',        // { yes | no | 1 | 0 } 창 (기본값은 yes)
+                scrollbars  : 'yes'         // { yes | no | 1 | 0 } 창 스크롤바 (기본값은 yes)
+            };
+
+            // ALIGN CENTER
+            var align_center = {
+                top : Math.round(($(window).height() / 2) - (options.height / 2)),
+                left : Math.round(($(window).width() / 2) - (options.width / 2))
+            };
+
+            // WINDOW OPEN
+            window.open(''+ options.href +'',''+ options.title +'','width='+ options.width +',height='+ options.height +',top='+ align_center.top +',left='+ align_center.left +',status='+ options.status +',fullscreen='+ options.fullscreen +', channelmode='+ options.channelmode+', location='+ options.location+', menubar='+ options.menubar +', toolbar='+ options.toolbar +', resizable='+ options.resizable +', scrollbars='+ options.scrollbars +'');
+
+        });
+
+    });
+
+}
+
+
+
+/**
+ * Split word and wrap into a span to simplify rwd 작업
+ *
+ * @version 1.0.0
+ * @author STUDIO-JT (Nico)
+ */
+function split_word_helper(){
+
+	$(".jt-split-word").each(function(){
+
+		var $this = $(this);
+		var words = $this.text().split(" ");
+
+		$this.empty();
+
+		$.each(words, function(i, v) {
+			$this.append(jQuery("<span>").text(v));
+		});
+
+	});
+
+}
+
+
+
+/**
+ * Vimeo custom play
+ *
+ * @version 1.0.0
+ * @author STUDIO-JT (KMS,NICO)
+ * @see {@link https://developer.vimeo.com/|API}
+ * @requires https://player.vimeo.com/api/player.js
+ */
+function vimeo_play(){
+
+    // play if click on the poster
+    $('.jt-embed-video--vimeo .jt-embed-video__poster').each(function () {
+
+        var $poster = $(this);
+		var $wrap = $poster.closest('.jt-embed-video');
+		var $parent = $poster.closest('.jt-embed-video__inner');
+		var $iframe = $parent.find('iframe');
+		var iframe_id = $iframe.attr('id');
+		var js_iframe = $parent.find('iframe')[0];
+
+		// Vimeo
+		$poster.on('click', function () {
+			if(!$('html').hasClass('ie9')) {
+				var video = new Vimeo.Player(js_iframe);
+				gsap.set($iframe, {autoAlpha: 1, force3D: true});
+				gsap.to( $poster, .6, {autoAlpha: 0, onStart: function(){ video.play(); }});
+			} else {
+				alert('영상 재생을 지원하지 않는 브라우저를 사용 중입니다.');
+			}
+		});
+
+    });
+
+}
+
+
+
+/**
+ * Youtube custom play
+ *
+ * @version 1.0.0
+ * @author STUDIO-JT (NICO)
+ * @see {@link https://developers.google.com/youtube/iframe_api_reference}
+ */
+function youtube_play(){
+
+    // load youtube if necessary
+	if($('.jt-embed-video--youtube').length <= 0) return;
+
+	var tag = document.createElement('script');
+	tag.src = "https://www.youtube.com/iframe_api";
+
+	var firstScriptTag = document.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+	// if youtube api ready do your stuff
+	window.onYouTubeIframeAPIReady = function() {
+
+		// play if click on the poster
+		$('.jt-embed-video--youtube .jt-embed-video__poster').each(function () {
+
+			var $poster = $(this);
+			var $wrap = $poster.closest('.jt-embed-video');
+			var $parent = $poster.closest('.jt-embed-video__inner');
+			var $iframe = $parent.find('iframe');
+			var iframe_id = $iframe.attr('id');
+			var js_iframe = $parent.find('iframe')[0];
+
+			new YT.Player(iframe_id,{
+				events: {
+					'onReady': function(event){
+
+						$poster.on('click',function(){
+							event.target.playVideo();
+							$poster.fadeOut(800,function(){
+							   $poster.remove();
+							});
+
+							return false;
+						})
+					}
+				}
+			});
+
+		});
+
+	}
+
+}
+
+
+/**
+ * Trigger youtube/vimeo url using css class.
+ * magnific-popup.js 플러그인 연동이 필요합니다.
+ *
+ * @version 1.0.0
+ * @author STUDIO-JT (KMS)
+ * @see {@link http://dimsemenov.com/plugins/magnific-popup/|magnific-popup API}
+ * @requires jquery.magnific-popup.js
+ */
+function video_modal(){
+
+	// Video popup init
+	// var autoplay = ($('html').hasClass('mobile')) ? "" : '?autoplay=1&playsinline=1';
+
+	$('.jt-popup-video').magnificPopup({
+		type: 'iframe',
+		mainClass: 'mfp-fade',
+		removalDelay: 160,
+		preloader: false,
+		fixedContentPos: true,
+		iframe: {
+            patterns: {
+                youtube: {
+                    index: 'youtube.com/',
+                    id: 'v=',
+                    src: 'https://www.youtube.com/embed/%id%?autoplay=1&playsinline=1&modestbranding=1&showinfo=0&rel=0'
+                },
+                vimeo: {
+                    index: 'vimeo.com/',
+                    id: '/',
+                    src: 'https://player.vimeo.com/video/%id%?autoplay=1&playsinline=1'
+                }
+            }
+        },
+		callbacks: {
+			open: function() {
+				$('.mfp-close').removeAttr('title');
+				//JT.smoothscroll.destroy();
+			},
+			afterClose: function() {
+				//$('body').removeClass('mousehover_iframe');
+				//JT.smoothscroll.init();
+			},
+		}
+	});
+
+}
+
+
+
+
+/**
+ * 본문에 삽입되어있는 이미지 미디어 파일을 클릭했을경우 원본사진을 팝업으로 오픈합니다.
+ * magnific-popup.js 플러그인 연동이 필요합니다.
+ *
+ * @version 1.0.0
+ * @author STUDIO-JT (KMS)
+ * @see {@link http://dimsemenov.com/plugins/magnific-popup/|magnific-popup API}
+ * @requires jquery.magnific-popup.js
+ */
+function media_image_popup() {
+
+    if( !$('body').hasClass('single') ) { return; }
+
+    // 서포트 타겟 설정
+    var $popup_image_target = $("a:has(img)").filter( function() { return /\.(jpe?g|png|gif|bmp)$/i.test($(this).attr('href')); });
+    $popup_image_target.addClass("js-single-media-popup");
+
+    // 팝업 셋팅
+    $('a.js-single-media-popup').magnificPopup({
+        type            : 'image',
+        image           : {
+                            markup: '<div class="mfp-figure">'+
+                                    '<div class="mfp-img"></div>'+
+                                    '</div>', // '.mfp-img' div will be replaced with img tag
+                            cursor: 'mfp-zoom-out-cur',
+                            verticalFit: true,
+                            tError: '이미지를 불러오는데 실패했습니다.'
+                        },
+        mainClass       : 'mfp-with-zoom',
+        zoom            : {
+                            enabled: true,
+                            duration: 300,
+                            easing: 'ease-in-out'
+                        },
+        midClick        : true,
+        showCloseBtn    : false,
+        fixedContentPos : false,
+        autoFocusLast   : false,
+        callbacks       : {
+                            open: function() {
+                                $('html').addClass('js-single-media-popup--open');
+                            },
+                            afterClose: function() {
+                                $('html').removeClass('js-single-media-popup--open');
+                            }
+                        }
+    });
+
+    // 스크롤 이동시 팝업창 닫기
+    $(window).on('scroll',function(e){
+        if( $('html').hasClass('js-single-media-popup--open')) {
+            setTimeout(function(){
+                $('.mfp-wrap').css('z-index', '100');
+                $.magnificPopup.close();
+            }, 300);
+        }
+    });
+
+}
+
+
+
+/**
+ * 본문에 삽입되어있는 이미지 미디어 파일을 클릭했을경우 원본사진을 팝업으로 오픈합니다.
+ * magnific-popup.js 플러그인 연동이 필요합니다.
+ *
+ * @version 1.0.0
+ * @author STUDIO-JT (SUMI)
+ * @see {@link https://www.mediaelementjs.com/}
+ */
+function media_element_player() {
+
+    $('.jt-single video, .jt-single audio').each(function(){
+
+        var $this = $(this);
+		var $width = $this.width();
+		var $height = $this.height();
+
+		$this.attr('width', $width).attr('height', $height).mediaelementplayer({
+			features: ['loop','playpause','current','progress','duration','volume','fullscreen'],
+			alwaysShowControls: true,
+			audioVolume: 'vertical',
+			defaultVideoWidth: $width,
+			defaultVideoHeight: $height,
+			videoWidth: '100%',
+			videoHeight: '100%',
+			success: function(mediaElement, domObject)
+			{
+				console.log("event triggered after play method");
+				//mediaElement.addEventListener('seeked', loadNew, true);
+				mediaElement.addEventListener('playing', loadNew, false);
+				mediaElement.addEventListener('progress', loadNew, false);
+			}
+		});
+
+		function loadNew(){
+			$('.wp-block-audio .mejs__container').removeAttr('style');
+		}
+
+
+		setTimeout(function(){
+			$('.wp-block-audio .mejs__container').removeAttr('style');
+		},0)
+
+    });
+
+
+}
+
+
+
+// 공유하기 hover
+function share_hover(){
+
+    //navigator share
+    $('.jt-single-share__btn').on('click', function(e){
+        e.preventDefault();
+
+        if ('share' in navigator && $('html').hasClass('mobile')) {
+            var title = $('meta[property="og:title"]').attr('content');
+            var url = $('link[rel=shortlink]').attr('href');
+            navigator.share({
+                title: title,
+                //text: '',
+                url: url,
+            })
+            return false;
+
+        }
+
+    });
+
+    if(!$('html').hasClass('mobile')){
+
+        $('.jt-single-share').hover(function(){
+            $('.jt-single-share').addClass('jt-single-share--active');
+        }, function(){
+            $('.jt-single-share').removeClass('jt-single-share--active');
+        });
+
+    } 
+
+
+}
+
+
+
+//ACCORDION
+function jt_accordion() {
+
+    var row_class = '.jt-accordion__item';
+    var content_class = '.jt-accordion__content';
+
+    // Add active class to the first row
+    $(row_class).first().addClass('jt-accordion--active');
+    $(row_class).first().find(content_class).show();
+
+    // Toggle the accordion
+    $('.jt-accordion').on('click', '.jt-accordion__title', function(e){
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        var $this = $(this);
+        var $li = $(row_class);
+        var $li_content = $li.find(content_class)
+        var $current_li = $this.parent();
+        var $current_content = $current_li.find(content_class);
+
+        /*
+            $li.not($current_li).removeClass('jt-accordion--active');
+            $current_li.toggleClass('jt-accordion--active');
+
+            $li_content.not($current_content).slideUp();
+            $current_content.slideToggle(400, function(){
+                if(!$('.jt-accordion').hasClass('empty-house-table__body')){
+                    $('html,body').animate({
+                        scrollTop: $this.offset().top - parseInt( $('#header').height() )
+                    }, 400);
+                }
+            });
+        */
+
+        $li.not($current_li).removeClass('jt-accordion--active');
+		$li.not($current_li).find('.jt-accordion__content').slideUp(200);
+
+        setTimeout(function(){
+            if( $current_li.hasClass('jt-accordion--active') ){
+                $current_li.removeClass('jt-accordion--active');
+                $current_content.slideUp();
+
+            } else {
+                $current_li.addClass('jt-accordion--active');
+                $current_content.slideDown();
+            }
+        }, 300);
+
+    });
+
+}
+
+
+
+
+
+function tab_scroll_position(){
+
+    var $el = $('.sub-tab__nav');
+
+    if( $el != undefined && $el.find('> li.active').length > 0 ) {
+    	/*
+        var $active = $el.find('> li.active');
+        // check if active item is visible on the screen
+        // if not visible scrollLeft to the current item position
+        var current_item_width = $active.outerWidth();
+        var current_item_pos = $active.offset().left + current_item_width;
+
+       // if(current_item_pos >= $(window).width()){
+            $el.scrollLeft($active.offset().left - 24);
+        //}
+        */
+        $el.each(function(){
+
+			var $scroll_area = $(this);
+			var $target =  $scroll_area.find('.active');
+			var left_pos = $target.offset().left - $scroll_area.offset().left + $scroll_area.scrollLeft();
+			var offset = 24;
+			//if($target.offset().left + $target.outerWidth() + $scroll_area.scrollLeft() > $scroll_area.width()){
+				$scroll_area.stop().scrollLeft( left_pos - offset);
+			//}           
+
+        })
+    }
+
+}
+
+function tab_scroll_position_init(){
+
+    // fix fouc
+	setTimeout(function(){
+		tab_scroll_position();
+		$('body').addClass('tab-load');
+	},100);
+	
+}
+
+
+}); // End jQuery

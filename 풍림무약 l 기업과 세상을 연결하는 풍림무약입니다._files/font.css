@@ -1,0 +1,96 @@
+@charset "utf-8";
+/*
+ * Font         : NotoSansKR, Montserrat, jt-font
+ * License      :
+ * Subset Maker : Studio-jt (KMS)
+ * Version      : 1.0.0
+ * description  :
+ */
+
+
+
+/* ************************************** *
+ * NotoSansKR
+ * ************************************** */  
+  @font-face {
+    font-family: 'NotoSansKR';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/noto-sans-kr-v12-latin_korean/noto-sans-kr-v12-latin_korean-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/noto-sans-kr-v12-latin_korean/noto-sans-kr-v12-latin_korean-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    unicode-range: U+0-2025,U+2027-10FFFF; /* remove Horizontal Ellipsis U+2026 to make align bottom */
+  }
+  
+  @font-face {
+    font-family: 'NotoSansKR';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/noto-sans-kr-v12-latin_korean/noto-sans-kr-v12-latin_korean-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/noto-sans-kr-v12-latin_korean/noto-sans-kr-v12-latin_korean-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    unicode-range: U+0-2025,U+2027-10FFFF; /* remove Horizontal Ellipsis U+2026 to make align bottom */
+  }
+
+  @font-face {
+    font-family: 'NotoSansKR';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/noto-sans-kr-v12-latin_korean/noto-sans-kr-v12-latin_korean-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/noto-sans-kr-v12-latin_korean/noto-sans-kr-v12-latin_korean-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    unicode-range: U+0-2025,U+2027-10FFFF; /* remove Horizontal Ellipsis U+2026 to make align bottom */
+  }
+
+  
+  
+  /* ************************************** *
+   * Montserrat
+   * ************************************** */
+  
+  /* montserrat-400 - Regular - latin */
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/montserrat-v14-latin/montserrat-v14-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/montserrat-v14-latin/montserrat-v14-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+
+  /* montserrat-500 - SemiBold latin */
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/montserrat-v14-latin/montserrat-v14-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/montserrat-v14-latin/montserrat-v14-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+
+  /* montserrat-600 - SemiBold latin */
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/montserrat-v14-latin/montserrat-v14-latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/montserrat-v14-latin/montserrat-v14-latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+
+  /* montserrat-700 - Bold latin */
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/montserrat-v14-latin/montserrat-v14-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/montserrat-v14-latin/montserrat-v14-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  
+
+/* ************************************** *
+ * JT-FONT
+ * ************************************** */
+@font-face {
+    font-family:'jt-font';
+    font-style: normal;
+    font-display: block;
+    font-weight: normal;
+    src: url(../fonts/jt-font/fonts/jt-font.eot);
+    src: local("?"),
+         url(../fonts/jt-font/fonts/jt-font.woff) format('woff');
+}
