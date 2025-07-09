@@ -14,11 +14,11 @@ header {
     background: transparent;
     z-index: 9999;
 }
-/* .container{
+.container{
     width: 100%;
     margin: 0 auto;
-    padding: 0 20rem;
-} */
+    padding: 13rem 18rem 11rem;
+}
 .header_inner {
     height: 100%;
     max-width: 154rem;
@@ -118,7 +118,6 @@ main{position: relative; top: 13rem;}
     width: 100%;
     height: 67rem;
     background: #ddd;
-    overflow: hidden;
 }
 /* .swiper {
     display: flex;
@@ -129,9 +128,7 @@ main{position: relative; top: 13rem;}
 .mainSwiper{
     width: 100%;
     height: 100%;
-    overflow: hidden;
     text-align: center;
-    /* font-size: 18px; */
     background: #444;
     justify-content: center;
     align-items: center;
@@ -139,7 +136,7 @@ main{position: relative; top: 13rem;}
 .mainSwiper>.swiper-wrapper{
     width: 100%;
     height: 100%;
-    
+    overflow: hidden;
 }
 .mainSwiper>.swiper-wrapper .swiper-slide{
     width: 100%;
@@ -206,8 +203,8 @@ main{position: relative; top: 13rem;}
 .main_notice{
     width: 100%;
     height: 60rem;
-    background: #ddd;
-    padding: 13rem 10rem;
+    /* background: #ddd; */
+    /* padding: 13rem 10rem; */
     box-sizing: border-box;
 }
 .mainNotiWrap{
@@ -234,20 +231,20 @@ main{position: relative; top: 13rem;}
 }
 .swiper-slide{
     width: 100%;
-    height: 11rem;
+    height: inherit;
     display: flex;
     
 }
 .swiper-slide>h4{
     font-size: 2rem;
-    padding: 0 15rem;
-    border-right: .3rem solid #444;
-    margin-top: 5rem;
+    padding: 0 10rem;
+    /* border-right: .3rem solid #444; */
+    margin-top: 4rem;
 }
 .swiper-slide a{
     font-size: 2rem;
-    padding: 6rem 15rem;
-    
+    padding: 0 15rem;
+    margin-top: 4rem;
 
 }
 .notiSwiperWrap{
@@ -255,11 +252,74 @@ main{position: relative; top: 13rem;}
     width: 100%;
     height: 30px;
 }
-.SwiperBtnWrap{
+/* .SwiperBtnWrap{
     position: absolute;
-    top: 100px;
+    top: 7.3rem;
     right: 0;
     font-size: 2rem;
+    width: 10rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    background: skyblue;
+}
+.swiper-button-prev1,.swiper-button-next1{
+    width: 1.8rem;
+    height: auto;
+    align-items: center;
+}
+.swiper-pagination1{
+    width: 100%;
+    height: inherit;
+    align-items: center;
+    justify-content: center;
+} */
+.SwiperBtnWrap {
+  position: absolute;
+  top: 10rem;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 2rem; /* 세로 높이 기준 */
+  font-size: 2rem;
+  background: transparent;
+}
+
+.swiper-button-prev1,
+.swiper-button-next1 {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.swiper-button-prev1 img,
+.swiper-button-next1 img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.swiper-pagination1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.8rem;
+  color: #333;
+  height: 2rem; /* 높이 맞춰줌 */
+  line-height: 2rem;
+}
+
+.swiper-pagination1 .swiper-pagination-current,
+.swiper-pagination1 .swiper-pagination-total {
+  display: inline-block;
+  min-width: 2rem;
+  text-align: center;
+  line-height: 2rem;
 }
 
 
@@ -269,8 +329,7 @@ main{position: relative; top: 13rem;}
 .main_biz{
     width: 100%;
     height: 130rem;
-    background: #e7e7e7;
-    padding: 10rem 20rem 6rem;
+    background: #f9f9f9;
     box-sizing: border-box;
 }
 
@@ -279,16 +338,21 @@ main{position: relative; top: 13rem;}
     width: 100rem;
 }
 .tab .active .left{
-    color: red;
+    color: #d60000;
 }
+
 .tab .active .right{
-    color: blue;
+    color: #2d5fff;
 }
 .tab h3{
     font-size: 6rem;
     margin-bottom: 3rem;
     margin-right: 5rem;
+    cursor: pointer;
+    transition: color 0.3s;
+    color: #ccc;
 }
+
 
 .main_biz_front{
     display: none;
@@ -313,10 +377,15 @@ main{position: relative; top: 13rem;}
     padding: 2rem;
     box-sizing: border-box;
     text-align: center;
-    align-items: center;
-    
-
+    align-items: center; 
+    border-radius: 0px; /* 초기에는 직각 */
+    transition: all 0.3s ease; /* 부드럽게 변화 */   
 }
+.main_biz_wrap>a:hover{
+    border: .3rem solid #333;
+    border-radius: 40px;    
+}
+
 .main_biz_wrap>a>span{
     width: 100%;
     height: 100%;
@@ -325,7 +394,7 @@ main{position: relative; top: 13rem;}
     
 }
 .biz_list{
-    margin-top: 5rem;
+    margin-top: 8rem;
 }
 .biz_list ul{
     width: 100%;
@@ -333,44 +402,341 @@ main{position: relative; top: 13rem;}
     display: flex;
     justify-content: space-between;
 }
+
+
 .biz_list ul li{
     width: 30rem;
+    height: 30rem;
+    overflow: hidden; /* li 영역 밖으로 넘치지 않도록 */
+    position: relative;
 }
 .biz_list ul li a{
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
 }
 .biz_list ul li a img{
     width: 30rem;
     height: 30rem;
+    object-fit: cover; /* 이미지 비율 유지하며 꽉 채우기 */
+    transition: transform 0.3s ease-in-out; /* 💡 추가: 부드러운 전환 */
 }
+.biz_list ul li:hover a img {
+    transform: scale(1.1); /* 살짝 확대 (5%) */
+    z-index: 2;
+}
+
+.biz_list ul li.no-img a {
+  width: 30rem;
+  height: 30rem;
+  /* display: flex; */
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.biz_list ul li.no-img .main_biz_type {
+  font-size: 4rem;
+  font-weight: 800;
+  text-align: center;
+  color: #d60000;
+}
+
+.main_biz_back .biz_list ul li.no-img .main_biz_type{
+    color: #2d5fff;
+}
+
+
 .biz_list ul li a span{
     font-size: 2rem;
     font-weight: 600;
     text-align: center;
     align-items: center;
     padding: 2rem;
+    color: #333;
+    z-index: 999999;
 }
 
-.main_biz_back{
-    /* display: none; */
+.main_biz_back ul li img{
+    border-radius: 50%;
 }
-.main_search{
+
+.main_search {
     width: 100%;
     height: 65rem;
-    background: #ddd;
-    padding: 13rem 10rem;
+    background: #fff;
     box-sizing: border-box;
 }
-.mainSearchWrap{
-    width: 100%;
-    height: 34rem;
+.mainSearch_top{
+    margin-bottom: 10rem;
+}
+
+.mainSearch_top h3{
+  font-size: 5rem;
+  line-height: 1.2;
+}
+
+.mainSearch_bottom {
+  display: flex;
+  
+  gap: 5rem;
+}
+
+.custom-select {
+  position: relative;
+  width: 20rem;
+  font-size: 2rem;
+  font-weight: 600;
+  user-select: none;
+}
+
+.select-selected {
+  width: 23rem;
+  height: 9rem;
+  border: 3px solid #ccc;
+  padding: 3rem 5rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.select-selected .arrow {
+  margin-left: 1rem;
+  font-size: 4rem;
+}
+
+.select-items {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 23rem;
+  border: 3px solid #ccc;
+  background: #f4f4f4;
+  border-radius: 4.6rem;
+  padding: 3rem 3rem;
+  box-sizing: border-box;
+  justify-content: start;
+  z-index: 99;
+}
+
+.select-items li {
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.select-items li:hover,
+.select-items li.active {
+  background-color: #f5f5f5;
+}
+
+/* .mainSearch_bottom_left ul {
+  list-style: none;
+  padding: 0;
+}
+
+.mainSearch_bottom_left ul li {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+.mainSearch_bottom_left ul li.active,
+.mainSearch_bottom_left ul li:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.mainSearch_bottom_left ul li a {
+  text-decoration: none;
+  color: inherit;
+} */
+
+.right_search {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.right_search input {
+  font-size: 2rem;
+  font-weight: 600;
+  width: 110rem;
+  height: 9rem;
+  background: #f9f9f9;
+  border: none;
+  padding: 3rem 5rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 5rem 0 0 5rem;
+
+  align-items: center;
+}
+
+.searchBtn {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 600;
+  width: 18rem;
+  height: 9rem;
+  padding: 3rem 5rem;
+  box-sizing: border-box;
+  border-radius: 0 5rem 5rem 0;
+  align-items: center;
+}
+.right_keyword{
+    display: flex;
+    margin-top: 3rem;
+    margin-left: 5rem;
+    font-size: 1.8rem;
+    font-weight: 500;
+    gap: 2rem;
+}
+.right_keyword p {
+  color: #000;
+  
+}
+
+.right_keyword ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+
+}
+
+.right_keyword ul li a {
+  color: #6d6d6d;
+}
+
+
+.main_news{
+  width: 100%;
+  height: 110rem;
+  background: #f9f9f9;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.main_news h3{
+  font-size: 5rem;
+  margin-bottom: 3rem;
+}
+.main_news h4{
+    font-size: 2.2rem;
+    font-weight: 700;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;     /* 줄 수 설정 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 1.3rem;
+    text-align: center;
+}
+.news{
+    width: 50%;
     position: relative;
 }
-.mainSearch_top h3{
-    font-size: 5rem;
-    line-height: 1.2;
+.news>a{
+    position: absolute;
+    top: 4rem;
+    right: 2.2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #6d6d6d;
+}
+.news_left{
+    display: flex;
+    justify-content: space-between;
+}
+.news_left li{
+    width: 48%;
+    
+        
+}
+.news_left li a img{
+    width: 100%;
+    margin-bottom: 2.2rem;
+}
+.news_left li p{
+    width: 100%;
+    font-size: 1.8rem;
+    font-weight: 500;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;     /* 줄 수 설정 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #6d6d6d;
+    margin-bottom: 5rem;
+    margin-left: 1rem;
+    
+}
+.news_left li span{
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #6d6d6d;
+}
+.main_news .news ul li{
+    
+}
+.sns{
+    width: 40rem;
+    position: relative;
+    
+    right: 0;
+}
+.sns>a>img{
+    border-radius: 50%;
+    margin-bottom: 2.2rem;
+    
+}
+.sns ul{
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: space-around;
+}
+.sns ul li{
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    border:.1rem solid #6d6d6d;   
+}
+.sns ul li a{
+    width: 6rem;
+    height: 6rem;
+    justify-content: center;
+}
+.sns ul li a>span{
+    font-size: 3rem;
+    font-weight: 900;
+    color: #6d6d6d;
+}
+.sns ul li a img{
+    width: 3rem;
+    height: 3rem;
+    color: #6d6d6d;
+    
+}
+
+footer{
+    width: 100%;
+    padding: 140rem 0 126rem;
+    position: relative;
+    background: #000;
+    box-shadow: 0px 1px 0px #000;
+    font-size: 0;
 }

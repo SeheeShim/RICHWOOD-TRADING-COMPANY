@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Richwood Clone</title>
+  <link rel="stylesheet" href="style02.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+</head>
+<body>
+  <header>
+    <div class="header_wrap">
+      <h1 class="logo"><a href="#"><img src="/img/logo.svg" alt="로고"></a></h1>
+      <nav>
+        <ul class="gnb">
+          <li><a href="#">About</a>
+            <ul class="submenu">
+              <li><a href="#">회사소개</a></li>
+              <li><a href="#">CEO 인사말</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Business</a></li>
+          <li><a href="#">Product</a></li>
+          <li><a href="#">PR</a></li>
+          <li><a href="#">Recruit</a></li>
+        </ul>
+      </nav>
+      <div class="search">
+        <input type="text" placeholder="검색어를 입력하세요">
+      </div>
+    </div>
+  </header>
+
+  <section class="main_visual">
+    <div class="swiper mainSwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><video src="/img/visual.mp4" autoplay muted loop></video></div>
+        <div class="swiper-slide"><img src="/img/visual2.jpg" alt="비주얼2"></div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </section>
+
+  <section class="main_biz">
+    <h2>Main Business</h2>
+    <div class="tab_btns">
+      <button class="tabT1">주요사업</button>
+      <button class="tabT2">글로벌사업</button>
+    </div>
+    <div class="tab_content">
+      <div class="main_biz_front">
+        <p>여기는 주요사업 탭 내용입니다.</p>
+      </div>
+      <div class="main_biz_back" style="display: none;">
+        <p>여기는 글로벌사업 탭 내용입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Richwood Clone. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
